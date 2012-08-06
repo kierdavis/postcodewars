@@ -7,5 +7,4 @@
         <h1>Testing...</h1>
         <p>Seems to be working</p>
     </body>
-</html>
-
+</html
