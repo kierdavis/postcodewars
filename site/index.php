@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Where do you want to live?</title>
-        <link rel="stylesheet" type="text/css" href="/static/css/global.css"/>
+        <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
         <link rel="stylesheet" type="text/css" href="/static/css/index.css"/>
     </head>
     
@@ -11,7 +11,7 @@
         </div>
         
         <div id="body">
-            <form action="" method="get">
+            <form action="/results.php" method="get">
                 <label for="postcode-field">Postcode:</label>
                 <input type="text" name="postcode" id="postcode-field" size="8"/>
                 
