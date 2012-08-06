@@ -1,8 +1,18 @@
+<!--
+keep files seperate:
+- put js for this page into site/static/js/index.js
+- put css for this page into site/static/css/index.css
+-->
+
 <html>
     <head>
         <title>Where do you want to live?</title>
+        
         <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
         <link rel="stylesheet" type="text/css" href="/static/css/index.css"/>
+        
+        <script type="text/css" src="/static/js/jquery-1.7.2.min.js"></script>
+        <script type="text/css" src="/static/js/index.js"></script>
     </head>
     
     <body>
