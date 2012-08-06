@@ -7,7 +7,6 @@ Somebody should actually put some stuff in this README
 
 Look, some stuff! Yay, stuff! README stuff! wooo!
 
-
 # Folders #
 
 * `site` contains the actual website - anything in here is accessible by users
