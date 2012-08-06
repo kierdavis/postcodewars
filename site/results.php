@@ -10,5 +10,7 @@
     // $result should be an array of some sort that is encoded into JSON and passed back to the
     // search page.
     
-    // TODO: echo $results as JSON
+    $result = array("herp", "derp", "burp");
+    
+    echo json_encode($result);
 ?>
