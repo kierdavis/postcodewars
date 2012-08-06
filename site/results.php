@@ -1,5 +1,5 @@
 <?php
-    if (!array_key_exists("postcode" $_GET)) {
+    if (!array_key_exists("postcode", $_GET)) {
         redirect("index.php");
         exit;
     }
