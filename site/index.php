@@ -14,6 +14,7 @@ keep files seperate:
         <link rel="stylesheet" type="text/css" href="/static/css/index.css"/>
         
         <script type="text/css" src="/static/js/jquery-1.7.2.min.js"></script>
+        <script type="text/css" src="/static/js/modernizr.js"></script>
         <script type="text/css" src="/static/js/global.js"></script>
         <script type="text/css" src="/static/js/index.js"></script>
     </head>
@@ -26,7 +27,7 @@ keep files seperate:
         <div id="body">
             <form action="" method="get" class="nosubmit-form">
                 <label for="postcode-field">Postcode:</label>
-                <input type="text" name="postcode" id="postcode-field" size="8"/>
+                <input type="text" name="postcode" id="postcode-field" size="8" placeholder="Postcode"/>
                 
                 <!-- TODO: remove "Search" text and add background image -->
                 <a href="#" id="search-button">Search</a>
