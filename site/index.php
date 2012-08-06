@@ -28,7 +28,8 @@ keep files seperate:
                 <label for="postcode-field">Postcode:</label>
                 <input type="text" name="postcode" id="postcode-field" size="8"/>
                 
-                <a href="#" id="search-button"></a>
+                <!-- TODO: remove "Search" text and add background image -->
+                <a href="#" id="search-button">Search</a>
             </form>
         </div>
         
