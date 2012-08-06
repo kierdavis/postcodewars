@@ -1,5 +1,5 @@
 <?php
-    if (!array_key_exists($_GET, "postcode")) {
+    if (!array_key_exists("postcode" $_GET)) {
         redirect("index.php");
         exit;
     }
@@ -19,5 +19,7 @@
         <link rel="stylesheet" type="text/css" href="/static/css/results.css"/>
     </head>
     
-    <body
+    <body>
+        
+    </body>
 </html>
