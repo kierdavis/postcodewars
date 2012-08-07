@@ -1,5 +1,5 @@
 <?php
-    require_once "util.php"
+    require_once "util.php";
     
     function distance_between($lat1, $lng1, $lat2, $lng2) {
         $dx = abs($lat2 - $lat1);

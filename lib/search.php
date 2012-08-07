@@ -1,5 +1,5 @@
 <?php
-    require_once "search-schools.php"
+    require_once "search-schools.php";
     
     function search($postcode) {
         $db = new mysqli("localhost", "yrs2012app-user", "vOdQ04wDTtIS3GeylBER1nNrAo76ZLFJU9hzuxsKmCPi8WcHqbYfVpjXkMag");

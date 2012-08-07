@@ -1,5 +1,5 @@
 <?php
-    require_once "../lib/search.php"
+    require_once "../lib/search.php";
     
     if (!array_key_exists("postcode", $_GET)) {
         redirect("index.php");
