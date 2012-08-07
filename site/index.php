@@ -22,58 +22,26 @@ keep files seperate:
 
             pulsate();
             </script>
-    <style type="text/css">
-        #Text1
-        {
-            width: 522px;
-            height: 25px;
-        }
-        input.textbox
-        {
-            border:3px solid #000000;
-            text-align: center;
-            padding:5px;
-             -webkit-border-radius: 4px;
-       -moz-border-radius: 4px;
-            border-radius: 4px;
-        }
-        input.textbox:focus 
-        {
-            border:5px
-            outline:none;
-            border-color:#96FFFF;
-            -webkit-box-shadow: 0px 0px 6px #000000;
-        }
-        input.button
-        {
-            width: 120px;
-            height: 30px;
-        } 
-        .style1
-        {
-            width: 412px;
-            height: 166px;
-        }
-        .style2
-        {
-            color: #FF0000;
-            font-family: Courier;
-        }
-    </style>
+    <script src="static/js/index.js"></script>
 </head>
 <body style="font-family: 'Segoe UI'; font-weight: 700; color: #0000CC; text-align: center; font-size: large;" 
     background="small-houses.jpg">
         <p style="color: #FFFFFF; font-family: Courier; text-align: left;">
-            RateMyArea: Alpha 0.1.4
-                <center><img alt="" class="style1" src="Capture.PNG" /></center>Type in your 
-        postcode to get started.</p>
-    <form id="textBoxInput"><center><input id="Text1" type="text" class="textbox" class="pulsate" style="font-family: Arial Black; font-size: 16px;" /><br />
-        </center></form>
-       
-
-   <br />
-   <br />
-        <a href="postcodeConfirm.htm"><center><input id="search" type="button" class="button" value="Search" /></center></a>
+            RateMyArea: Alpha 0.1.4 <br/>
+            Type in your postcode to get started.</p>
+    	<form id="textBoxInput">
+    		<center>
+    			<input id="Text1" type="text" class="textbox" class="pulsate" style="font-family: Arial Black; font-size: 16px;" />
+    			<br />
+        	</center>
+        </form>
+		<br />
+		<br />
+        <a href="postcodeConfirm.htm">
+        	<center>
+        		<input id="search" type="button" class="button" value="Search" />
+        	</center>
+       	</a>
         <p>
         &nbsp;</p>
         <p>
@@ -84,8 +52,5 @@ keep files seperate:
             <p class="style2" style="text-align: center; font-size: medium">
                 &nbsp;</p>
         </div>
-		<?php
-		require "../lib/search.php";
-		search("LE74UW"); ?>
 </body>
 </html>
