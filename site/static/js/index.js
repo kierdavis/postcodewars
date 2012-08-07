@@ -1,7 +1,18 @@
-$(document).ready(function() {
-    $("#search-button").click(function() {
-        search($("#postcode-field").val());
-    });
+$(document).ready(function () {
+    function pulsate() {
+        $(".pulsate").animate({
+            opacity: 0.2
+        }, 1200, 'linear').animate({
+            opacity: 1
+        }, 1200, 'linear', pulsate).click(function () {
+            $(this).animate({
+                opacity: 1
+            }, 1200, 'linear');
+            $(this).stop();
+        });
+    }
+
+    pulsate();
 });
 
 function search(postcode) {

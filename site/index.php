@@ -6,84 +6,52 @@ keep files seperate:
 - put global css into site/static/css/style.css
 -->
 
+<?php
+    if ($_GET["retro"]) {
+        require "../lib/retro.php";
+    }
+    
+    else {
+?>
+
 <html>
-<head>
-    <title>RateMyArea</title>
-    <script type="text/javascript">
-            $(document).ready(function () {
-            function pulsate() {
-                $(".pulsate").animate({ opacity: 0.2 }, 1200, 'linear')
-                     .animate({ opacity: 1 }, 1200, 'linear', pulsate)
-                     .click(function () {
-                         $(this).animate({ opacity: 1 }, 1200, 'linear');
-                         $(this).stop();
-                     });
-            }
+    <head>
+        <title>RateMyArea</title>
+        <script type="text/javascript" src="/static/js/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="/static/js/modernizr.js"></script>
+        <script type="text/javascript" src="/static/js/global.js"></script>
+        <script type="text/javascript" src="/static/js/index.js"></script>
+        
+        <style type="text/css" src="/static/css/style.css"></style>
+        <style type="text/css" src="/static/css/index.css"></style>
+    </head>
+    <body style="font-family: 'Segoe UI'; font-weight: 700; color: #0000CC; text-align: center; font-size: large;" 
+        background="small-houses.jpg">
+            <p style="color: #FFFFFF; font-family: Courier; text-align: left;">
+                RateMyArea: Alpha 0.1.4
+                    <center><img alt="" class="style1" src="Capture.PNG" /></center>Type in your 
+            postcode to get started.</p>
+        <form id="textBoxInput"><center><input id="Text1" type="text" class="textbox" class="pulsate" style="font-family: Arial Black; font-size: 16px;" /><br />
+            </center></form>
+           
 
-            pulsate();
-            </script>
-    <style type="text/css">
-        #Text1
-        {
-            width: 522px;
-            height: 25px;
-        }
-        input.textbox
-        {
-            border:3px solid #000000;
-            text-align: center;
-            padding:5px;
-             -webkit-border-radius: 4px;
-       -moz-border-radius: 4px;
-            border-radius: 4px;
-        }
-        input.textbox:focus 
-        {
-            border:5px
-            outline:none;
-            border-color:#96FFFF;
-            -webkit-box-shadow: 0px 0px 6px #000000;
-        }
-        input.button
-        {
-            width: 120px;
-            height: 30px;
-        } 
-        .style1
-        {
-            width: 412px;
-            height: 166px;
-        }
-        .style2
-        {
-            color: #FF0000;
-            font-family: Courier;
-        }
-    </style>
-</head>
-<body style="font-family: 'Segoe UI'; font-weight: 700; color: #0000CC; text-align: center; font-size: large;" 
-    background="small-houses.jpg">
-        <p style="color: #FFFFFF; font-family: Courier; text-align: left;">
-            RateMyArea: Alpha 0.1.4
-                <center><img alt="" class="style1" src="Capture.PNG" /></center>Type in your 
-        postcode to get started.</p>
-    <form id="textBoxInput"><center><input id="Text1" type="text" class="textbox" class="pulsate" style="font-family: Arial Black; font-size: 16px;" /><br />
-        </center></form>
-       
+       <br />
+       <br />
+            <a href="postcodeConfirm.htm"><center><input id="search" type="button" class="button" value="Search" /></center></a>
+            <p>
+            &nbsp;</p>
+            <p>
+            &nbsp;</p>
+            <p>
+            &nbsp;</p>
+            <div style="font-family: Courier; color: #FFFFFF">
+                <p class="style2" style="text-align: center; font-size: medium">
+                    &nbsp;</p>
+            </div>
 
-   <br />
-   <br />
-        <a href="postcodeConfirm.htm"><center><input id="search" type="button" class="button" value="Search" /></center></a>
-        <p>
-        &nbsp;</p>
-        <p>
-        &nbsp;</p>
-        <p>
-        &nbsp;</p>
-        <div style="font-family: Courier; color: #FFFFFF">
-            <p class="style2" style="text-align: center; font-size: medium">
-                &nbsp;</p>
-        </div>
-
-</body>
+    </body>
 </html>
+
+<?php
+    }
+?>
