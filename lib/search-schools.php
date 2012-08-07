@@ -26,9 +26,9 @@
         }
         
         return array(
-            "distance": $closest_distance,
-            "name": $closest_name,
-            "website": $closest_website,
+            "distance" => $closest_distance,
+            "name" => $closest_name,
+            "website" => $closest_website,
         );
     }
 ?>
