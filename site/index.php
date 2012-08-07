@@ -9,6 +9,19 @@ keep files seperate:
 <html>
 <head>
     <title>RateMyArea</title>
+    <script type="text/javascript">
+            $(document).ready(function () {
+            function pulsate() {
+                $(".pulsate").animate({ opacity: 0.2 }, 1200, 'linear')
+                     .animate({ opacity: 1 }, 1200, 'linear', pulsate)
+                     .click(function () {
+                         $(this).animate({ opacity: 1 }, 1200, 'linear');
+                         $(this).stop();
+                     });
+            }
+
+            pulsate();
+            </script>
     <style type="text/css">
         #Text1
         {
@@ -54,7 +67,7 @@ keep files seperate:
             RateMyArea: Alpha 0.1.4
                 <center><img alt="" class="style1" src="Capture.PNG" /></center>Type in your 
         postcode to get started.</p>
-    <form id="textBoxInput"><center><input id="Text1" type="text" class="textbox" style="font-family: Arial Black; font-size: 16px;" /><br />
+    <form id="textBoxInput"><center><input id="Text1" type="text" class="textbox" class="pulsate" style="font-family: Arial Black; font-size: 16px;" /><br />
         </center></form>
        
 
