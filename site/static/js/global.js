@@ -1,9 +1,17 @@
 $(document).ready(function() {
-    $(".flip").click(function() {
+	$("#settingsPanel").hide();
+    
+	$(".flip").click(function() {
 		$("#settingsPanel").slideToggle();
 	});
-	$("#settingsPanel").hide();
-		
+	
+	$("#settingsPanel input").change(function() {
+		var cookieName = $(this).attr("id");
+		var newValue = $(this).checked();
+		alert(cookieName + " " + newValue);
+		$.cookie(cookieName, newValue, { expires: 7, path: '/' });
+	});
+	
 	$("#battle_submit").click(function(event) {
 		// event.preventDefault();
 		$("#search").after($('<div class="loader"></div>'));
