@@ -44,11 +44,15 @@
                     </p>
                 </form>
             </div>
-			
 
 <?php
     if ($result !== null) {
 ?>
+
+			<div id="score">
+				<p class="congrats">Congratulations! You won.</p>
+				<p>You scored <span>47</span> points and they scored <span>39</span> points.</p>
+			</div>
 
             <ul id="results">
         
