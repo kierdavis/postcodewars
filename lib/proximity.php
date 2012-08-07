@@ -22,6 +22,7 @@
         //var_dump($d);
         return $d->results;
 	}
+	/*
 	function get_nearest_result($postcode,$criteria,$type,$lat,$lng,$rankbydist){
         $d=get_all_results($postcode,$criteria,$type,$lat,$lng,"30000",$rankbydist);
         if (count($d) < 1) {
@@ -65,4 +66,5 @@
 		//the distance to the nearest place in miles
         return round($d->routes[0]->legs[$no_of_legs-1]->distance->value, 1);
 	}
+	*/
 ?>
