@@ -12,7 +12,7 @@
         $data = curl_exec($c);
         curl_close($c);
         
-        $r = json_decode($data);
+        $r = json_decode($data, true);
         $r = $r["geo"];
         
         $db->query("INSERT INTO postcodes VALUES (%s, %s, %s)", $postcode, $r["lat"], $r["lng"]);
