@@ -1,6 +1,6 @@
 <?php
     require_once "search-schools.php";
-    
+    require_once "proximity.php";
     function search($postcode) {
         // Remove spaces
         $postcode = str_replace(" ", "", $postcode);
@@ -15,8 +15,10 @@
         
         // Perform actual result functions
         $nearest_school = search_schools($db, $postcode, $lat, $lng);
+        get_ae_proximity($db, $postcode, $lat, $lng);
         
         // Build the response
+        
         $result = array(
             "overall_score" => 0.0,
             

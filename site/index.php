@@ -34,22 +34,23 @@ keep files seperate:
         <form id="textBoxInput"><center><input id="Text1" type="text" class="textbox" class="pulsate" style="font-family: Arial Black; font-size: 16px;" /><br />
             </center></form>
            
-
-       <br />
-       <br />
-            <a href="postcodeConfirm.htm"><center><input id="search" type="button" class="button" value="Search" /></center></a>
-            <p>
-            &nbsp;</p>
-            <p>
-            &nbsp;</p>
-            <p>
-            &nbsp;</p>
-            <div style="font-family: Courier; color: #FFFFFF">
-                <p class="style2" style="text-align: center; font-size: medium">
-                    &nbsp;</p>
-            </div>
-
-    </body>
+   <br />
+   <br />
+        <a href="postcodeConfirm.htm"><center><input id="search" type="button" class="button" value="Search" /></center></a>
+        <p>
+        &nbsp;</p>
+        <p>
+        &nbsp;</p>
+        <p>
+        &nbsp;</p>
+        <div style="font-family: Courier; color: #FFFFFF">
+            <p class="style2" style="text-align: center; font-size: medium">
+                &nbsp;</p>
+        </div>
+		<?php
+		require "../lib/search.php";
+		search("LE74UW"); ?>
+</body>
 </html>
 
 <?php
