@@ -4,7 +4,11 @@
     function search($postcode) {
         $db = new mysqli("localhost", "yrs2012app-user", "vOdQ04wDTtIS3GeylBER1nNrAo76ZLFJU9hzuxsKmCPi8WcHqbYfVpjXkMag");
         
-        $distance_to_nearest_school = search_schools($db, $postcode);
+        $latlng_result = postcode2latlng($db, $postcode);
+        $lat = $latlng_result["lat"]
+        $lng = $latlng_result["lng"]
+        
+        $nearest_school = search_schools($db, $postcode, $lat, $lng);
         
         $result = array(
             "overall_score" => 0.0,
@@ -14,7 +18,7 @@
             ),
             
             "results_staying" => array(
-                "distance_to_nearest_school" => $distance_to_nearest_school,
+                "nearest_school" => $nearest_school,
             ),
         );
         
