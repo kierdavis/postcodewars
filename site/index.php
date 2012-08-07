@@ -96,7 +96,7 @@
             </ul>
 
 <?php
-    } ?>	<input class="flip" type="button" value="Settings" />
+    } ?>	<input class="flip" id="settings_button" type="button" value="Settings" />
     <div id="settingsPanel">
     <h1><font face="Arial">Settings</h1>
 <h3>Here you can change what goes to war!</h3>
