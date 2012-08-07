@@ -15,7 +15,7 @@
         $r = json_decode($data, true);
         $r = $r["geo"];
         
-        echo $r;
+        var_dump($r);
         
         $db->query("INSERT INTO postcodes VALUES (%s, %s, %s)", $postcode, $r["lat"], $r["lng"]);
         
