@@ -70,7 +70,7 @@
 <?php } else { ?>
                 <p class="congrats">It's a draw!</p>
 <?php } ?>
-				<p><span><?= htmlentities($postcode1) ?></span> - <span><?= htmlentities($result["_score1"]) ?></span> --- <span><?= htmlentities($result["_score2"]) ?></span> - <span><?= htmlentities($postcode2) ?></span></p>
+				<p><span><?= htmlentities($postcode1) ?></span> scored <span><?= htmlentities($result["_score1"]) ?></span> points and <span><?= htmlentities($postcode2) ?></span> scored <span><?= htmlentities($result["_score2"]) ?></span> points.</p>
 			</div>
 
             <ul id="results">
