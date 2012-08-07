@@ -51,7 +51,7 @@
 
 			<div id="score">
 				<p class="congrats">Congratulations! You won.</p>
-				<p>You scored <span>47</span> points and they scored <span>39</span> points.</p>
+				<p>You scored <span><?= htmlentities($result["_score1"]) ?></span> points and they scored <span><?= htmlentities($result["_score2"]) ?></span> points.</p>
 			</div>
 
             <ul id="results">

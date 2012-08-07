@@ -51,7 +51,6 @@
             fwrite($plugin_log, "MySQL error: " . $db->error . "\n");
             return FALSE;
         }
-        
         return $v;
     }
     
@@ -112,13 +111,16 @@
         $postcode2 = str_replace(" ", "", $postcode2);
        
         // Connect to the DB
-        $db = new mysqli("localhost", "yrs2012app-user", "vOdQ04wDTtIS3GeylBER1nNrAo76ZLFJU9hzuxsKmCPi8WcHqbYfVpjXkMag", "yrs2012app");
+        $db = new mysqli("localhost", "yrs2012app-user", "vOdQ04wDTtIS3GeylBER1nNrAo76ZLFJ", "yrs2012app");
         
         // Calculate latitude & longitude
         $location1 = postcode2location($db, $postcode1);
         $location2 = postcode2location($db, $postcode2);
         
         $breakdown = array();
+        
+        $score1 = 0;
+        $score2 = 0;
         
         foreach ($plugins as $plugin) {
             $category = $plugin->category;
@@ -165,9 +167,11 @@
             
             if ($winner1) {
                 $breakdown[$category]["_score1"]++;
+                $score1++;
             }
             if ($winner2) {
                 $breakdown[$category]["_score2"]++;
+                $score2++;
             }
             
             $breakdown[$category][$name] = array(
