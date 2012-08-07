@@ -5,8 +5,8 @@
         $db = new mysqli("localhost", "yrs2012app-user", "vOdQ04wDTtIS3GeylBER1nNrAo76ZLFJU9hzuxsKmCPi8WcHqbYfVpjXkMag");
         
         $latlng_result = postcode2latlng($db, $postcode);
-        $lat = $latlng_result["lat"]
-        $lng = $latlng_result["lng"]
+        $lat = $latlng_result["lat"];
+        $lng = $latlng_result["lng"];
         
         $nearest_school = search_schools($db, $postcode, $lat, $lng);
         
