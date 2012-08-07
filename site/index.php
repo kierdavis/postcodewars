@@ -30,6 +30,17 @@
     </head>
 
     <body>
+		<div id="settingsPanel">
+			<h2>Settings</h2>
+			<p><b>Here you can change what goes to war!</b></p>
+			<ul>
+				<li>Crime Score <input checked id="crimebox" type="checkbox" /></li>
+				<li>School Score <input checked id="schoolbox" type="checkbox" /></li>
+				<li>Proximity to A&amp;E Score <input checked id="aebox" type="checkbox" /></li>
+				<li>House Price Score <input checked id="hpbox" type="checkbox" /></li>
+			</ul>
+		</div>
+
         <header>
             <h1>PostCode Wars</h1>
         </header>
@@ -97,19 +108,6 @@
 
 <?php
     } ?>	<input class="flip" id="settings_button" type="button" value="Settings" />
-    <div id="settingsPanel">
-    <h1><font face="Arial">Settings</h1>
-<h3>Here you can change what goes to war!</h3>
-        <hr />
-    <div>Crime Score : <input checked id="crimebox" type="checkbox" /></div>
-    <div>School Score : <input checked id="schoolbox" type="checkbox" /></div>
-    <div>Proximity to A&E Score : <input checked id="aebox" type="checkbox" /></div>
-    <div>House Price Score : <input checked id="hpbox" type="checkbox" /></div>
-        <hr />
-        </div>
-  <ul class="dropdown-menu">
-    <!-- dropdown menu links -->
-  </ul>
 </div>
         </div>
 
