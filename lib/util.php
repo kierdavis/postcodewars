@@ -12,13 +12,13 @@
         $data = curl_exec($c);
         curl_close($c);
         
-        $r = json_decode($data, true);
-        $r = $r["geo"];
+        $d = json_decode($data, true);
         
-        var_dump($r);
+        $lat = (float) $d["geo"]["lat"];
+        $lng = (float) $d["geo"]["lng"];
         
-        $db->query("INSERT INTO postcodes VALUES (%s, %s, %s)", $postcode, $r["lat"], $r["lng"]);
+        $db->query("INSERT INTO postcodes VALUES (%s, %s, %s)", $postcode, $lat, $lng);
         
-        return $r;
+        return array("lat" => $lat, "lng" => $lng);
     }
 ?>
