@@ -1,6 +1,6 @@
 <?php
     require_once "search-schools.php";
-    
+    require_once "proximity.php";
     function search($postcode) {
         $db = new mysqli("localhost", "yrs2012app-user", "vOdQ04wDTtIS3GeylBER1nNrAo76ZLFJU9hzuxsKmCPi8WcHqbYfVpjXkMag");
         
@@ -9,7 +9,7 @@
         $lng = $latlng_result["lng"];
         
         $nearest_school = search_schools($db, $postcode, $lat, $lng);
-        
+        get_ae_proximity($db,$postcode,$lat,$lng);
         $result = array(
             "overall_score" => 0.0,
             

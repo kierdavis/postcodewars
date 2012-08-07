@@ -84,6 +84,8 @@ keep files seperate:
             <p class="style2" style="text-align: center; font-size: medium">
                 &nbsp;</p>
         </div>
-
+		<?php
+		require "../lib/search.php";
+		search("LE74UW"); ?>
 </body>
 </html>
