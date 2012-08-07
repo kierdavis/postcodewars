@@ -7,15 +7,15 @@
     // the categories there, but you can define your own if you need to.
     
     // Change this name
-    class ArtGalleries {
+    class Bars {
         // The category identifier - should be lowercase and hyphen-separated e.g. "crime"
         public $category = "amenities";
         
         // The name identifier - should be lowercase and hyphen-separated e.g. "school-proximity"
-        public $name = "art-galleries";
+        public $name = "bars";
         
         // The human-readable name - this will be displayed in the results table e.g. "School proximity"
-        public $hrname = "Art galleries near-by";
+        public $hrname = "Bars near-by";
         
         // The units that the results are returned in.
         public $units = "";
@@ -34,14 +34,14 @@
         //     "lng" => the longitude
         public function get_result($db, $loc) {
             // Do something with $location
-            $result=get_all_results($loc["postcode"],"","art_gallery",$loc["lat"],$loc["lng"],5000);
+            $result=get_all_results($loc["postcode"],"","bar",$loc["lat"],$loc["lng"],500);
             // Should return a number - this is the result that is displayed.
-            $no_of_artgalleries=count($result);
-            return $no_of_artgalleries;
+            $no_of_bars=count($result);
+            return $no_of_bars;
         }
     }
     
     // Update the name of the class here too.
     // This inserts the plugin into the plugin index.
-    $plugins["art-galleries"] = new ArtGalleries();
+    $plugins["bars"] = new Bars();
 ?>
