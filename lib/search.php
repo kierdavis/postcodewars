@@ -2,14 +2,27 @@
     require_once "search-schools.php";
     require_once "proximity.php";
     function search($postcode) {
+        // Remove spaces
+        $postcode = str_replace(" ", "", $postcode);
+       
+        // Connect to the DB
         $db = new mysqli("localhost", "yrs2012app-user", "vOdQ04wDTtIS3GeylBER1nNrAo76ZLFJU9hzuxsKmCPi8WcHqbYfVpjXkMag");
         
+        // Calculate latitude & longitude
         $latlng_result = postcode2latlng($db, $postcode);
         $lat = $latlng_result["lat"];
         $lng = $latlng_result["lng"];
         
+        // Perform actual result functions
         $nearest_school = search_schools($db, $postcode, $lat, $lng);
+<<<<<<< HEAD
         get_nearest_result($postcode,"a%26e");
+=======
+        get_ae_proximity($db, $postcode, $lat, $lng);
+        
+        // Build the response
+        
+>>>>>>> 1f64ea1a49abd0796e7383452578c4c20ba9480c
         $result = array(
             "overall_score" => 0.0,
             

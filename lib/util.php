@@ -13,7 +13,6 @@
         curl_close($c);
         
         $d = json_decode($data, true);
-        
         $lat = (float) $d["geo"]["lat"];
         $lng = (float) $d["geo"]["lng"];
         
