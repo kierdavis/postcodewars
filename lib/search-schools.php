@@ -14,7 +14,7 @@
         $closest_name = "";
         $closest_website = "";
         
-        for ($i = 0; i < $result->$num_rows; i++) {
+        for ($i = 0; $i < $result->$num_rows; $i++) {
             $row = $result->fetch_row();
             $distance = distance_between($lat, $lng, $row[0], $row[1]);
             
