@@ -42,7 +42,6 @@ keep files seperate:
         		<input id="search" type="button" class="button" value="Search" />
         	</center>
        	</a>
-=======
 <?php
     if ($_GET["retro"]) {
         require "../lib/retro.php";
@@ -74,7 +73,6 @@ keep files seperate:
    <br />
    <br />
         <a href="postcodeConfirm.htm"><center><input id="search" type="button" class="button" value="Search" /></center></a>
->>>>>>> 1f64ea1a49abd0796e7383452578c4c20ba9480c
         <p>
         &nbsp;</p>
         <p>

@@ -15,14 +15,10 @@
         
         // Perform actual result functions
         $nearest_school = search_schools($db, $postcode, $lat, $lng);
-<<<<<<< HEAD
         get_nearest_result($postcode,"a%26e");
-=======
         get_ae_proximity($db, $postcode, $lat, $lng);
         
         // Build the response
-        
->>>>>>> 1f64ea1a49abd0796e7383452578c4c20ba9480c
         $result = array(
             "overall_score" => 0.0,
             
