@@ -62,7 +62,7 @@
 ?>
 
                 <li class="section">
-                    <h3><?= htmlentities($category["_name"]) ?></h3>
+					<h3><?= htmlentities($category["_name"]) ?></h3>
                     <p class="score-left"><?= htmlentities($category["_score1"]) ?></p>
                     <p class="score-right"><?= htmlentities($category["_score2"]) ?></p>       
 
