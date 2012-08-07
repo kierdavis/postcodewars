@@ -21,11 +21,10 @@ keep files seperate:
             }
 
             pulsate();
-            </script>
+    </script>
     <script src="static/js/index.js"></script>
 </head>
-<body style="font-family: 'Segoe UI'; font-weight: 700; color: #0000CC; text-align: center; font-size: large;" 
-    background="small-houses.jpg">
+<body background="small-houses.jpg">
         <p style="color: #FFFFFF; font-family: Courier; text-align: left;">
             RateMyArea: Alpha 0.1.4 <br/>
             Type in your postcode to get started.</p>

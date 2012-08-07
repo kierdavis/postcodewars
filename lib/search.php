@@ -9,7 +9,7 @@
         $lng = $latlng_result["lng"];
         
         $nearest_school = search_schools($db, $postcode, $lat, $lng);
-        get_ae_proximity($db,$postcode,$lat,$lng);
+        get_nearest_result($postcode,"a%26e");
         $result = array(
             "overall_score" => 0.0,
             
