@@ -13,7 +13,7 @@
 		// $db is a mysqli object connected to the database.
 		// $location is an associative array which contains: "postcode", "lat", "lng"
 		public function get_result($db, $loc) {
-			$result = get_all_results($loc["postcode"], "art", "art_gallery", $loc["lat"], $loc["lng"], 2000); // Returns number
+			$result = get_all_results($loc["postcode"], "", "art_gallery", $loc["lat"], $loc["lng"], 2000); // Returns number
 			$no_of_art_galleries = count($result);
 			return $no_of_art_galleries;
 		}
@@ -30,7 +30,7 @@
 		public $can_cache = FALSE;
 		
 		public function get_result($db, $loc) {
-			$result = get_all_results($loc["postcode"], "bar", "bar", $loc["lat"], $loc["lng"], 500);
+			$result = get_all_results($loc["postcode"], "", "bar", $loc["lat"], $loc["lng"], 500);
 			$no_of_bars = count($result);
 			return $no_of_bars;
 		}
@@ -47,7 +47,7 @@
 		public $can_cache = FALSE;
 		
 		public function get_result($db, $loc) {
-			$result = get_all_results($loc["postcode"], "museum", "museum", $loc["lat"], $loc["lng"], 2000);
+			$result = get_all_results($loc["postcode"], "", "museum", $loc["lat"], $loc["lng"], 2000);
 			$no_of_museums = count($result);
 			return $no_of_museums;
 		}
@@ -64,7 +64,7 @@
 		public $can_cache = FALSE;
 		
 		public function get_result($db, $loc) {
-			$result = get_all_results($loc["postcode"], "restaurant", "restaurant", $loc["lat"], $loc["lng"], 500);
+			$result = get_all_results($loc["postcode"], "", "restaurant", $loc["lat"], $loc["lng"], 500);
 			$no_of_restaurants = count($result);
 			return $no_of_restaurants;
 		}
