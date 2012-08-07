@@ -1,5 +1,5 @@
 <?php
-    function postcode2latlng($postcode) {
+    function postcode2latlng($db, $postcode) {
         $result = $db->query("SELECT lat, lng FROM postcodes WHERE postcode = " . mysqli_real_escape_string($postcode));
         if ($result->$num_rows > 0) {
             $row = $result->fetch_row();
