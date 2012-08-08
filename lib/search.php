@@ -22,8 +22,8 @@
     $category_names = array(
         "test-category" => "Test",
         "amenities" => "Amenities",
-        "proximities" => "Proximities",
-//        "schools" => "Schools",
+        //"proximities" => "Proximities",
+        //"schools" => "Schools",
         "transport" => "Transport",
         "crime" => "Crime (offences per 1000 people)",
 		"house-price" => "House Prices"
