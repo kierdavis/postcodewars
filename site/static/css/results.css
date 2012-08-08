@@ -203,14 +203,15 @@ header h1 {
 	border: 1px solid #059;
 	border-radius: 6px;
 	color: #fff;
-	font-size: 48px;
+	font-size: 44px;
 	font-weight: bold;
 	left: 0;
-	line-height: 50px;
+	line-height: 40px;
 	margin: 0 10px;
-	padding: 10px;
+	padding: 10px 15px;
 	position: absolute;
-	top: -10px;
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+	top: -6px;
 	z-index: 99999;
 
 	-webkit-box-shadow: 0 2px 20px rgba(0,0,0,0.2),
@@ -219,6 +220,18 @@ header h1 {
 						0 1px 0 rgba(255,255,255,0.3) inset;
 	box-shadow: 		0 2px 20px rgba(0,0,0,0.2),
 						0 1px 0 rgba(255,255,255,0.3) inset;
+}
+
+#results .section .score-left.win,
+#results .section .score-right.win {
+	background: #5a5;
+	border-color: #383;
+}
+
+#results .section .score-left.lose,
+#results .section .score-right.lose {
+	background: #a55;
+	border-color: #833;
 }
 
 #results .section .score-right {
