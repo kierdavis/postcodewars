@@ -9,8 +9,13 @@
         include $filename;
     }
     
+    $category_names = array(
+        "test-category" => "Test",
+        "care" => "Care",
+    );
+    
     function search($postcode1, $postcode2) {
-        global $plugins;
+        global $plugins, $category_names;
         
         // Remove spaces
         $postcode1 = str_replace(" ", "", $postcode1);
@@ -31,10 +36,17 @@
             $hrname = $plugin->hrname;
             $better = $plugin->better;
             
+            if (!array_key_exists($category, $result)) {
+                $result[$category] = array(
+                    "name" => $category_names[$category],
+                );
+            }
+            
             $r1 = $plugin->get_result($db, $location1);
             $r2 = $plugin->get_result($db, $location2);
             $result[$category][$name] = array(
                 "name" => $hrname,
+                "higher_is_better" => $better,
                 "result1" => $r1,
                 "result2" => $r2,
             );
