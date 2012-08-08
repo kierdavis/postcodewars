@@ -35,14 +35,15 @@
         curl_close($c);
         $d = json_decode($data);
         
+        logmsg("proximity", $data);
         logmsg("proximity", $argstr);
         
         if ($d->status != "OK") {
             throw new Exception("API call to Google Maps Directions returned: " . $d->status);
         }
         
-        $no_of_legs = count($d->results->legs);
+        $no_of_legs = count($d->routes[0]->legs);
 		//the distance to the nearest place in miles
-        return $d->results[0]->legs[$no_of_legs-1]->distance->value;
+        return $d->routes[0]->legs[$no_of_legs-1]->distance->value;
 	}
 ?>

@@ -16,6 +16,9 @@
         // The human-readable name - this will be displayed in the results table e.g. "School proximity"
         public $hrname = "";
         
+        // The units that the results are returned in.
+        public $units = "";
+        
         // Should be either LOWER_IS_BETTER or HIGHER_IS_BETTER - determines which result wins.
         public $better = LOWER_IS_BETTER;
         
