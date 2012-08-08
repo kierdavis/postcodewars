@@ -11,7 +11,7 @@
         public $category = "schools";
         
         // The name identifier - should be lowercase and hyphen-separated e.g. "school-proximity"
-        public $name = "schools-results";
+        public $name = "school-results";
         
         // The human-readable name - this will be displayed in the results table e.g. "School proximity"
         public $hrname = "School Ofsted Results";
