@@ -25,7 +25,7 @@
         <title>PostCode Wars</title>
 
         <link href="/static/css/results.css" rel="stylesheet" type="text/css" />
-		<link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+		<!---<link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />---->
         <script src="/static/js/jquery-1.7.2.min.js" type="text/javascript"></script>
         <script src="/static/js/results.js" type="text/javascript"></script>
     </head>
