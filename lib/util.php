@@ -1,7 +1,11 @@
 <?php
     function postcode2latlng($db, $postcode) {
-        $result = $db->query("SELECT lat, lng FROM postcodes WHERE postcode = " . mysqli_real_escape_string($postcode));
-        if ($result->$num_rows > 0) {
+        $result = $db->query("SELECT lat, lng FROM postcodes WHERE postcode = \"" . $db->real_escape_string($postcode) . "\"");
+        if ($result === FALSE) {
+            die("MySQL Error!!!!!");
+        }
+        
+        if ($result->num_rows > 0) {
             $row = $result->fetch_row();
             return array("lat" => $row[0], "lng" => $row[1]);
         }
