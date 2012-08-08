@@ -24,8 +24,8 @@
         //     "lat" => the latitude
         //     "lng" => the longitude
         public function get_result($db, $loc) {
-            $criteria="a&e";
-            dist_to_result($loc["postcode"],$criteria,$loc["lat"],$loc["lng"]);
+            $criteria="accident and emergency";
+            dist_to_result($loc["postcode"],$criteria,"hospital",$loc["lat"],$loc["lng"]);
             // Should return a number - this is the result that is displayed.
             return $result;
         }
