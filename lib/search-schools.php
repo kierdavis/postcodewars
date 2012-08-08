@@ -9,12 +9,15 @@
     
     function search_schools($db, $postcode, $lat, $lng) {
         $result = $db->query("SELECT lat, lng, name, website FROM schools");
+        if ($result === FALSE) {
+            die("MySQL Error: " . $db->error);
+        }
         
         $closest_distance = -1;
         $closest_name = "";
         $closest_website = "";
         
-        for ($i = 0; $i < $result->$num_rows; $i++) {
+        for ($i = 0; $i < $result->num_rows; $i++) {
             $row = $result->fetch_row();
             $distance = distance_between($lat, $lng, $row[0], $row[1]);
             

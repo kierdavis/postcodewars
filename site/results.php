@@ -1,4 +1,5 @@
 <?php
+    require_once "../lib/include.php";
     require_once "../lib/search.php";
     
     if (!array_key_exists("postcode", $_GET)) {

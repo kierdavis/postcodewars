@@ -1,17 +1,19 @@
 <?php
-	$googlekey="AIzaSyAlxfcq-vCtqP4Z7xjPJTHgWzX1T17TlfU";
 	//gets the proximity to the nearest A&E department using Google places API
 	
 	function get_nearest_result($postcode,$criteria){
 	    $c = curl_init();
 		$url="https://maps.googleapis.com/maps/api/place/textsearch/json";
-		$argstr="?query=".$criteria."+near+".$postcode."&sensor=false&key=".$googlekey;
+		$argstr="?query=".$criteria."+near+".$postcode."&sensor=false&key=".GOOGLE_API_KEY;
+        echo $argstr;
         curl_setopt($c, CURLOPT_URL, $url . $argstr);
         curl_setopt($c, CURLOPT_RETURNTRANSFER, TRUE);
         $data = curl_exec($c);
         curl_close($c);
-        $d = json_decode($data, true);
+        $d = json_decode($data);
 		
+        var_dump($d);
+        
 		//gets the lat and long of the first result
 		$endloclat=$d->results[0]->geometry->location->lat;
 		$endloclng=$d->results[0]->geometry->location->lat;
@@ -19,19 +21,19 @@
 	}
 	function dist_to_result($postcode,$criteria,$lat,$lng){
 		$nearest_of_type=get_nearest_result($postcode,$criteria);
-		$nearest_lat_lng=$nearest_of_type->geo;
+		$nearest_lat_lng=$nearest_of_type["geo"];
 		//do google dist calc using API, like below but changed arguments
 		
 	    $c = curl_init();
 		$url="https://maps.googleapis.com/maps/api/directions/json";
 		$destlat=$nearest_lat_lng[0];
-		$destlng=$nearesr_lat_lng[1];
-		$argstr="?query=sensor=false&key=".$googlekey."&origin=".$lat.",".$lng."&destination=".$destlat.",".$destlng;
+		$destlng=$nearest_lat_lng[1];
+		$argstr="?query=sensor=false&key=".GOOGLE_API_KEY."&origin=".$lat.",".$lng."&destination=".$destlat.",".$destlng;
         curl_setopt($c, CURLOPT_URL, $url . $argstr);
         curl_setopt($c, CURLOPT_RETURNTRANSFER, TRUE);
         $data = curl_exec($c);
         curl_close($c);
-        $d = json_decode($data, true);
+        $d = json_decode($data);
         $no_of_legs = count($d->results->legs);
 		//the distance to the nearest place in miles
         return $d->results[0]->legs[$no_of_legs-1]->distance->value;
