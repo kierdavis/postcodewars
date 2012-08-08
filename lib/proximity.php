@@ -35,10 +35,10 @@
         curl_close($c);
         $d = json_decode($data);
         
-        echo $argstr . "\n";
+        logmsg("proximity", $argstr);
         
         if ($d->status != "OK") {
-            die($d->status);
+            throw new Exception("API call to Google Maps Directions returned: " . $d->status);
         }
         
         $no_of_legs = count($d->results->legs);
