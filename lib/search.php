@@ -18,7 +18,7 @@
     
     $category_names = array(
         "test-category" => "Test",
-        "care" => "Care",
+        "amenities" => "Amenities",
         "schools" => "Schools",
         "transport" => "Transport",
     );
