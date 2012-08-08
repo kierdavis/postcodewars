@@ -3,12 +3,12 @@
     require_once "util.php";
     
     $plugins = array();
-    $plugin_log = fopen("plugin.log", "w");
+    $plugin_log = fopen("plugin.log", "a");
     
     function logmsg($plugin_name, $msg) {
         global $plugin_log;
         
-        fwrite($plugin_log, "Message from plugin '" . $msg . "': " . $msg . "\n");
+        fwrite($plugin_log, "Message from plugin '" . $plugin_name . "': " . $msg . "\n");
     }
     
     // Load all plugins
@@ -35,17 +35,20 @@
         $location1 = postcode2location($db, $postcode1);
         $location2 = postcode2location($db, $postcode2);
         
-        $result = array();
+        $breakdown = array();
         
         foreach ($plugins as $plugin) {
             $category = $plugin->category;
             $name = $plugin->name;
             $hrname = $plugin->hrname;
+            $units = $plugin->units;
             $better = $plugin->better;
             
-            if (!array_key_exists($category, $result)) {
-                $result[$category] = array(
-                    "name" => $category_names[$category],
+            if (!array_key_exists($category, $breakdown)) {
+                $breakdown[$category] = array(
+                    "_name" => $category_names[$category],
+                    "_score1" => 0,
+                    "_score2" => 0,
                 );
             }
             
@@ -55,21 +58,38 @@
             try {
                 $r1 = $plugin->get_result($db, $location1);
                 $r2 = $plugin->get_result($db, $location2);
+            }
             
-            } catch (Exception $e) {
+            catch (Exception $e) {
                 fwrite($plugin_log, "Error from plugin '" . $name . "': " . $e->getMessage() . "\n" . $e->getTraceAsString() . "\n");
                 continue;
             }
             
-            $result[$category][$name] = array(
+            $winner1 = false;
+            
+            if ($better == LOWER_IS_BETTER) {
+                $winner1 = $r1 < $r2;
+            }
+            else {
+                $winner1 = $r1 > $r2;
+            }
+            
+            if ($winner1) {
+                $breakdown[$category]["_score1"]++;
+            }
+            else {
+                $breakdown[$category]["_score2"]++;
+            }
+            
+            $breakdown[$category][$name] = array(
                 "name" => $hrname,
-                "higher_is_better" => $better,
+                "units" => $units,
                 "result1" => $r1,
                 "result2" => $r2,
+                "winner1" => $winner1,
             );
         }
-		
-		//we should do some sort of caching so that when
-        return $result;
+        
+        return $breakdown;
     }
 ?>

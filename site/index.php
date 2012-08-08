@@ -2,57 +2,92 @@
     require_once "../lib/include.php";
     require_once "../lib/util.php";
     
-    if (array_key_exists("retro", $_GET)) {
-        require "../lib/retro.php";
-    }
+    require_once "../lib/search.php";
     
-    else {
+    $postcode1 = "";
+    $postcode2 = "";
+    $result = null;
+    
+    if (array_key_exists("postcode1", $_GET) && array_key_exists("postcode2", $_GET)) {
+        $postcode1 = $_GET["postcode1"];
+        $postcode2 = $_GET["postcode2"];
+        
+        if ($postcode1 === "" || $postcode2 === "") {
+            $result = search($postcode1, $postcode2);
+        }
+    }
 ?>
 
-<!--
-keep files seperate:
-- put js specific to this page into site/static/js/index.js
-- put global js into site/static/js/global.js
-- put css specific to this page into site/static/css/index.css
-- put global css into site/static/css/style.css
--->
+<!DOCTYPE html>
 
 <html>
     <head>
-        <title>Postcode Wars</title>
-        <script type="text/javascript" src="/static/js/jquery-1.7.2.min.js"></script>
-        <script type="text/javascript" src="/static/js/modernizr.js"></script>
-        <script type="text/javascript" src="/static/js/global.js"></script>
-        <script type="text/javascript" src="/static/js/index.js"></script>
-        
-        <style type="text/css" src="/static/css/style.css"></style>
-        <style type="text/css" src="/static/css/index.css"></style>
+        <title>PostCode Wars</title>
+
+        <link href="/static/css/results.css" rel="stylesheet" type="text/css" />
+        <script src="/static/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="/static/js/results.js" type="text/javascript"></script>
     </head>
-    <body style="font-family: 'Segoe UI'; font-weight: 700; color: #0000CC; text-align: center; font-size: large;" 
-        background="small-houses.jpg">
-            <p style="color: #FFFFFF; font-family: Courier; text-align: left;">
-                RateMyArea: Alpha 0.1.4
-                    <center><img alt="" class="style1" src="Capture.PNG" /></center>Type in your 
-            postcode to get started.</p>
-        <form action="results.php" method="get" id="textBoxInput"><center><input id="Text1" type="text" class="textbox pulsate" style="font-family: Arial Black; font-size: 16px;" /><br />
-            </center></form>
-           
-   <br />
-   <br />
-        <a href="postcodeConfirm.htm"><center><input id="search" type="button" class="button" value="Search" /></center></a>
-        <p>
-        &nbsp;</p>
-        <p>
-        &nbsp;</p>
-        <p>
-        &nbsp;</p>
-        <div style="font-family: Courier; color: #FFFFFF">
-            <p class="style2" style="text-align: center; font-size: medium">
-                &nbsp;</p>
-        </div>
-    </body>
-</html>
+
+    <body>
+        <header>
+            <h1>PostCode Wars</h1>
+        </header>
+
+        <div id="content">
+            <div id="search" class="clearfix">
+                <form action="/" id="battle" method="get">
+                    <p>
+                        <input type="search" name="postcode1" id="battle_postcode1" value="<?= htmlentities($postcode1) ?>" placeholder="Your postcode" />
+                        <button type="submit">Battle!</button>
+                        <input type="search" name="postcode2" id="battle_postcode2" value="<?= htmlentities($postcode2) ?>" placeholder="Their postcode" />
+                    </p>
+                </form>
+            </div>
+
+<?php
+    if ($result !== null) {
+?>
+
+            <ul id="results">
+        
+<?php
+        foreach ($result as $categoryID => $category) {
+?>
+
+                <li class="section">
+                    <h3><?= htmlentities($category["_name"]) ?></h3>
+                    <p class="score-left"><?= htmlentities($category["_score1"]) ?></p>
+                    <p class="score-right"><?= htmlentities($category["_score2"]) ?></p>       
+
+<?php
+            foreach ($category as $itemID => $item) {
+                if ($itemID[0] != "_") {
+?>
+
+                    <ul class="stat clearfix">
+                        <li class="<?= $item["winner1"] ? "win" : "lose" ?>"><span><?= htmlentities($item["result1"] . " " . $item["units"]) ?></span></li>
+                        <li><?= htmlentities($item["name"]) ?></li>
+                        <li class="<?= $item["winner1"] ? "lose" : "win" ?>"><span><?= htmlentities($item["result2"] . " " . $item["units"]) ?></span></li>
+                    </ul>
+<?php
+                }
+            }
+?>
+                </li>
+<?php
+        }
+?>
+            </ul>
 
 <?php
     }
 ?>
+
+        </div>
+
+        <footer>
+            <p>PostCode Wars &copy; 2012</p>
+        </footer>
+    </body>
+</html>
