@@ -4,6 +4,7 @@
 	    $c = curl_init();
 		$url="https://maps.googleapis.com/maps/api/place/textsearch/json";
 		$argstr="?query=".$placetype." loc: ".$postcode."&sensor=false&key=".GOOGLE_API_KEY;
+		echo $url.$argstr;
         curl_setopt($c, CURLOPT_URL, $url . $argstr);
         curl_setopt($c, CURLOPT_RETURNTRANSFER, TRUE);
         $data = curl_exec($c);
