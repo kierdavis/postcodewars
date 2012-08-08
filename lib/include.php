@@ -6,4 +6,7 @@
     
     define("LOWER_IS_BETTER", 0);
     define("HIGHER_IS_BETTER", 1);
+    
+    // Whether a point should be awarded to both sies in the event of a draw
+    define("GET_POINT_ON_DRAW", 1);
 ?>
