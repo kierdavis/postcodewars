@@ -25,6 +25,7 @@
         <title>PostCode Wars</title>
 
         <link href="/static/css/results.css" rel="stylesheet" type="text/css" />
+		<link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
         <script src="/static/js/jquery-1.7.2.min.js" type="text/javascript"></script>
         <script src="/static/js/results.js" type="text/javascript"></script>
     </head>
@@ -39,11 +40,14 @@
                 <form action="/" id="battle" method="get">
                     <p>
                         <input type="search" name="postcode1" id="battle_postcode1" value="<?= htmlentities($postcode1) ?>" placeholder="Your postcode" />
-                        <button type="submit">Battle!</button>
+                        <button type="submit" onclick="document.getElementById('progBar').style.visibility.visible;">Battle!</button>
                         <input type="search" name="postcode2" id="battle_postcode2" value="<?= htmlentities($postcode2) ?>" placeholder="Their postcode" />
                     </p>
                 </form>
             </div>
+			<div class="progress progress-stripedactive">
+			<div class="bar" id="progBar" style="width: 100%;visibility: hidden;"></div>
+			</div>
 
 <?php
     if ($result !== null) {
