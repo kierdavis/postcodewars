@@ -16,18 +16,17 @@
         // Should be either LOWER_IS_BETTER or HIGHER_IS_BETTER - determines which result wins.
         public $better = LOWER_IS_BETTER;
         
-        // The run method should perform the searches and return the two results.
+        // The get_result method should perform the searches and return the two results.
         // $db is a mysqli object connected to the database.
-        // $location1 and $location2 are associative arrays which contain the following entries:
+        // $location is an associative array which contain the following entries:
         //     "postcode" => the postcode
         //     "lat" => the latitude
         //     "lng" => the longitude
-        public function run($db, $location1, $location2) {
-            // Do something with $location1 & $location2
+        public function get_result($db, $location) {
+            // Do something with $location
             
-            // Put the results (the numbers) into $result1 and $result2
-            
-            return array("result1" => $result1, "result2" => $result2);
+            // Should return a number - this is the result that is displayed.
+            return $result;
         }
     }
     

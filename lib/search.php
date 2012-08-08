@@ -28,11 +28,12 @@
             $hrname = $plugin->hrname;
             $better = $plugin->better;
             
-            $r = $plugin->run($db, $location1, $location2);
+            $r1 = $plugin->get_result($db, $location1);
+            $r2 = $plugin->get_result($db, $location2);
             $result[$category][$name] = array(
-                "hrname" => $hrname,
-                "result1" => $r["result1"],
-                "result2" => $r["result2"],
+                "name" => $hrname,
+                "result1" => $r1,
+                "result2" => $r2,
             );
         }
 		

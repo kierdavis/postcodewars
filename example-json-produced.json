@@ -1,0 +1,16 @@
+// This is an example of the JSON produced by results.php
+{
+    "amenities": { // The category
+        "proximity-to-gp": { // An individual item
+            "name": "Distance to nearest GP",
+            "result1": 3.0,
+            "result2": 1.2,
+        },
+        
+        "proximity-to-school": {
+            "name": "Distance to nearest school",
+            "result1": 0.5,
+            "result2": 0.6,
+        },
+    },
+}
