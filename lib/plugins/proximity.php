@@ -33,5 +33,5 @@
     
     // Update the name of the class here too.
     // This inserts the plugin into the plugin index.
-    //$plugins["aeproximity"] = new AeProximity();
+    $plugins["aeproximity"] = new AeProximity();
 ?>

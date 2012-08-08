@@ -1,6 +1,6 @@
 <?php
 	//gets the proximity to the nearest A&E department using Google places API
-	include "include.php";
+	require_once "include.php";
 	function get_nearest_result($postcode,$criteria,$lat,$lng){
 	    $c = curl_init();
 		$url="https://maps.googleapis.com/maps/api/place/textsearch/json";
