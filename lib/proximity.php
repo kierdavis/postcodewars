@@ -35,11 +35,11 @@
         curl_close($c);
         $d = json_decode($data);
         
+        echo $argstr . "\n";
+        
         if ($d->status != "OK") {
             die($d->status);
         }
-        
-        echo $argstr;
         
         $no_of_legs = count($d->results->legs);
 		//the distance to the nearest place in miles
