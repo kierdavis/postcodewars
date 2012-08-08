@@ -1,4 +1,4 @@
-<?php
+	<?php
     // Copy this file into lib/plugins/ and name it appropriately. Then follow the comments in this
     // file to fill in the gaps.
 
@@ -32,17 +32,19 @@
 			$queryToSend .= $location;
 			$res = $mysqli->query($queryToSend);
 
-			for ($row_no = $res->num_rows - 1; $row_no >= 0; $row_no--) 
-			{
+			for ($row_no = $res->num_rows - 1; $row_no >= 0; $row_no--) {
 				$res->data_seek($row_no);
 				$row = $res->fetch_assoc();
 				$score += $row;
 			}
 			
-			//<!--Produce total score from database-->
-			$result = $score / $res->num_rows;
-            // Should return a number - this is the result that is displayed.
-            return $result;
+			if ($res->num_rows != 0){
+				return $score / $res->num_rows;
+			}
+			 // Should return a number - this is the result that is displayed.
+			return 0;
+			
+           
         }
     }
     
