@@ -51,7 +51,7 @@
         <div id="content">
             <div id="search" class="clearfix">
                 <form action="/" id="battle" method="get">
-                    <p>
+                    <p class="clearfix">
                         <input type="text" name="postcode1" id="battle_postcode1" tabindex="1" value="<?= htmlentities($postcode1) ?>" placeholder="Your postcode" />
                         <button type="submit" tabindex="3" id="battle_submit">Battle!</button>
                         <input type="text" name="postcode2" tabindex="2" id="battle_postcode2" value="<?= htmlentities($postcode2) ?>" placeholder="Their postcode" />
@@ -107,7 +107,7 @@
                             <span class="units"><?= htmlentities($item["units"]) ?></span>
                         </li>
                         
-                        <li><?= htmlentities($item["name"]) ?></li>
+                        <li class="description"><?= htmlentities($item["name"]) ?></li>
                         
                         <li>
                             <span><?= htmlentities($item["result2"]) ?></span>
@@ -123,7 +123,7 @@
                             <span class="units"><?= htmlentities($item["units"]) ?></span>
                         </li>
                         
-                        <li><?= htmlentities($item["name"]) ?></li>
+                        <li class="description"><?= htmlentities($item["name"]) ?></li>
                         
                         <li class="<?= $item["winner2"] ? "win" : "lose" ?>">
                             <span><?= htmlentities($item["result2"]) ?></span>
