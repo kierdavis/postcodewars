@@ -6,7 +6,7 @@
     // Change this name
     class AeDist{
         // The category identifier - should be lowercase and hyphen-separated e.g. "crime"
-        public $category = "care";
+        public $category = "amenities";
         
         // The name identifier - should be lowercase and hyphen-separated e.g. "school-proximity"
         public $name = "hospital-proximity";

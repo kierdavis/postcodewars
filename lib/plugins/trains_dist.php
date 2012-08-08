@@ -6,7 +6,7 @@
     // Change this name
     class TrainsDist{
         // The category identifier - should be lowercase and hyphen-separated e.g. "crime"
-        public $category = "transport";
+        public $category = "amenities";
         
         // The name identifier - should be lowercase and hyphen-separated e.g. "school-proximity"
         public $name = "train-station-proximity";

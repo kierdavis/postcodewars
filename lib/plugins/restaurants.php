@@ -1,4 +1,5 @@
 <?php
+	require_once "../priximity.php";
     // Copy this file into lib/plugins/ and name it appropriately. Then follow the comments in this
     // file to fill in the gaps.
 
@@ -8,7 +9,7 @@
     // Change this name
     class Restaurants {
         // The category identifier - should be lowercase and hyphen-separated e.g. "crime"
-        public $category = "";
+        public $category = "amenities";
         
         // The name identifier - should be lowercase and hyphen-separated e.g. "school-proximity"
         public $name = "";
