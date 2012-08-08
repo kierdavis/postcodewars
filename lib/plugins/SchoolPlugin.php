@@ -30,7 +30,11 @@
 			//TO DO : We need to confirm that the MySQL column names and table name is correct if not then change it!
 			$queryToSend = "SELECT ApsEngmatTest07 FROM SchoolData WHERE PostCode = ";
 			$queryToSend .= $location;
-			$res = $mysqli->query($queryToSend);
+			$res = $db->query($queryToSend);
+            
+            if ($res->num_rows == 0) {
+                return 0.0;
+            }
 
 			for ($row_no = $res->num_rows - 1; $row_no >= 0; $row_no--) {
 				$res->data_seek($row_no);
