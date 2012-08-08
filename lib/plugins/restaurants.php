@@ -1,21 +1,23 @@
 <?php
-	require_once "../lib/proximity.php";
     // Copy this file into lib/plugins/ and name it appropriately. Then follow the comments in this
     // file to fill in the gaps.
+
+    // Also, don't forget to check the $category_names variable in search.php - try to use one of
+    // the categories there, but you can define your own if you need to.
     
     // Change this name
-    class AeDist{
+    class Restaurants {
         // The category identifier - should be lowercase and hyphen-separated e.g. "crime"
-        public $category = "care";
+        public $category = "";
         
         // The name identifier - should be lowercase and hyphen-separated e.g. "school-proximity"
-        public $name = "hospital-proximity";
+        public $name = "";
         
         // The human-readable name - this will be displayed in the results table e.g. "School proximity"
-        public $hrname = "Hospital Proximity";
+        public $hrname = "";
         
         // The units that the results are returned in.
-        public $units = "km";
+        public $units = "";
         
         // Should be either LOWER_IS_BETTER or HIGHER_IS_BETTER - determines which result wins.
         public $better = LOWER_IS_BETTER;
@@ -26,13 +28,15 @@
         //     "postcode" => the postcode
         //     "lat" => the latitude
         //     "lng" => the longitude
-        public function get_result($db, $loc) {
-            $criteria="emergency";
-            return dist_to_result($loc["postcode"],$criteria,"hospital",$loc["lat"],$loc["lng"]) / 1000;
+        public function get_result($db, $location) {
+            // Do something with $location
+            
+            // Should return a number - this is the result that is displayed.
+            return $result;
         }
     }
     
     // Update the name of the class here too.
     // This inserts the plugin into the plugin index.
-    $plugins["aeproximity"] = new AeDist();
+    //$plugins[] = new MyPlugin();
 ?>
