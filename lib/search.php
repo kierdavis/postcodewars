@@ -1,14 +1,17 @@
 <?php
-    require_once "include.php"
+    require_once "include.php";
+    require_once "util.php";
     
     $plugins = array();
     
     // Load all plugins
-    foreach (glob("plugins/*.php") as $filename) {
+    foreach (glob("../lib/plugins/*.php") as $filename) {
         include $filename;
     }
     
     function search($postcode1, $postcode2) {
+        global $plugins;
+        
         // Remove spaces
         $postcode1 = str_replace(" ", "", $postcode1);
         $postcode2 = str_replace(" ", "", $postcode2);
@@ -37,8 +40,7 @@
             );
         }
 		
-		
 		//we should do some sort of caching so that when
-        return json_encode($result);
+        return $result;
     }
 ?>
