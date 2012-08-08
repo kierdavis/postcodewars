@@ -12,16 +12,16 @@
         public $category = "amenities";
         
         // The name identifier - should be lowercase and hyphen-separated e.g. "school-proximity"
-        public $name = "";
+        public $name = "restaurant";
         
         // The human-readable name - this will be displayed in the results table e.g. "School proximity"
-        public $hrname = "";
+        public $hrname = "Restaurants near-by";
         
         // The units that the results are returned in.
         public $units = "";
         
         // Should be either LOWER_IS_BETTER or HIGHER_IS_BETTER - determines which result wins.
-        public $better = LOWER_IS_BETTER;
+        public $better = HIGHER_IS_BETTER;
         
         // The get_result method should perform the searches and return the two results.
         // $db is a mysqli object connected to the database.
@@ -29,15 +29,16 @@
         //     "postcode" => the postcode
         //     "lat" => the latitude
         //     "lng" => the longitude
-        public function get_result($db, $location) {
+        public function get_result($db, $loc) {
             // Do something with $location
-            
+            $result=get_all_results($loc["postcode"],"restaurant","restaurant",$loc["lat"],$loc["lng"],20000);
             // Should return a number - this is the result that is displayed.
-            return $result;
+            $no_of_restaurants=count($result);
+            return $no_of_restaurants;
         }
     }
     
     // Update the name of the class here too.
     // This inserts the plugin into the plugin index.
-    //$plugins[] = new MyPlugin();
+    $plugins["restaurants"] = new Restaurants();
 ?>
