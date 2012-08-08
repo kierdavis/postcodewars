@@ -45,6 +45,9 @@
                     </p>
                 </form>
             </div>
+			<div class="progress progress-stripedactive">
+			<div class="bar" id="progBar" style="width: 100%;visibility: hidden;"></div>
+		    </div>
 			
 
 <?php
@@ -83,7 +86,15 @@
             </ul>
 
 <?php
-    }	
+    }	<div class="btn-group dropup">
+			<button class="btn">Settings</button>
+			<button class="btn dropdown-toggle" data-toggle="dropdown">
+			<span class="caret"></span>
+			</button>
+  			<ul class="dropdown-menu">
+    				SETTINGS COMING SOON!
+  			</ul>
+		</div>
 ?>
 
   <ul class="dropdown-menu">
