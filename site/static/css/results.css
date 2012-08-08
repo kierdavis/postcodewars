@@ -614,6 +614,7 @@ footer p {
 @media (max-width: 480px) {
 	#score {
 		font-size: 13px;
+		margin: 30px 0;
 	}
 
 	#score .congrats {
