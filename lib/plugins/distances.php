@@ -28,26 +28,10 @@
 		public $can_cache = FALSE;
 		
 		public function get_result($db, $loc) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-			return get_first_by_text_search($loc["postcode"],"train+station") / 1000;
-=======
-=======
->>>>>>> fe81428a31be2980a1461305acdf296d0424242b
-=======
->>>>>>> c0bc63283f57bbfc65f9b5187dd598db49b53c5c
 			$closest=get_first_by_text_search($loc["postcode"],"train+station") / 1000;
 			//echo $loc["lat"].",".$loc["lng"];
 			echo json_encode(array($loc["lat"],$loc["lng"]));
 			return dist_between_geo(array($loc["lat"],$loc["lng"]),$closest["geo"]);
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> c474b309234935037f4fdd80913b3ceeb9c77e87
-=======
->>>>>>> fe81428a31be2980a1461305acdf296d0424242b
-=======
->>>>>>> c0bc63283f57bbfc65f9b5187dd598db49b53c5c
 		}
 	}
 	
