@@ -1,10 +1,6 @@
 <?php
 	require_once "include.php";
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> f6c759631f65d7acfb0b4448c78becfbbcfe0e85
+//
 	//returns the shortest road route betwee the two latitudes
 	function dist_between_geo($geo1,$geo2){
 		$c = curl_init();
@@ -33,23 +29,12 @@
 		echo "DIST".$d->routes[0]->legs[0]->distance->value."DIST";
         return round($d->routes[0]->legs[0]->distance->value, 1);
 	}
-<<<<<<< HEAD
->>>>>>> c474b309234935037f4fdd80913b3ceeb9c77e87
-=======
->>>>>>> f6c759631f65d7acfb0b4448c78becfbbcfe0e85
+
 	function get_first_by_text_search($postcode,$placetype){
 	    $c = curl_init();
 		$url="https://maps.googleapis.com/maps/api/place/textsearch/json";
 		$argstr="?query=".$placetype." loc: ".$postcode."&sensor=false&key=".GOOGLE_API_KEY;
-<<<<<<< HEAD
-<<<<<<< HEAD
-		echo $url.$argstr;
-=======
 		//echo $url.$argstr;
->>>>>>> c474b309234935037f4fdd80913b3ceeb9c77e87
-=======
-		//echo $url.$argstr;
->>>>>>> f6c759631f65d7acfb0b4448c78becfbbcfe0e85
         curl_setopt($c, CURLOPT_URL, $url . $argstr);
         curl_setopt($c, CURLOPT_RETURNTRANSFER, TRUE);
         $data = curl_exec($c);
