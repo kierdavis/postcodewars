@@ -1,5 +1,5 @@
 <?php
-    function postcode2latlng($db, $postcode) {
+    function postcode2location($db, $postcode) {
         $postcode_encoded = $db->real_escape_string($postcode);
         
         $result = $db->query("SELECT lat, lng FROM postcodes WHERE postcode = \"$postcode_encoded\"");
@@ -9,7 +9,7 @@
         
         if ($result->num_rows > 0) {
             $row = $result->fetch_row();
-            return array("lat" => $row[0], "lng" => $row[1]);
+            return array("lat" => $row[0], "lng" => $row[1], "postcode" => $postcode);
         }
         
         $c = curl_init();
@@ -30,6 +30,6 @@
             die("MySQL Error: " . $db->error);
         }
         
-        return array("lat" => $lat, "lng" => $lng);
+        return array("lat" => $lat, "lng" => $lng, "postcode" => $postcode);
     }
 ?>
