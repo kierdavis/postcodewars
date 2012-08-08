@@ -12,7 +12,7 @@
         public $category = "amenities";
         
         // The name identifier - should be lowercase and hyphen-separated e.g. "school-proximity"
-        public $name = "restaurant";
+        public $name = "restaurants";
         
         // The human-readable name - this will be displayed in the results table e.g. "School proximity"
         public $hrname = "Restaurants near-by";
