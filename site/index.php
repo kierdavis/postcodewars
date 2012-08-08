@@ -1,5 +1,6 @@
 <?php
     require_once "../lib/include.php";
+    require_once "../lib/util.php";
     
     if (array_key_exists("retro", $_GET)) {
         require "../lib/retro.php";
