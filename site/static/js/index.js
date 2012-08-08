@@ -15,9 +15,9 @@ $(document).ready(function () {
     pulsate();
 });
 
-function search(postcode) {
+function search(postcode1, postcode2) {
     $.ajax({
-        url: "/results.php?postcode=" + encodeURIComponent(postcode),
+        url: "/results-json.php?postcode1=" + encodeURIComponent(postcode1) + "&postcode2=" + encodeURIComponent(postcode2),
         dataType: "json",
         
         error: function(jqXHR, status, error) {
@@ -26,7 +26,7 @@ function search(postcode) {
         
         success: function(data) {
             // do something with data. It is the same structure as the object constructed in
-            // results.php
+            // search.php
             alert(data);
         },
     });

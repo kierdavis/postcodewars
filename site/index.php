@@ -34,7 +34,7 @@ keep files seperate:
                 RateMyArea: Alpha 0.1.4
                     <center><img alt="" class="style1" src="Capture.PNG" /></center>Type in your 
             postcode to get started.</p>
-        <form id="textBoxInput"><center><input id="Text1" type="text" class="textbox" class="pulsate" style="font-family: Arial Black; font-size: 16px;" /><br />
+        <form action="results.php" method="get" id="textBoxInput"><center><input id="Text1" type="text" class="textbox pulsate" style="font-family: Arial Black; font-size: 16px;" /><br />
             </center></form>
            
    <br />
@@ -50,12 +50,6 @@ keep files seperate:
             <p class="style2" style="text-align: center; font-size: medium">
                 &nbsp;</p>
         </div>
-
-<!-- =================== -->
-		<?php
-		require "../lib/search.php";
-		search("LE74UW"); ?>
-<!-- =================== -->
     </body>
 </html>
 
