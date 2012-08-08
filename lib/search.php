@@ -19,6 +19,7 @@
     $category_names = array(
         "test-category" => "Test",
         "care" => "Care",
+        "schools" => "Schools",
     );
     
     function search($postcode1, $postcode2) {
