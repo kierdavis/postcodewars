@@ -18,7 +18,7 @@ keep files seperate:
 
 <html>
     <head>
-        <title>RateMyArea</title>
+        <title>Postcode Wars</title>
         <script type="text/javascript" src="/static/js/jquery-1.7.2.min.js"></script>
         <script type="text/javascript" src="/static/js/modernizr.js"></script>
         <script type="text/javascript" src="/static/js/global.js"></script>
