@@ -7,10 +7,10 @@ $(document).ready(function() {
 		var cookieName = $(this).attr("id").replace("-visibility", "");
 
 		if ($.cookie(cookieName) == "hidden") {
-			$("#" + cookieName).show();
+			$("#" + cookieName).hide();
 			$(this).attr('checked', false);
 		} else {
-			$("#" + cookieName).hide();
+			$("#" + cookieName).show();
 			$(this).attr('checked', true);
 		}
 	});
