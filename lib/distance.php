@@ -1,5 +1,24 @@
 <?php
 	require_once "include.php";
+	function get_first_by_text_search($postcode,$placetype){
+	    $c = curl_init();
+		$url="https://maps.googleapis.com/maps/api/place/textsearch/json";
+		$argstr="?query=".$placetype." loc: ".$postcode."&sensor=false&key=".GOOGLE_API_KEY;
+        curl_setopt($c, CURLOPT_URL, $url . $argstr);
+        curl_setopt($c, CURLOPT_RETURNTRANSFER, TRUE);
+        $data = curl_exec($c);
+        curl_close($c);
+        $d = json_decode($data);
+		
+        //var_dump($d);
+        if($d->status!="OK"){
+        	return false;
+        }
+        $closest =  $d->results[0];
+		$endloclat=$closest->geometry->location->lat;
+		$endloclng=$closest->geometry->location->lng;
+		return array("geo"=>array($endloclat,$endloclng),"name"=>$closest->name,"data"=>json_encode($closest));
+	}
 	function get_all_results_dist($postcode,$type,$lat,$lng){
 	    $c = curl_init();
 		$url="https://maps.googleapis.com/maps/api/place/search/json";
