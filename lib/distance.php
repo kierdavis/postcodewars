@@ -1,14 +1,5 @@
 <?php
 	require_once "include.php";
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> fe81428a31be2980a1461305acdf296d0424242b
-=======
-//
->>>>>>> c0bc63283f57bbfc65f9b5187dd598db49b53c5c
 	//returns the shortest road route betwee the two latitudes
 	function dist_between_geo($geo1,$geo2){
 		$c = curl_init();
@@ -37,32 +28,12 @@
 		echo "DIST".$d->routes[0]->legs[0]->distance->value."DIST";
         return round($d->routes[0]->legs[0]->distance->value, 1);
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> c474b309234935037f4fdd80913b3ceeb9c77e87
-=======
 
->>>>>>> fe81428a31be2980a1461305acdf296d0424242b
-=======
-
->>>>>>> c0bc63283f57bbfc65f9b5187dd598db49b53c5c
 	function get_first_by_text_search($postcode,$placetype){
 	    $c = curl_init();
 		$url="https://maps.googleapis.com/maps/api/place/textsearch/json";
 		$argstr="?query=".$placetype." loc: ".$postcode."&sensor=false&key=".GOOGLE_API_KEY;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		echo $url.$argstr;
-=======
 		//echo $url.$argstr;
->>>>>>> c474b309234935037f4fdd80913b3ceeb9c77e87
-=======
-		//echo $url.$argstr;
->>>>>>> fe81428a31be2980a1461305acdf296d0424242b
-=======
-		//echo $url.$argstr;
->>>>>>> c0bc63283f57bbfc65f9b5187dd598db49b53c5c
         curl_setopt($c, CURLOPT_URL, $url . $argstr);
         curl_setopt($c, CURLOPT_RETURNTRANSFER, TRUE);
         $data = curl_exec($c);
@@ -111,11 +82,6 @@
         }
         
 		$nearest_lat_lng=$nearest_of_type["geo"];
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> c0bc63283f57bbfc65f9b5187dd598db49b53c5c
 		//do google dist calc using API, like below but changed arguments
 		
 	    $c = curl_init();
@@ -142,14 +108,6 @@
         return round($d->routes[0]->legs[0]->distance->value, 1);
 		//do google dist calc using API
         return dist_between_geo(array($lat,$lng), $nearest_lat_lng);
-<<<<<<< HEAD
->>>>>>> c474b309234935037f4fdd80913b3ceeb9c77e87
-=======
-		//do google dist calc using API
-        return dist_between_geo(array($lat,$lng), $nearest_lat_lng);
->>>>>>> fe81428a31be2980a1461305acdf296d0424242b
-=======
->>>>>>> c0bc63283f57bbfc65f9b5187dd598db49b53c5c
 	}
 
 ?>
