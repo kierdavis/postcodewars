@@ -45,9 +45,7 @@
                     </p>
                 </form>
             </div>
-			<div class="progress progress-stripedactive">
-			<div class="bar" id="progBar" style="width: 100%;visibility: hidden;"></div>
-			</div>
+			
 
 <?php
     if ($result !== null) {
@@ -87,11 +85,7 @@
 <?php
     }	
 ?>
-		<div class="btn-group dropup">
-			<button class="btn">Settings</button>
-			<button class="btn dropdown-toggle" data-toggle="dropdown">
-			<span class="caret"></span>
-			</button>
+
   <ul class="dropdown-menu">
     <!-- dropdown menu links -->
   </ul>
