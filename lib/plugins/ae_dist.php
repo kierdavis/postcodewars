@@ -4,7 +4,7 @@
     // file to fill in the gaps.
     
     // Change this name
-    class AeProximity{
+    class AeDist{
         // The category identifier - should be lowercase and hyphen-separated e.g. "crime"
         public $category = "care";
         
@@ -34,5 +34,5 @@
     
     // Update the name of the class here too.
     // This inserts the plugin into the plugin index.
-    $plugins["aeproximity"] = new AeProximity();
+    $plugins["aeproximity"] = new AeDist();
 ?>

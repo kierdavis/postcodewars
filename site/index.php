@@ -12,7 +12,7 @@
         $postcode1 = $_GET["postcode1"];
         $postcode2 = $_GET["postcode2"];
         
-        if ($postcode1 === "" || $postcode2 === "") {
+        if ($postcode1 !== "" && $postcode2 !== "") {
             $result = search($postcode1, $postcode2);
         }
     }
