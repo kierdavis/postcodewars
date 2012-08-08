@@ -39,6 +39,8 @@
             die($d->status);
         }
         
+        echo $argstr;
+        
         $no_of_legs = count($d->results->legs);
 		//the distance to the nearest place in miles
         return $d->results[0]->legs[$no_of_legs-1]->distance->value;
