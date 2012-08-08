@@ -14,7 +14,7 @@
         $data = curl_exec($c);
         curl_close($c);
         $d = json_decode($data);
-        echo $url.$argstr;
+        //echo $url.$argstr;
         if ($d->status != "OK") {
             if ($d->status == "ZERO_RESULTS") {
                 return FALSE;
@@ -25,7 +25,7 @@
         
         $no_of_legs = count($d->routes[0]->legs);
 		//the distance to the nearest place in km
-		echo "DIST".$d->routes[0]->legs[0]->distance->value."DIST";
+		//echo "DIST".$d->routes[0]->legs[0]->distance->value."DIST";
         return round($d->routes[0]->legs[0]->distance->value, 1);
 	}
 
