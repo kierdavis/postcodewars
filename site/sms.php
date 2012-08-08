@@ -1,4 +1,10 @@
 <?php
+<<<<<<< HEAD
+=======
+//Debugging
+error_reporting(-1);
+
+>>>>>>> c474b309234935037f4fdd80913b3ceeb9c77e87
 // Slightly hacky reshuffle to fix the preceding tab
 // Send the XML header
 header("content-type: text/xml");
@@ -20,6 +26,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 	$incoming = $_REQUEST['Body'];
 	
 	// Yay, I wrote a regex. I probably ought to test this.
+<<<<<<< HEAD
 	$myInputRegex = "/^((([a-zA-Z]{1,2})(([0-9]{1,2})|(([0-9])([a-zA-Z])))([0-9]{1})([a-zA-Z]{2})) +(([a-zA-Z]{1,2})(([0-9]{1,2})|(([0-9])([a-zA-Z])))([0-9]{1})([a-zA-Z]{2})))$/";
 	if (!preg_match($myInputRegex, $incoming)) {
 		$message = "Input not valid. It should look like this: 'NG11AA LE11AA'";
@@ -27,6 +34,21 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 	else {
 		// Split the two postcodes up
 		$postcodes = explode(" ", $incoming);
+=======
+	// This first one only matches AA11AA and AA111AA
+	// $myInputRegex = "/^((([a-zA-Z]{1,2})(([0-9]{1,2})|(([0-9])([a-zA-Z])))([0-9]{1})([a-zA-Z]{2})) +(([a-zA-Z]{1,2})(([0-9]{1,2})|(([0-9])([a-zA-Z])))([0-9]{1})([a-zA-Z]{2})))$/";
+	// This next one should match the following:
+	//	-AA11AA
+	//	-AA111AA
+	//	-AA1A1AA
+	//	-and correctly spaced postcodes. And a mix. Much better!
+	$myInputRegex = "/^((([a-zA-Z]{2})([0-9]{1,2})([a-zA-Z]?)(\s?))([0-9]{1})([a-zA-Z]{2}))$/";
+	if (!preg_match($myInputRegex, $incoming, $postcodes)) {
+		$message = "Oops! They don't look like postcodes to me.";
+	}
+	else {
+		// Split the two postcodes up
+>>>>>>> c474b309234935037f4fdd80913b3ceeb9c77e87
 		$pc1 = $postcodes[0];
 		$pc2 = $postcodes[1];
 		
