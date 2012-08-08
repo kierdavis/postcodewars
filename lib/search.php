@@ -6,7 +6,7 @@
         $postcode = str_replace(" ", "", $postcode);
        
         // Connect to the DB
-        $db = new mysqli("localhost", "yrs2012app-user", "vOdQ04wDTtIS3GeylBER1nNrAo76ZLFJU9hzuxsKmCPi8WcHqbYfVpjXkMag");
+        $db = new mysqli("localhost", "yrs2012app-user", "vOdQ04wDTtIS3GeylBER1nNrAo76ZLFJU9hzuxsKmCPi8WcHqbYfVpjXkMag", "yrs2012app");
         
         // Calculate latitude & longitude
         $latlng_result = postcode2latlng($db, $postcode);
@@ -15,8 +15,8 @@
         
         // Perform actual result functions
         $nearest_school = search_schools($db, $postcode, $lat, $lng);
-        $dist_to_ae = dist_to_result($postcode,"a%26e");
-        $dist_to_gp = dist_to_result($postcode,"gp doctor");
+        $dist_to_ae = dist_to_result($postcode,"a%26e", $lat, $lng);
+        $dist_to_gp = dist_to_result($postcode,"gp doctor", $lat, $lng);
 		
         // Build the response
         $result = array(

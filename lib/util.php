@@ -1,8 +1,10 @@
 <?php
     function postcode2latlng($db, $postcode) {
-        $result = $db->query("SELECT lat, lng FROM postcodes WHERE postcode = \"" . $db->real_escape_string($postcode) . "\"");
+        $postcode_encoded = $db->real_escape_string($postcode);
+        
+        $result = $db->query("SELECT lat, lng FROM postcodes WHERE postcode = \"$postcode_encoded\"");
         if ($result === FALSE) {
-            die("MySQL Error!!!!!");
+            die("MySQL Error: " . $db->error);
         }
         
         if ($result->num_rows > 0) {
@@ -20,7 +22,13 @@
         $lat = (float) $d["geo"]["lat"];
         $lng = (float) $d["geo"]["lng"];
         
-        $db->query("INSERT INTO postcodes VALUES (%s, %s, %s)", $postcode, $lat, $lng);
+        $lat_encoded = $db->real_escape_string($lat);
+        $lng_encoded = $db->real_escape_string($lng);
+        
+        $result = $db->query("INSERT INTO postcodes VALUES (\"$postcode_encoded\", \"$lat_encoded\", \"$lng_encoded\")");
+        if ($result === FALSE) {
+            die("MySQL Error: " . $db->error);
+        }
         
         return array("lat" => $lat, "lng" => $lng);
     }
