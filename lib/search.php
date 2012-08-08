@@ -67,19 +67,28 @@
             }
             
             $winner1 = false;
+            $winner2 = false;
             
-            if ($better == LOWER_IS_BETTER) {
-                $winner1 = $r1 < $r2;
-            }
-            else {
-                $winner1 = $r1 > $r2;
+            if ($r1 == $r2) {
+                
             }
             
-            if ($winner1) {
-                $breakdown[$category]["_score1"]++;
-            }
             else {
-                $breakdown[$category]["_score2"]++;
+                if ($better == LOWER_IS_BETTER) {
+                    $winner1 = $r1 < $r2;
+                }
+                else {
+                    $winner1 = $r1 > $r2;
+                }
+                
+                $winner2 = $winner1;
+                
+                if ($winner1) {
+                    $breakdown[$category]["_score1"]++;
+                }
+                else {
+                    $breakdown[$category]["_score2"]++;
+                }
             }
             
             $breakdown[$category][$name] = array(
@@ -88,6 +97,7 @@
                 "result1" => $r1,
                 "result2" => $r2,
                 "winner1" => $winner1,
+                "winner2" => $winner2,
             );
         }
         

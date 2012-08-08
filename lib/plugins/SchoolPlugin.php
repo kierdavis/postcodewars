@@ -28,27 +28,22 @@
         public function get_result($db, $location) {
             // Do something with $location
 			//TO DO : We need to confirm that the MySQL column names and table name is correct if not then change it!
-			$queryToSend = "SELECT ApsEngmatTest07 FROM SchoolData WHERE PostCode = ";
-			$queryToSend .= $location;
+            $postcode_encoded = $db->real_escape_string($location["postcode"]);
+			$queryToSend = "SELECT testscore FROM schools WHERE postcode = \"$postcode_encoded\"";
 			$res = $db->query($queryToSend);
             
             if ($res->num_rows == 0) {
                 return 0.0;
             }
+            
+            $score = 0.0;
 
-			for ($row_no = $res->num_rows - 1; $row_no >= 0; $row_no--) {
-				$res->data_seek($row_no);
+			for ($i = 0; $i < $res->num_rows; $i++) {
 				$row = $res->fetch_assoc();
-				$score += $row;
+				$score += $row["testscore"];
 			}
-			
-			if ($res->num_rows != 0){
-				return $score / $res->num_rows;
-			}
-			 // Should return a number - this is the result that is displayed.
-			return 0;
-			
-           
+            
+			return $score / $res->num_rows;
         }
     }
     

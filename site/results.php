@@ -60,7 +60,7 @@
                     <ul class="stat clearfix">
                         <li class="<?= $item["winner1"] ? "win" : "lose" ?>"><span><?= htmlentities($item["result1"] . " " . $item["units"]) ?></span></li>
                         <li><?= htmlentities($item["name"]) ?></li>
-                        <li class="<?= $item["winner1"] ? "lose" : "win" ?>"><span><?= htmlentities($item["result2"] . " " . $item["units"]) ?></span></li>
+                        <li class="<?= $item["winner2"] ? "win" : "loe" ?>"><span><?= htmlentities($item["result2"] . " " . $item["units"]) ?></span></li>
                     </ul>
 <?php
             }
