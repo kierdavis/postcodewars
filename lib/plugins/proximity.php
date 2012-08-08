@@ -28,7 +28,7 @@
         //     "lng" => the longitude
         public function get_result($db, $loc) {
             $criteria="a&e";
-            return dist_to_result($loc["postcode"],$criteria,$loc["lat"],$loc["lng"]) / 1000;
+            return dist_to_result($loc["postcode"],$criteria,"hospital",$loc["lat"],$loc["lng"]) / 1000;
         }
     }
     
