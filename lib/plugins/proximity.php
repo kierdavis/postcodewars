@@ -14,6 +14,9 @@
         // The human-readable name - this will be displayed in the results table e.g. "School proximity"
         public $hrname = "Hospital Proximity";
         
+        // The units that the results are returned in.
+        public $units = "km";
+        
         // Should be either LOWER_IS_BETTER or HIGHER_IS_BETTER - determines which result wins.
         public $better = LOWER_IS_BETTER;
         
@@ -25,9 +28,7 @@
         //     "lng" => the longitude
         public function get_result($db, $loc) {
             $criteria="a&e";
-            dist_to_result($loc["postcode"],$criteria,$loc["lat"],$loc["lng"]);
-            // Should return a number - this is the result that is displayed.
-            return $result;
+            return dist_to_result($loc["postcode"],$criteria,$loc["lat"],$loc["lng"]) / 1000;
         }
     }
     
