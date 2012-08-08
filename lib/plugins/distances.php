@@ -35,6 +35,6 @@
 		}
 	}
 	
-	$plugins["hospital-distance"] = new Hospitals(); // Inserts the plugin into the plugin index
-	$plugins["train-station-distance"] = new TrainStations();
+	//$plugins["hospital-distance"] = new Hospitals(); // Inserts the plugin into the plugin index
+	//$plugins["train-station-distance"] = new TrainStations();
 ?>

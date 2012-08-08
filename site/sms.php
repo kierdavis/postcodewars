@@ -19,6 +19,10 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 	// This is the text message sent to us
 	$incoming = $_REQUEST['Body'];
 	
+	// Remove all spaces
+	$incoming = preg_replace("/\s/", "", $incoming);
+	
+	// Regexes!
 	// This first one only matches AA11AA and AA111AA
 	// $myInputRegex = "/^((([a-zA-Z]{1,2})(([0-9]{1,2})|(([0-9])([a-zA-Z])))([0-9]{1})([a-zA-Z]{2})) +(([a-zA-Z]{1,2})(([0-9]{1,2})|(([0-9])([a-zA-Z])))([0-9]{1})([a-zA-Z]{2})))$/";
 	// This next one should match the following:
@@ -26,21 +30,21 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 	//	-AA111AA
 	//	-AA1A1AA
 	//	-and correctly spaced postcodes. And a mix. Much better!
-	$myInputRegex = "/^((([a-zA-Z]{2})([0-9]{1,2})([a-zA-Z]?)(\s?))([0-9]{1})([a-zA-Z]{2}))$/";
+	$myInputRegex = "/[a-zA-Z]{1,2}[0-9]{1,2}[a-zA-Z]?\s?[0-9]{1}[a-zA-Z]{2}/";
 	
-	if (!preg_match($myInputRegex, $incoming, $postcodes)) {
+	if (!preg_match_all($myInputRegex, $incoming, $postcodes)) {
 		$message = "Oops! They don't look like postcodes to me.";
 	}
 	else {
 		// Split the two postcodes up
-		$pc1 = $postcodes[0];
-		$pc2 = $postcodes[1];
+		$pc1 = $postcodes[0][0];
+		$pc2 = $postcodes[0][1];
 		
 		// Search the postcodes and return scores!
 		$result = search($pc1, $pc2);
 		$score1 = $result['_score1'];
 		$score2 = $result['_score2'];
-		
+
 		// A quick function to split postcodes (or return the unsplit one in some cases) to avoid repetition:
 		function pc_split($pcvar) {
 			if (strlen($pcvar) == 6) {
@@ -61,9 +65,15 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 		$pc2_split = strtoupper(pc_split($pc2));
 		
 		// Compare the scores and write an appropriate message
-		if ($score1 > $score2) { $message = $pc1_split . " wins, " . $score1 . "-" . $score2 . "!"; }
-		elseif ($score1 < $score2) { $message = $pc2_split . " wins, " . $score2 . "-" . $score1 . "!"; }
-		else { $message = "It was a draw!"; }
+		if ($score1 > $score2) {
+			$message = strtoupper($pc1_split) . " wins, " . $score1 . "-" . $score2 . "!";
+		}
+		elseif ($score1 < $score2) {
+			$message = strtoupper($pc2_split) . " wins, " . $score2 . "-" . $score1 . "!";
+		}
+		else {
+			$message = "It was a draw!";
+		}
 	}
 	
 	// Now output the message as TwiML!
