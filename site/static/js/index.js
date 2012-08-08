@@ -27,6 +27,9 @@ function search(postcode) {
         success: function(data) {
             // do something with data. It is the same structure as the object constructed in
             // results.php
+            alert(data);
         },
     });
 }
+
+

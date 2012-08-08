@@ -1,3 +1,12 @@
+body{
+	font-family: 'Segoe UI';
+	font-weight: 700;
+	color: #0000CC;
+	text-align: center;
+	font-size: large;
+}
+.nosubmit-form{
+	font-size: 80pt;
 #Text1
 {
     width: 522px;
@@ -24,6 +33,42 @@ input.button
     width: 120px;
     height: 30px;
 } 
+.style1
+{
+    width: 412px;
+    height: 166px;
+}
+.style2
+{
+    color: #FF0000;
+    font-family: Courier;
+}
+#Text1
+{
+	width: 522px;
+    height: 25px;
+}
+input.textbox
+{
+	border:3px solid #000000;
+    text-align: center;
+    padding:5px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+input.textbox:focus 
+{
+    border:5px
+    outline: none;
+    border-color:#96FFFF;
+   -webkit-box-shadow: 0px 0px 6px #000000;
+}
+input.button
+{
+    width: 120px;
+    height: 30px;
+}
 .style1
 {
     width: 412px;

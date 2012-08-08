@@ -15,10 +15,10 @@
         
         // Perform actual result functions
         $nearest_school = search_schools($db, $postcode, $lat, $lng);
-        get_ae_proximity($db, $postcode, $lat, $lng);
-        
+        $dist_to_ae = dist_to_result($postcode,"a%26e");
+        $dist_to_gp = dist_to_result($postcode,"gp doctor");
+		
         // Build the response
-        
         $result = array(
             "overall_score" => 0.0,
             
@@ -30,7 +30,9 @@
                 "nearest_school" => $nearest_school,
             ),
         );
-        
-        return $result;
+		
+		
+		//we should do some sort of caching so that when
+        return json_encode($result);
     }
 ?>
