@@ -6,10 +6,10 @@
     // Change this name
     class TrainsDist{
         // The category identifier - should be lowercase and hyphen-separated e.g. "crime"
-        public $category = "Transport";
+        public $category = "transport";
         
         // The name identifier - should be lowercase and hyphen-separated e.g. "school-proximity"
-        public $name = "Train-station-proximity";
+        public $name = "train-station-proximity";
         
         // The human-readable name - this will be displayed in the results table e.g. "School proximity"
         public $hrname = "Train Station Proximity";
@@ -28,7 +28,7 @@
         //     "lng" => the longitude
         public function get_result($db, $loc) {
             $criteria="Train station";
-            return dist_to_result($loc["postcode"],$criteria,"Train Station",$loc["lat"],$loc["lng"]) / 1000;
+            return dist_to_result($loc["postcode"],$criteria,"",$loc["lat"],$loc["lng"]) / 1000;
         }
     }
     
