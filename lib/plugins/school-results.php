@@ -1,4 +1,36 @@
 	<?php
+	function get_all_school_results($postcode,$lat,$lng){
+	    $c = curl_init();
+		$url="https://maps.googleapis.com/maps/api/place/textsearch/json";
+		$argstr="?query=primary+schooltypes=school&sensor=false&key=".GOOGLE_API_KEY;
+		$argstr.="&location=".$lat.",".$lng;
+		if($rankbydist){
+			$argstr.="&rankby=distance";
+		}
+		else{
+			$argstr.="&radius=".$radius;
+		}
+		logmsg("proximity-lib",$url.$argstr);
+        curl_setopt($c, CURLOPT_URL, $url . $argstr);
+        curl_setopt($c, CURLOPT_RETURNTRANSFER, TRUE);
+        $data = curl_exec($c);
+        curl_close($c);
+        $d = json_decode($data);
+		
+        //var_dump($d);
+        return $d->results;
+	}
+	function get_nearest_result($postcode,$criteria,$type,$lat,$lng,$rankbydist){
+        $d=get_all_results($postcode,$criteria,$type,$lat,$lng,"30000",$rankbydist);
+        if (count($d) < 1) {
+            return FALSE;
+        }
+        
+		//gets the lat and long of the first result
+		$endloclat=$d[0]->geometry->location->lat;
+		$endloclng=$d[0]->geometry->location->lng;
+		return array("geo"=>array($endloclat,$endloclng),"name"=>$d[0]->name,"data"=>json_encode($d));
+	}
 	require_once "../lib/proximity.php";
     // Copy this file into lib/plugins/ and name it appropriately. Then follow the comments in this
     // file to fill in the gaps.
