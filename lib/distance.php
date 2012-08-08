@@ -83,8 +83,6 @@
         }
         
 		$nearest_lat_lng=$nearest_of_type["geo"];
-<<<<<<< HEAD
-<<<<<<< HEAD
 		//do google dist calc using API, like below but changed arguments
 		
 	    $c = curl_init();
@@ -109,14 +107,8 @@
         $no_of_legs = count($d->routes[0]->legs);
 		//the distance to the nearest place in miles
         return round($d->routes[0]->legs[0]->distance->value, 1);
-=======
 		//do google dist calc using API
         return dist_between_geo(array($lat,$lng), $nearest_lat_lng);
->>>>>>> c474b309234935037f4fdd80913b3ceeb9c77e87
-=======
-		//do google dist calc using API
-        return dist_between_geo(array($lat,$lng), $nearest_lat_lng);
->>>>>>> f6c759631f65d7acfb0b4448c78becfbbcfe0e85
 	}
 
 ?>
