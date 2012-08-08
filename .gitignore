@@ -1,3 +1,4 @@
 *.project
 *.sublime-project
 *.sublime-workspace
+site/plugin.log
