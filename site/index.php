@@ -51,6 +51,7 @@
         <div id="content">
             <div id="search" class="clearfix">
                 <form action="/" id="battle" method="get">
+					<p class="clearfix">
                         <input type="text" name="postcode1" id="battle_postcode1" tabindex="1" value="<?= htmlentities($postcode1) ?>" placeholder="Postcode" />
                         <button type="submit" tabindex="3" id="battle_submit">Battle!</button>
                         <input type="text" name="postcode2" tabindex="2" id="battle_postcode2" value="<?= htmlentities($postcode2) ?>" placeholder="Postcode" />
