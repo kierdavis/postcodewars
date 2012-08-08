@@ -1,6 +1,9 @@
 <?php
     // Copy this file into lib/plugins/ and name it appropriately. Then follow the comments in this
     // file to fill in the gaps.
+
+    // Also, don't forget to check the $category_names variable in search.php - try to use one of
+    // the categories there, but you can define your own if you need to.
     
     // Change this name
     class MyPlugin {
