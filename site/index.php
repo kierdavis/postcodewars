@@ -83,8 +83,8 @@
 
 				<li class="section" id="<?= $categoryID ?>">
 					<h3><?= htmlentities($category["_name"]) ?></h3>
-                    <p class="score-left"><?= htmlentities($category["_score1"]) ?></p>
-                    <p class="score-right"><?= htmlentities($category["_score2"]) ?></p>       
+					<p class="score-left <?= $category['_score1'] >= $category['_score2'] ? ($category['_score1'] == $category['_score2'] ? 'draw' : 'win' ) : 'lose' ?>"><?= htmlentities($category["_score1"]) ?></p>
+					<p class="score-right <?= $category['_score2'] >= $category['_score1'] ? ($category['_score1'] == $category['_score2'] ? 'draw' : 'win' ) : 'lose' ?>"><?= htmlentities($category["_score2"]) ?></p>
 
 <?php
                 foreach ($category as $itemID => $item) {
