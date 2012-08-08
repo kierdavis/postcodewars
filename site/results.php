@@ -14,43 +14,67 @@
     $result = search($postcode1, $postcode2);
 ?>
 
+<!DOCTYPE html>
+
 <html>
     <head>
-        <title>Results for <?php echo htmlentities($postcode1); ?> vs <?php echo htmlentities($postcode2); ?></title>
+        <title>PostCode Wars</title>
+
+        <link href="/static/css/results.css" rel="stylesheet" type="text/css" />
+        <script src="/static/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="/static/js/results.js" type="text/javascript"></script>
     </head>
-    
+
     <body>
-        <h1><?php echo htmlentities($postcode1); ?> vs <?php echo htmlentities($postcode2); ?></h1>
+        <header>
+            <h1>PostCode Wars</h1>
+        </header>
+
+        <div id="content">
+            <div id="search" class="clearfix">
+                <form action="/results.php" id="battle" method="get">
+                    <p>
+                        <input type="search" name="postcode1" id="battle_postcode1" value="<?= htmlentities($postcode1) ?>" placeholder="Your postcode" />
+                        <button type="submit">Battle!</button>
+                        <input type="search" name="postcode2" id="battle_postcode2" value="<?= htmlentities($postcode2) ?>" placeholder="Their postcode" />
+                    </p>
+                </form>
+            </div>
+
+            <ul id="results">
         
 <?php
     foreach ($result as $categoryID => $category) {
 ?>
 
-        <h3><?php echo htmlentities($category["name"]) ?></h3>
-        <table>
-            <tbody>                
+                <li class="section">
+                    <h3><?= htmlentities($category["_name"]) ?></h3>
+                    <p class="score-left"><?= htmlentities($category["_score1"]) ?></p>
+                    <p class="score-right"><?= htmlentities($category["_score2"]) ?></p>       
 
 <?php
         foreach ($category as $itemID => $item) {
-            if ($itemID != "name") {
+            if ($itemID[0] != "_") {
 ?>
 
-                <tr>
-                    <td><?php echo htmlentities($item["result1"]); ?></td>
-                    <th><?php echo htmlentities($item["name"]); ?></th>
-                    <td><?php echo htmlentities($item["result2"]); ?></td>
-                </tr>
-
+                    <ul class="stat clearfix">
+                        <li class="<?= $item["winner1"] ? "win" : "lose" ?>"><span><?= htmlentities($item["result1"] . " " . $item["units"]) ?></span></li>
+                        <li><?= htmlentities($item["name"]) ?></li>
+                        <li class="<?= $item["winner1"] ? "lose" : "win" ?>"><span><?= htmlentities($item["result2"] . " " . $item["units"]) ?></span></li>
+                    </ul>
 <?php
             }
         }
 ?>
-
-            </tbody>
-        </table>
-
+                </li>
 <?php
     }
 ?>
+            </ul>
+        </div>
+
+        <footer>
+            <p>PostCode Wars &copy; 2012</p>
+        </footer>
     </body>
 </html>
