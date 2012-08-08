@@ -30,7 +30,6 @@
                 "nearest_school" => $nearest_school,
             ),
         );
-        
-        return $result;
+        return json_encode($result);
     }
 ?>
