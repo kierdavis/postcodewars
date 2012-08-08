@@ -1,11 +1,11 @@
 <?php
 	//gets the proximity to the nearest A&E department using Google places API
 	require_once "include.php";
-	function get_nearest_result($postcode,$criteria,$type,$lat,$lng){
+	function get_all_results($postcode,$criteria,$type,$lat,$lng,$radius){
 	    $c = curl_init();
 		$url="https://maps.googleapis.com/maps/api/place/textsearch/json";
 		$argstr="?query=".$criteria."+near+".$postcode."&types=".$type."&sensor=false&key=".GOOGLE_API_KEY;
-		$argstr.="&location=".$lat.",".$lng."&radius=20000";
+		$argstr.="&location=".$lat.",".$lng."&radius=".$radius;
         curl_setopt($c, CURLOPT_URL, $url . $argstr);
         curl_setopt($c, CURLOPT_RETURNTRANSFER, TRUE);
         $data = curl_exec($c);
@@ -13,11 +13,14 @@
         $d = json_decode($data);
 		
         //var_dump($d);
-        
+        return $d->results;
+	}
+	function get_nearest_result($postcode,$criteria,$type,$lat,$lng){
+        $d=get_all_results($postcode,$criteria,$type,$lat,$lng,"20000");
 		//gets the lat and long of the first result
-		$endloclat=$d->results[0]->geometry->location->lat;
-		$endloclng=$d->results[0]->geometry->location->lng;
-		return array("geo"=>array($endloclat,$endloclng),"name"=>$d->results[0]->name,"data"=>json_encode($d->results));
+		$endloclat=$d[0]->geometry->location->lat;
+		$endloclng=$d[0]->geometry->location->lng;
+		return array("geo"=>array($endloclat,$endloclng),"name"=>$d[0]->name,"data"=>json_encode($d));
 	}
 	function dist_to_result($postcode,$criteria,$type,$lat,$lng){
 		$nearest_of_type=get_nearest_result($postcode,$criteria,$type,$lat,$lng);
