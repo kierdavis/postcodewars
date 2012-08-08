@@ -30,7 +30,7 @@
 		public function get_result($db, $loc) {
 			$closest=get_first_by_text_search($loc["postcode"],"train+station") / 1000;
 			//echo $loc["lat"].",".$loc["lng"];
-			echo json_encode(array($loc["lat"],$loc["lng"]));
+			//echo json_encode(array($loc["lat"],$loc["lng"]));
 			return dist_between_geo(array($loc["lat"],$loc["lng"]),$closest["geo"]);
 		}
 	}
