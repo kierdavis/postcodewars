@@ -54,7 +54,7 @@ keep files seperate:
 <!-- =================== -->
 		<?php
 		require "../lib/search.php";
-		search("LE74UW"); ?>
+		search("LE74UW","LE112DU"); ?>
 <!-- =================== -->
     </body>
 </html>
