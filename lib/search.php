@@ -3,6 +3,13 @@
     require_once "util.php";
     
     $plugins = array();
+    $plugin_log = fopen("plugin.log", "w");
+    
+    function logmsg($plugin_name, $msg) {
+        global $plugin_log;
+        
+        fwrite($plugin_log, "Message from plugin '" . $msg . "': " . $msg . "\n");
+    }
     
     // Load all plugins
     foreach (glob("../lib/plugins/*.php") as $filename) {
@@ -15,7 +22,7 @@
     );
     
     function search($postcode1, $postcode2) {
-        global $plugins, $category_names;
+        global $plugins, $category_names, $plugin_log;
         
         // Remove spaces
         $postcode1 = str_replace(" ", "", $postcode1);
@@ -42,8 +49,18 @@
                 );
             }
             
-            $r1 = $plugin->get_result($db, $location1);
-            $r2 = $plugin->get_result($db, $location2);
+            $r1 = 0;
+            $r2 = 0;
+            
+            try {
+                $r1 = $plugin->get_result($db, $location1);
+                $r2 = $plugin->get_result($db, $location2);
+            
+            } catch (Exception $e) {
+                fwrite($plugin_log, "Error from plugin '" . $name . "': " . $e->getMessage() . "\n" . $e->getTraceAsString() . "\n");
+                continue;
+            }
+            
             $result[$category][$name] = array(
                 "name" => $hrname,
                 "higher_is_better" => $better,
