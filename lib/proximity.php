@@ -20,7 +20,7 @@
 		return array("geo"=>array($endloclat,$endloclng),"name"=>$d->results[0]->name,"data"=>json_encode($d->results));
 	}
 	function dist_to_result($postcode,$criteria,$type,$lat,$lng){
-		$nearest_of_type=get_nearest_result($postcode,$criteria,$lat,$lng);
+		$nearest_of_type=get_nearest_result($postcode,$criteria,$type,$lat,$lng);
 		$nearest_lat_lng=$nearest_of_type["geo"];
 		//do google dist calc using API, like below but changed arguments
 		
