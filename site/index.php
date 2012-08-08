@@ -38,7 +38,7 @@
 			<p><b>Here you can change what goes to war!</b></p>
 			<ul>
 				<li>Crime Score <input checked="checked" id="crime-visibility" type="checkbox" /></li>
-				<li>School Score <input checked="checked"  id="schools-visibility" type="checkbox" /></li>
+				<li>Proximities Score <input checked="checked"  id="proximities-visibility" type="checkbox" /></li>
 				<li>Amenities Score <input checked="checked"  id="amenities-visibility" type="checkbox" /></li>
 				<li>House Price Score <input checked="checked"  id="house-price-visibility" type="checkbox" /></li>
 			</ul>
@@ -71,7 +71,7 @@
 <?php } else { ?>
                 <p class="congrats">It's a draw!</p>
 <?php } ?>
-				<p><span><?= htmlentities($postcode1) ?></span> scored <span><?= htmlentities($result["_score1"]) ?></span> points and <span><?= htmlentities($postcode2) ?></span> scored <span><?= htmlentities($result["_score2"]) ?></span> points.</p>
+				<p><span><?= htmlentities($postcode1) ?></span> scored <span id="leftScore"><?= htmlentities($result["_score1"]) ?></span> points and <span><?= htmlentities($postcode2) ?></span> scored <span id="rightScore"><?= htmlentities($result["_score2"]) ?></span> points.</p>
 			</div>
 
             <ul id="results">
