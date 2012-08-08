@@ -6,14 +6,13 @@
 		$url="https://maps.googleapis.com/maps/api/place/textsearch/json";
 		$argstr="?query=".$criteria."+near+".$postcode."&sensor=false&key=".GOOGLE_API_KEY;
 		$argstr.="&location=".$lat.",".$lng."&radius=20000";
-        echo $argstr;
         curl_setopt($c, CURLOPT_URL, $url . $argstr);
         curl_setopt($c, CURLOPT_RETURNTRANSFER, TRUE);
         $data = curl_exec($c);
         curl_close($c);
         $d = json_decode($data);
 		
-        var_dump($d);
+        //var_dump($d);
         
 		//gets the lat and long of the first result
 		$endloclat=$d->results[0]->geometry->location->lat;
@@ -35,6 +34,11 @@
         $data = curl_exec($c);
         curl_close($c);
         $d = json_decode($data);
+        
+        if ($d->status != "OK") {
+            die($d->status);
+        }
+        
         $no_of_legs = count($d->results->legs);
 		//the distance to the nearest place in miles
         return $d->results[0]->legs[$no_of_legs-1]->distance->value;
