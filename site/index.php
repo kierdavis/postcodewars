@@ -23,7 +23,7 @@
 
 <html>
     <head>
-        <title>PostCode Wars</title>
+        <title>Postcode Wars</title>
 
         <link href="/static/css/results.css" rel="stylesheet" type="text/css" />    
         <script src="/static/js/jquery-1.7.2.min.js" type="text/javascript"></script>
@@ -45,7 +45,7 @@
 		</div>
 
         <header>
-            <h1>PostCode Wars</h1>
+            <h1>Postcode Wars</h1>
         </header>
 
         <div id="content">
