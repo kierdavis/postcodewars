@@ -1,10 +1,10 @@
 <?php
 	//gets the proximity to the nearest A&E department using Google places API
 	require_once "include.php";
-	function get_nearest_result($postcode,$criteria,$lat,$lng){
+	function get_nearest_result($postcode,$criteria,$type,$lat,$lng){
 	    $c = curl_init();
 		$url="https://maps.googleapis.com/maps/api/place/textsearch/json";
-		$argstr="?query=".$criteria."+near+".$postcode."&sensor=false&key=".GOOGLE_API_KEY;
+		$argstr="?query=".$criteria."+near+".$postcode."&types=".$type."&sensor=false&key=".GOOGLE_API_KEY;
 		$argstr.="&location=".$lat.",".$lng."&radius=20000";
         curl_setopt($c, CURLOPT_URL, $url . $argstr);
         curl_setopt($c, CURLOPT_RETURNTRANSFER, TRUE);
@@ -19,7 +19,7 @@
 		$endloclng=$d->results[0]->geometry->location->lng;
 		return array("geo"=>array($endloclat,$endloclng),"name"=>$d->results[0]->name,"data"=>json_encode($d->results));
 	}
-	function dist_to_result($postcode,$criteria,$lat,$lng){
+	function dist_to_result($postcode,$criteria,$type,$lat,$lng){
 		$nearest_of_type=get_nearest_result($postcode,$criteria,$lat,$lng);
 		$nearest_lat_lng=$nearest_of_type["geo"];
 		//do google dist calc using API, like below but changed arguments
