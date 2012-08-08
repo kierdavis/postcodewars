@@ -85,9 +85,17 @@
             </ul>
 
 <?php
-    }
+    }	
 ?>
-
+		<div class="btn-group dropup">
+			<button class="btn">Settings</button>
+			<button class="btn dropdown-toggle" data-toggle="dropdown">
+			<span class="caret"></span>
+			</button>
+  <ul class="dropdown-menu">
+    <!-- dropdown menu links -->
+  </ul>
+</div>
         </div>
 
         <footer>
