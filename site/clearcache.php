@@ -5,6 +5,6 @@
         echo "MySQL Error: " . $db->error . "\n";
     }
     else {
-        echo "Cache cleared.\n"
+        echo "Cache cleared.\n";
     }
 ?>
