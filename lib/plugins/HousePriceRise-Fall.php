@@ -34,7 +34,7 @@
         //     "town" => the county-electoral area
         public function get_result($db, $location) {
 			$townrefined = $location["town"];
-			$housepriceunrefined = (file_get_contents("http://api.nestoria.co.uk/api?country=uk&pretty=1&action=metadata&place_name=" . $townrefined[0] . "&encoding=xml"));
+			$housepriceunrefined = (file_get_contents("http://api.nestoria.co.uk/api?country=uk&pretty=1&action=metadata&place_name=" . $townrefined . "&encoding=xml"));
 			
 			//work out how to get oldest and newest house data, and call them $oldhd and $newhd
 			//
