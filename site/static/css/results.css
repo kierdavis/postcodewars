@@ -327,7 +327,13 @@ footer p {
 	text-align: center;
 }
 
-#options input[type="checkbox"] {
+#settings_button {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+
+#settingsPanel input[type="checkbox"] {
     background-image: -webkit-linear-gradient(hsla(0,0%,0%,.1), hsla(0,0%,100%,.1)),
                       -webkit-linear-gradient(left, #f66 50%, #6f6 50%);
     background-size: 100% 100%, 200% 100%;
@@ -349,7 +355,7 @@ footer p {
     -webkit-transition: .15s;
 }
 
-#options input[type="checkbox"]:after {
+#settingsPanel input[type="checkbox"]:after {
     background-color: #eee;
     background-image: -webkit-linear-gradient(hsla(0,0%,100%,.1), hsla(0,0%,0%,.1));
     border-radius: 25px;
@@ -366,13 +372,13 @@ footer p {
     width: 10px;
 }
 
-#options input[type="checkbox"]:checked {
+#settingsPanel input[type="checkbox"]:checked {
     background-position: 0 0, 15px 0;
     padding-left: 10px;
     padding-right: 0;
 }
 
-#options input[type="checkbox"]:hover:before {
+#settingsPanel input[type="checkbox"]:hover:before {
     background: hsla(0,0%,0%,.25);
     border-radius: 10px;
     color: #e4ded4;
@@ -388,13 +394,13 @@ footer p {
     width: 20px;
 }
 
-#options input[type="checkbox"]:checked:hover:before {
+#settingsPanel input[type="checkbox"]:checked:hover:before {
     content: '✔';
 }
 
 /* Range */
 
-#options input[type="range"] {
+#settingsPanel input[type="range"] {
     background-image: -webkit-linear-gradient(left, hsla(0,0%,100%,.1) 45%, transparent 45%),
                       -webkit-linear-gradient(hsla(0,0%,0%,.1), hsla(0,0%,100%,.1)),
                       -webkit-linear-gradient(left, #f66, #6cf);
@@ -415,7 +421,7 @@ footer p {
     -webkit-transition: .15s;
 }
 
-#options input[type="range"]::-webkit-slider-thumb {
+#settingsPanel input[type="range"]::-webkit-slider-thumb {
     background-color: #eee;
     background-image: -webkit-linear-gradient(hsla(0,0%,100%,.1), hsla(0,0%,0%,.1));
     border-radius: 25px;
