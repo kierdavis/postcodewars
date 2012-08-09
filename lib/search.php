@@ -24,6 +24,8 @@
     );
     
     function load_from_cache($db, $plugin, $location) {
+        global $plugin_log;
+        
         $postcode_encoded = $db->real_escape_string($location["postcode"]);
         $plugin_encoded = $db->real_escape_string($plugin->name);
         $res = $db->query("SELECT value FROM cache WHERE postcode = '$postcode_encoded' AND plugin = '$plugin_encoded'");
@@ -41,6 +43,8 @@
     }
     
     function store_to_cache($db, $plugin, $location, $result) {
+        global $plugin_log;
+        
         $postcode_encoded = $db->real_escape_string($location["postcode"]);
         $plugin_encoded = $db->real_escape_string($plugin->name);
         $result_encoded = $db->real_escape_string($result);
@@ -52,6 +56,8 @@
     }
     
     function get_result($db, $plugin, $location) {
+        global $plugin_log;
+        
         $res = load_from_cache($db, $plugin, $location);
         if ($res === "ERROR") {
             return "ERROR";
@@ -65,7 +71,7 @@
             }
             
             catch (Exception $e) {
-                fwrite($plugin_log, "Error from plugin '" . $name . "': " . $e->getMessage() . "\n" . $e->getTraceAsString() . "\n");
+                fwrite($plugin_log, "Error from plugin '" . $plugin->name . "': " . $e->getMessage() . "\n" . $e->getTraceAsString() . "\n");
                 return "ERROR";
             }
         }
@@ -98,7 +104,7 @@
             
             if (!array_key_exists($category, $breakdown)) {
                 $breakdown[$category] = array(
-                    "_name" => $category_names[$category],
+                    "_name" => array_key_exists($category, $category_names) ? $category_names[$category] : $category,
                     "_score1" => 0,
                     "_score2" => 0,
                 );
@@ -107,7 +113,7 @@
             $r1 = get_result($db, $plugin, $location1);
             $r2 = get_result($db, $plugin, $location2);
             
-            echo $r1 . " " . $r2 . "\n";
+            //echo $r1 . " " . $r2 . "\n";
             
             if ($r1 === "ERROR" || $r2 === "ERROR") {
                 continue;
@@ -125,13 +131,18 @@
                 }
                 
                 $winner2 = !$winner1;
-                
-                if ($winner1) {
-                    $breakdown[$category]["_score1"]++;
-                }
-                else {
-                    $breakdown[$category]["_score2"]++;
-                }
+            }
+            
+            else if (GET_POINT_ON_DRAW) {
+                $winner1 = true;
+                $winner2 = true;
+            }
+            
+            if ($winner1) {
+                $breakdown[$category]["_score1"]++;
+            }
+            if ($winner2) {
+                $breakdown[$category]["_score2"]++;
             }
             
             $breakdown[$category][$name] = array(
