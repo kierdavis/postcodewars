@@ -4,9 +4,10 @@ $(document).ready(function() {
 	//FIXME
 	//Cookie does not remember hide/show settings on load
 	//Cookie somehow overides the setting code and shows it on load (by default the settings are meant to be hidden).
-	$("#settingsPanel ul li.children").each(function() {
-		var cookieName = $($(this).children()).attr("id").replace("-visibility", "");
+	$("#settingsPanel ul li input").each(function() {
+		var cookieName = $(this).attr("id").replace("-visibility", "");
 		var value = $.cookie(cookieName);
+		$(this).val(value == true);
 		if (value == true) {
 			$("#" + cookieName).show();
 		} else {
@@ -20,7 +21,7 @@ $(document).ready(function() {
 	});
 	//When a setting is changed this function saves that change in cookies
 	$("#settingsPanel input").change(function() {
-		var cookieName = $($(this).children()).attr("id").replace("-visibility", "");
+		var cookieName = $(this).attr("id").replace("-visibility", "");
 		var newValue = $(this).is(':checked');
 		$.cookie(cookieName, newValue, {
 			expires : 7,
