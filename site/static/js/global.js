@@ -6,7 +6,7 @@ $(document).ready(function() {
 	//Cookie somehow overides the setting code and shows it on load (by default the settings are meant to be hidden).
 	$("#settingsPanel ul li input").each(function() {
 		var cookieName = $(this).attr("id").replace("-visibility", "");
-		var value = $.cookie(cookieName);
+		var value = ($.cookie(cookieName) == "true");
 		$(this).val(value == true);
 		if (value == true) {
 			$("#" + cookieName).show();
