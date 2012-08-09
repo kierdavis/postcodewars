@@ -30,10 +30,10 @@
         //     "lng" => the longitude
         public function get_result($db, $location) {
             // Do something with $location
-			$townunrefined = (file_get_contents("http://openlylocal.com/areas/postcodes/" . $location["postcode"] . ".xml"));
+			$townunrefined = (file_get_contents("http://www.uk-postcodes.com/postcode/" . $location["postcode"] . ".xml"));
 			//work out how to get the town name from the output an call it $townrefined
 			$xmlfile = new SimpleXMLElement($townunrefined);
-			$townrefined = ($xmlfile->xpath('result/administrative/electoral-district/title');
+			$townrefined = ($xmlfile->xpath('result/administrative/electoral-district/title'));
 			//
 			$housepriceunrefined = (file_get_contents("http://api.nestoria.co.uk/api?country=uk&pretty=1&action=metadata&place_name=" . $townrefined[0] . "&encoding=xml"));
 			
@@ -43,11 +43,14 @@
 			$oldhp = ($xmlfile2->xpaath('opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2011_m2"]/@avg_price'));
 			$newhp = ($xmlfile2->xpaath('opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2012_m2"]/@avg_price'));
 			//
-			if $oldhp[0] >= $newhp[0]:
-				$result = ($oldhp[0] / $newhp[0]) * 100
-			else:
-				$result = ($newhp[0] / $oldhp[0]) * 100
-            
+			if $oldhp[0] >= $newhp[0]
+				{
+				$result = ($oldhp[0] / $newhp[0]) * 100;
+				}
+			else
+				{
+				$result = ($newhp[0] / $oldhp[0]) * 100;
+				}
             // Should return a number - this is the result that is displayed.
             return $result;
         }
