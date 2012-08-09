@@ -37,8 +37,8 @@ $(document).ready(function() {
 		event.preventDefault();
 		$("#search").after($('<div class="loader"></div>'));
 
-		var postcode1 = $("#battle_postcode1").text();
-		var postcode2 = $("#battle_postcode2").text();
+		var postcode1 = $("#battle_postcode1").val();
+		var postcode2 = $("#battle_postcode2").val();
 
 		var url = "/results-json.php?postcode1=" + postcode1 + "&postcode2=" + postcode2;
 
