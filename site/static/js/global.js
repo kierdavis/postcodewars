@@ -40,7 +40,7 @@ $(document).ready(function() {
 		var postcode1 = $("#battle_postcode1").val();
 		var postcode2 = $("#battle_postcode2").val();
 
-		var url = "/results-json.php?postcode1=" + postcode1 + "&postcode2=" + postcode2;
+		var url = "/results-json.php?postcode1=" + escape(postcode1) + "&postcode2=" + escape(postcode2);
 
 		$.getJSON(url, function(data) {
 			$(".loader").remove();
