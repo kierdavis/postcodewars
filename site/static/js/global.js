@@ -7,7 +7,7 @@ $(document).ready(function() {
 	
 	$("#settingsPanel input").change(function() {
 		var cookieName = $(this).attr("id");
-		var newValue = $(this).checked();
+		var newValue = $(this).is(':checked');
 		alert(cookieName + " " + newValue);
 		$.cookie(cookieName, newValue, { expires: 7, path: '/' });
 	});
