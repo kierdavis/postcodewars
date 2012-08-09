@@ -58,6 +58,7 @@
         
 <?php
         foreach ($result as $categoryID => $category) {
+            if ($categoryID[0] != "_") {
 ?>
 
                 <li class="section">
@@ -66,8 +67,8 @@
                     <p class="score-right"><?= htmlentities($category["_score2"]) ?></p>       
 
 <?php
-            foreach ($category as $itemID => $item) {
-                if ($itemID[0] != "_") {
+                foreach ($category as $itemID => $item) {
+                    if ($itemID[0] != "_") {
 ?>
 
                     <ul class="stat clearfix">
@@ -76,11 +77,12 @@
                         <li class="<?= $item["winner2"] ? "win" : "lose" ?>"><span><?= htmlentities($item["result2"] . " " . $item["units"]) ?></span></li>
                     </ul>
 <?php
+                    }
                 }
-            }
 ?>
                 </li>
 <?php
+            }
         }
 ?>
             </ul>
