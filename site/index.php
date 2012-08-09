@@ -86,7 +86,7 @@
             </ul>
 
 <?php
-    }	<div class="btn-group dropup">
+    } ?>	<div class="btn-group dropup">
 			<button class="btn">Settings</button>
 			<button class="btn dropdown-toggle" data-toggle="dropdown">
 			<span class="caret"></span>
@@ -95,7 +95,7 @@
     				SETTINGS COMING SOON!
   			</ul>
 		</div>
-?>
+
 
   <ul class="dropdown-menu">
     <!-- dropdown menu links -->
