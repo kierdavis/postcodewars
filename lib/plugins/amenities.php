@@ -5,7 +5,7 @@
 		public $category = "amenities";						// Category identifier - lowercase and hyphen-separated
 		public $name = "art-galleries-nearby";						// Name identifier - ""
 		public $hrname = "Art galleries nearby";	// Displayed in results table
-		public $units = "";												// Units of the results
+		public $units = "within 2km";							// Units of the results (/radius)
 		public $better = HIGHER_IS_BETTER;				// LOWER_IS_BETTER or HIGHER_IS_BETTER - determines winner
 		public $can_cache = FALSE;								// If results are cached or not
 		
@@ -25,7 +25,7 @@
 		public $category = "amenities";
 		public $name = "bars-nearby";
 		public $hrname = "Bars nearby";
-		public $units = "";
+		public $units = "within 500m";
 		public $better = HIGHER_IS_BETTER;
 		public $can_cache = FALSE;
 		
@@ -42,7 +42,7 @@
 		public $category = "amenities";
 		public $name = "museums-nearby";
 		public $hrname = "Museums nearby";
-		public $units = "";
+		public $units = "within 2km";
 		public $better = HIGHER_IS_BETTER;
 		public $can_cache = FALSE;
 		
@@ -59,7 +59,7 @@
 		public $category = "amenities";
 		public $name = "restaurants-nearby";
 		public $hrname = "Restaurants nearby";
-		public $units = "";
+		public $units = "within 500m";
 		public $better = HIGHER_IS_BETTER;
 		public $can_cache = FALSE;
 		
