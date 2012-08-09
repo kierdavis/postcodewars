@@ -6,4 +6,3 @@
 	<Response>
 	    <Sms>IT'S WORKING! YEAH!</Sms>
 	</Response>
-?>

@@ -6,4 +6,3 @@
 	<Response>
 	    <Sms>Oops! Something's gone a bit wobbly.</Sms>
 	</Response>
-?>
