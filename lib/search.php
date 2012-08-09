@@ -119,6 +119,9 @@
         
         $breakdown = array();
         
+        $score1 = 0;
+        $score2 = 0;
+        
         foreach ($plugins as $plugin) {
             $category = $plugin->category;
             $name = $plugin->name;
@@ -164,9 +167,11 @@
             
             if ($winner1) {
                 $breakdown[$category]["_score1"]++;
+                $score1++;
             }
             if ($winner2) {
                 $breakdown[$category]["_score2"]++;
+                $score2++;
             }
             
             $breakdown[$category][$name] = array(
