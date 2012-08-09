@@ -6,7 +6,7 @@
 		$url="https://maps.googleapis.com/maps/api/place/search/json";
 		$argstr="?types=".$type."&sensor=false&key=".GOOGLE_API_KEY;
 		$argstr.="&location=".$lat.",".$lng;
-		if($rankbydist){
+		if(isset($rankbydist)) {
 			$argstr.="&rankby=distance";
 		}
 		else{
