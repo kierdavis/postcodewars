@@ -24,7 +24,7 @@
         "amenities" => "Amenities",
         "schools" => "Schools",
         "transport" => "Transport",
-        "crime" => "Crime (per 1000 people)",
+        "crime" => "Crime (offences per 1000 people)",
 		"house-price" => "House Prices"
 
     );
