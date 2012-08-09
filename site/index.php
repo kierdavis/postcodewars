@@ -57,7 +57,7 @@
 <?php } else { ?>
                 <p class="congrats">It's a draw!</p>
 <?php } ?>
-				<p>You scored <span><?= htmlentities($result["_score1"]) ?></span> points and they scored <span><?= htmlentities($result["_score2"]) ?></span> points.</p>
+				<p><span><?= htmlentities($result["_score1"]) ?></span> -- <span><?= htmlentities($result["_score2"]) ?></span></p>
 			</div>
 
             <ul id="results">
