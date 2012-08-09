@@ -41,7 +41,9 @@
 			$xmlfile2 = new SimpleXMLElement($housepriceunrefined);
 			$oldhp = ($xmlfile2->xpath('opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2011_m2"]/@avg_price'));
 			$newhp = ($xmlfile2->xpath('opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2012_m2"]/@avg_price'));
-			//
+			
+            logmsg("price-rise-fall-percentage", $oldhp . " " . $newhp);
+            
 			if ($oldhp[0] >= $newhp[0]) {
 				$result = ($oldhp[0] / $newhp[0]) * 100;
             }
