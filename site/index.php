@@ -26,7 +26,9 @@
 
         <link href="/static/css/results.css" rel="stylesheet" type="text/css" />    
         <script src="/static/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+		<script src="/static/js/jquery.cookie.js" type="text/javascript"></script>
         <script src="/static/js/global.js" type="text/javascript"></script>
+		
     </head>
 
     <body>
@@ -37,7 +39,7 @@
 				<li>Crime Score <input checked id="crimebox" type="checkbox" /></li>
 				<li>School Score <input checked id="schoolbox" type="checkbox" /></li>
 				<li>Amenities Score <input checked id="aebox" type="checkbox" /></li>
-				<li>House Price Score <input checked id="hpbox" type="checkbox" /></li>
+				<li>House Price Score <input checked id="house-prices-visibility" type="checkbox" /></li>
 			</ul>
 		</div>
 
