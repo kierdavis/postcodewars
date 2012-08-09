@@ -288,7 +288,10 @@ header h1 {
 }
 
 #results .section .stat li .units {
-	font-size: 18px;
+	color: #aaa;
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: normal;
 }
 
 #results .section .stat li:last-child {
@@ -323,32 +326,8 @@ footer p {
 	margin: 0;
 	text-align: center;
 }
-<<<<<<< HEAD
-html {
 
-    box-shadow: inset 0 0 100px hsla(0,0%,0%,.1);
-    height: 100%;
-    padding: 50px;
-    -webkit-box-sizing: border-box;
-}
-body{
-    font-family: Helvetica, Arial, sans-serif;
-    color: #666;
-    background-color: #eee;
-    background-image: -webkit-linear-gradient(hsla(0,0%,0%,.1), hsla(0,0%,100%,.1));
-    text-shadow: 0px -1px 0px rgba(0,0,0,.5); /* 50% black coming from the top */
-}
-div#settingsPanel{
-display:none;
-}
-input {
-    display: block;
-    margin-bottom: 20px;
-}
-
-/* Checkbox */
-
-input[type="checkbox"] {
+#options input[type="checkbox"] {
     background-image: -webkit-linear-gradient(hsla(0,0%,0%,.1), hsla(0,0%,100%,.1)),
                       -webkit-linear-gradient(left, #f66 50%, #6f6 50%);
     background-size: 100% 100%, 200% 100%;
@@ -369,7 +348,8 @@ input[type="checkbox"] {
     -webkit-appearance: none;
     -webkit-transition: .15s;
 }
-input[type="checkbox"]:after {
+
+#options input[type="checkbox"]:after {
     background-color: #eee;
     background-image: -webkit-linear-gradient(hsla(0,0%,100%,.1), hsla(0,0%,0%,.1));
     border-radius: 25px;
@@ -385,12 +365,14 @@ input[type="checkbox"]:after {
     top: 0;
     width: 10px;
 }
-input[type="checkbox"]:checked {
+
+#options input[type="checkbox"]:checked {
     background-position: 0 0, 15px 0;
     padding-left: 10px;
     padding-right: 0;
 }
-input[type="checkbox"]:hover:before {
+
+#options input[type="checkbox"]:hover:before {
     background: hsla(0,0%,0%,.25);
     border-radius: 10px;
     color: #e4ded4;
@@ -405,13 +387,14 @@ input[type="checkbox"]:hover:before {
     top: -5px;
     width: 20px;
 }
-input[type="checkbox"]:checked:hover:before {
+
+#options input[type="checkbox"]:checked:hover:before {
     content: '✔';
 }
 
 /* Range */
 
-input[type="range"] {
+#options input[type="range"] {
     background-image: -webkit-linear-gradient(left, hsla(0,0%,100%,.1) 45%, transparent 45%),
                       -webkit-linear-gradient(hsla(0,0%,0%,.1), hsla(0,0%,100%,.1)),
                       -webkit-linear-gradient(left, #f66, #6cf);
@@ -431,7 +414,8 @@ input[type="range"] {
     -webkit-appearance: none;
     -webkit-transition: .15s;
 }
-input[type="range"]::-webkit-slider-thumb {
+
+#options input[type="range"]::-webkit-slider-thumb {
     background-color: #eee;
     background-image: -webkit-linear-gradient(hsla(0,0%,100%,.1), hsla(0,0%,0%,.1));
     border-radius: 25px;
@@ -448,7 +432,6 @@ input[type="range"]::-webkit-slider-thumb {
     width: 10px;
     -webkit-appearance: none;
 }​
-=======
 
 .loader {
 	background: url('/static/images/loader.gif');
@@ -457,4 +440,3 @@ input[type="range"]::-webkit-slider-thumb {
 	margin: 60px auto;
 	width: 48px;
 }
->>>>>>> 9d94f2b979b8c0d9602cce14e8d5795a6289a707
