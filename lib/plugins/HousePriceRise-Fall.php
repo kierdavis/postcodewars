@@ -43,8 +43,8 @@
 			//work out how to get oldest and newest house data, and call them $oldhd and $newhd
 			//
 			$xmlfile2 = new SimpleXMLElement($housepriceunrefined);
-			$oldhp = ($xmlfile2->xpaath('opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2011_m2"]/@avg_price'));
-			$newhp = ($xmlfile2->xpaath('opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2012_m2"]/@avg_price'));
+			$oldhp = ($xmlfile2->xpath('opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2011_m2"]/@avg_price'));
+			$newhp = ($xmlfile2->xpath('opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2012_m2"]/@avg_price'));
 			//
 			if ($oldhp[0] >= $newhp[0]) {
 				$result = ($oldhp[0] / $newhp[0]) * 100;
