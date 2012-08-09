@@ -60,7 +60,7 @@
         $postcode_encoded = $db->real_escape_string($location["postcode"]);
         $plugin_encoded = $db->real_escape_string($plugin->name);
         $result_encoded = $db->real_escape_string($result);
-        $res = $db->query("INSERT INTO cache VALUES ('$plugin_encoded', '$postcode_encoded', $result_encoded, UNIX_TIMESTAMP(), NULL)");
+        $res = $db->query("INSERT INTO cache VALUES ('$plugin_encoded', '$postcode_encoded', '$result_encoded', UNIX_TIMESTAMP(), NULL)");
         if ($res === FALSE) {
             fwrite($plugin_log, "MySQL error: " . $db->error . "\n");
             return FALSE;
@@ -106,18 +106,21 @@
     function search($postcode1, $postcode2) {
         global $plugins, $category_names, $plugin_log;
         
-        // Remove spaces
-        $postcode1 = str_replace(" ", "", $postcode1);
-        $postcode2 = str_replace(" ", "", $postcode2);
+        // Sanitise
+        $postcode1 = strtoupper(str_replace(" ", "", $postcode1));
+        $postcode2 = strtoupper(str_replace(" ", "", $postcode2));
        
         // Connect to the DB
-        $db = new mysqli("localhost", "yrs2012app-user", "vOdQ04wDTtIS3GeylBER1nNrAo76ZLFJU9hzuxsKmCPi8WcHqbYfVpjXkMag", "yrs2012app");
+        $db = new mysqli("localhost", "yrs2012app-user", "vOdQ04wDTtIS3GeylBER1nNrAo76ZLFJ", "yrs2012app");
         
         // Calculate latitude & longitude
         $location1 = postcode2location($db, $postcode1);
         $location2 = postcode2location($db, $postcode2);
         
         $breakdown = array();
+        
+        $score1 = 0;
+        $score2 = 0;
         
         foreach ($plugins as $plugin) {
             $category = $plugin->category;
@@ -164,9 +167,11 @@
             
             if ($winner1) {
                 $breakdown[$category]["_score1"]++;
+                $score1++;
             }
             if ($winner2) {
                 $breakdown[$category]["_score2"]++;
+                $score2++;
             }
             
             $breakdown[$category][$name] = array(
