@@ -37,6 +37,8 @@
         	//find the nearest school!
 			logmsg("school-results", "first line of schhol results");
         	$nearest_school=get_nearest_result($loc["postcode"],"","school",$loc["lat"],$loc["lng"]);
+			logmsg("school-results", json_encode($nearest_school));
+        	
 			$addr_of_school=$nearest_school->formatted_address;
 			$matches=array();
 			logmsg("school-results", $addr_of_school);
