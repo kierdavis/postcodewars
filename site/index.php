@@ -92,7 +92,7 @@
 			<span class="caret"></span>
 			</button>
   			<ul class="dropdown-menu">
-    				SETTINGS COMING SOON!
+    				BLAH BLAH BLAH
   			</ul>
 		</div>
 ?>
