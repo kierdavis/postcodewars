@@ -62,7 +62,7 @@
 ?>
 
                 <li class="section">
-                    <h3><?= htmlentities($category["_name"]) ?></h3>
+					<h3><?= htmlentities($category["_name"]) ?></h3>
                     <p class="score-left"><?= htmlentities($category["_score1"]) ?></p>
                     <p class="score-right"><?= htmlentities($category["_score2"]) ?></p>       
 
@@ -96,15 +96,17 @@
             </ul>
 
 <?php
-    } ?>	<div class="btn-group dropup">
-			<button class="btn">Settings</button>
-			<button class="btn dropdown-toggle" data-toggle="dropdown">
-			<span class="caret"></span>
-			</button>
-  			<ul class="dropdown-menu">
-    				SETTINGS COMING SOON!
-  			</ul>
-		</div>
+    } ?>	<input class="flip" type="button" value="Settings" />
+    <div id="settingsPanel">
+    <h1><font face="Arial">Settings</h1>
+<h3>Here you can change what goes to war!</h3>
+        <hr />
+    <div>Crime Score : <input checked id="crimebox" type="checkbox" /></div>
+    <div>School Score : <input checked id="schoolbox" type="checkbox" /></div>
+    <div>Proximity to A&E Score : <input checked id="aebox" type="checkbox" /></div>
+    <div>House Price Score : <input checked id="hpbox" type="checkbox" /></div>
+        <hr />
+        </div>
   <ul class="dropdown-menu">
     <!-- dropdown menu links -->
   </ul>
