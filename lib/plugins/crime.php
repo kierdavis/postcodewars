@@ -252,4 +252,12 @@ class crime_violent {
 		}
 		
     }
+
+	// Add the plugins
+	$plugins[] = new crime_all();
+	$plugins[] = new crime_asb();
+	$plugins[] = new crime_drugs();
+	$plugins[] = new crime_cda();
+	$plugins[] = new crime_burglary();
+	$plugins[] = new crime_violent();
 ?>
