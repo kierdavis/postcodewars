@@ -1,5 +1,5 @@
 	<?php
-	
+	require_once "../lib/proximity.php";
     // Copy this file into lib/plugins/ and name it appropriately. Then follow the comments in this
     // file to fill in the gaps.
 
@@ -32,19 +32,33 @@
         //     "postcode" => the postcode
         //     "lat" => the latitude
         //     "lng" => the longitude
-        public function get_result($db, $location) {
+        public function get_result($db, $loc) {
+        	
+        	//find the nearest school!
+			logmsg("school-results", "first line of schhol results");
+        	$nearest_school=get_nearest_result($loc["postcode"],"","school",$loc["lat"],$loc["lng"]);
+			$addr_of_school=$nearest_school->formatted_address;
+			$matches=array();
+			logmsg("school-results", $addr_of_school);
+			preg_match("[a-zA-Z]{2}[1-9]{1,2}[a-zA-Z]?\s?[1-9]{1}[a-zA-Z]{2}", $addr_of_school, $matches);
+			logmsg("school-results", json_encode($matches));
+			if(!array_key_exists(0, $matches)){
+				return false;
+			};
+        	$postcode_of_school=$matches[0];
             // Do something with $location
 			//TO DO : We need to confirm that the MySQL column names and table name is correct if not then change it!
-            $postcode_encoded = $db->real_escape_string($location["postcode"]);
+            $postcode_encoded = $db->real_escape_string($postcode_of_school);
 			$queryToSend = "SELECT testscore FROM schools WHERE postcode = \"$postcode_encoded\"";
 			$res = $db->query($queryToSend);
+			logmsg("school-results", "got to line 51");
             
             if ($res->num_rows == 0) {
-                return 0.0;
+                return false;
             }
             
             $score = 0.0;
-
+			logmsg("school-results", "got to line 57");
 			for ($i = 0; $i < $res->num_rows; $i++) {
 				$row = $res->fetch_assoc();
 				$score += $row["testscore"];
