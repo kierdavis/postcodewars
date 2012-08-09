@@ -37,6 +37,5 @@
     
     // Update the name of the class here too.
     // This inserts the plugin into the plugin index.
-    $plugins["trainsdist"] = new TrainsDist();
-*/
+    // $plugins["trainsdist"] = new TrainsDist();
 ?>
