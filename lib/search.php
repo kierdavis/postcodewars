@@ -4,6 +4,9 @@
     
     $plugins = array();
     $plugin_log = fopen("plugin.log", "a");
+    if ($plugin_log === FALSE) {
+        die("Could not open plugin.log for appending");
+    }
     
     function logmsg($plugin_name, $msg) {
         global $plugin_log;
@@ -31,7 +34,7 @@
         $res = $db->query("SELECT value FROM cache WHERE postcode = '$postcode_encoded' AND plugin = '$plugin_encoded'");
         if ($res === FALSE) {
             fwrite($plugin_log, "MySQL error: " . $db->error . "\n");
-            return "ERROR";
+            return FALSE;
         }
         
         if ($res->num_rows == 0) {
@@ -39,7 +42,8 @@
         }
         
         $row = $res->fetch_row();
-        return $row[0];
+        $v = $row[0];
+        return $v;
     }
     
     function store_to_cache($db, $plugin, $location, $result) {
@@ -51,7 +55,7 @@
         $res = $db->query("INSERT INTO cache VALUES ('$plugin_encoded', '$postcode_encoded', $result_encoded)");
         if ($res === FALSE) {
             fwrite($plugin_log, "MySQL error: " . $db->error . "\n");
-            return "ERROR";
+            return FALSE;
         }
     }
     
@@ -59,8 +63,8 @@
         global $plugin_log;
         
         $res = load_from_cache($db, $plugin, $location);
-        if ($res === "ERROR") {
-            return "ERROR";
+        if ($res === FALSE) {
+            return FALSE;
         }
         
         if ($res === "NORESULT") {
@@ -72,7 +76,7 @@
             
             catch (Exception $e) {
                 fwrite($plugin_log, "Error from plugin '" . $plugin->name . "': " . $e->getMessage() . "\n" . $e->getTraceAsString() . "\n");
-                return "ERROR";
+                return FALSE;
             }
         }
         
@@ -115,7 +119,7 @@
             
             //echo $r1 . " " . $r2 . "\n";
             
-            if ($r1 === "ERROR" || $r2 === "ERROR") {
+            if ($r1 === FALSE || $r2 === FALSE) {
                 continue;
             }
             
