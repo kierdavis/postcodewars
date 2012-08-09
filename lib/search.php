@@ -54,8 +54,6 @@
         $plugin_encoded = $db->real_escape_string($plugin->name);
         $result_encoded = $db->real_escape_string($result);
         $res = $db->query("INSERT INTO cache VALUES ('$plugin_encoded', '$postcode_encoded', $result_encoded)");
-        echo "stored $plugin_encoded $postcode_encoded -> $result\n";
-        var_dump($res);
         if ($res === FALSE) {
             fwrite($plugin_log, "MySQL error: " . $db->error . "\n");
             return FALSE;
