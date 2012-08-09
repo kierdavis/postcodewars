@@ -1,5 +1,5 @@
 <?php
-	require_once "../lib/proximityDist.php";
+	require_once "../lib/proximity.php";
     // Copy this file into lib/plugins/ and name it appropriately. Then follow the comments in this
     // file to fill in the gaps.
     
@@ -37,6 +37,5 @@
     
     // Update the name of the class here too.
     // This inserts the plugin into the plugin index.
-    $plugins["trainsdist"] = new TrainsDist();
-*/
+    // $plugins["trainsdist"] = new TrainsDist();
 ?>
