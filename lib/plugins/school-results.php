@@ -39,6 +39,7 @@
 			$addr_of_school=$nearest_school->formatted_address;
 			$matches=array();
 			preg_match("[a-zA-Z]{2}[1-9]{1,2}[a-zA-Z]?\s?[1-9]{1}[a-zA-Z]{2}", $addr_of_school, $matches);
+			logmsg("school-results", json_encode($matches));
 			if(!array_key_exists(0, $matches)){
 				return false;
 			};
@@ -48,13 +49,14 @@
             $postcode_encoded = $db->real_escape_string($postcode_of_school);
 			$queryToSend = "SELECT testscore FROM schools WHERE postcode = \"$postcode_encoded\"";
 			$res = $db->query($queryToSend);
+			logmsg("school-results", "got to line 51");
             
             if ($res->num_rows == 0) {
                 return false;
             }
             
             $score = 0.0;
-
+			logmsg("school-results", "got to line 57");
 			for ($i = 0; $i < $res->num_rows; $i++) {
 				$row = $res->fetch_assoc();
 				$score += $row["testscore"];
