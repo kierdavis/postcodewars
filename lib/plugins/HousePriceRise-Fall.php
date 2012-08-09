@@ -34,7 +34,7 @@
         //     "town" => the county-electoral area
         public function get_result($db, $location) {
 			$townrefined = $location["town"];
-			$housepriceunrefined = (file_get_contents("http://api.nestoria.co.uk/api?country=uk&pretty=1&action=metadata&place_name=" . $townrefined[0] . "&encoding=xml"));
+			$housepriceunrefined = (file_get_contents("http://api.nestoria.co.uk/api?country=uk&pretty=1&action=metadata&place_name=" . $townrefined . "&encoding=xml"));
 			
 			//work out how to get oldest and newest house data, and call them $oldhd and $newhd
 			//
@@ -42,7 +42,7 @@
 			$oldhp = ($xmlfile2->xpath('opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2011_m2"]/@avg_price'));
 			$newhp = ($xmlfile2->xpath('opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2012_m2"]/@avg_price'));
 			
-            logmsg("price-rise-fall-percentage", $oldhp . " " . $newhp);
+            logmsg("price-rise-fall-percentage", $housepriceunrefined);
             
 			if ($oldhp[0] >= $newhp[0]) {
 				$result = ($oldhp[0] / $newhp[0]) * 100;
