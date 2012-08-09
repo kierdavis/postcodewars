@@ -42,12 +42,23 @@
 			$oldhp = ($xmlfile2->xpath('opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2011_m2"]/@avg_price'));
 			$newhp = ($xmlfile2->xpath('opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2012_m2"]/@avg_price'));
 			//
+			
 			if ($oldhp[0] >= $newhp[0]) {
+				if ($newphp[0] == 0) {
+				$result = 0 ;
+				}
+				else {
 				$result = ($oldhp[0] / $newhp[0]) * 100;
-            }
+				}
+			}
 			else {
+			if ($oldphp[0] == 0) {
+				$result = 0 ;
+				}
+				else {
 				$result = ($newhp[0] / $oldhp[0]) * 100;
-            }
+				}
+			}
             
             // Should return a number - this is the result that is displayed.
             return $result;
