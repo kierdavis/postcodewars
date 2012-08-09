@@ -36,10 +36,10 @@
 			<h2>Settings</h2>
 			<p><b>Here you can change what goes to war!</b></p>
 			<ul>
-				<li>Crime Score <input checked id="crimebox" type="checkbox" /></li>
-				<li>School Score <input checked id="schoolbox" type="checkbox" /></li>
-				<li>Amenities Score <input checked id="aebox" type="checkbox" /></li>
-				<li>House Price Score <input checked id="house-prices-visibility" type="checkbox" /></li>
+				<li>Crime Score <input checked id="crime-visibility"" type="checkbox" /></li>
+				<li>School Score <input checked id="schools-visibility" type="checkbox" /></li>
+				<li>Amenities Score <input checked id="amenities-visibility" type="checkbox" /></li>
+				<li>House Price Score <input checked id="house-price-visibility" type="checkbox" /></li>
 			</ul>
 		</div>
 
@@ -51,9 +51,9 @@
             <div id="search" class="clearfix">
                 <form action="/" id="battle" method="get">
                     <p>
-                        <input type="search" name="postcode1" id="battle_postcode1" value="<?= htmlentities($postcode1) ?>" placeholder="Your postcode" />
-                        <button type="submit" id="battle_submit">Battle!</button>
-                        <input type="search" name="postcode2" id="battle_postcode2" value="<?= htmlentities($postcode2) ?>" placeholder="Their postcode" />
+                        <input type="text" name="postcode1" id="battle_postcode1" tabindex="1" value="<?= htmlentities($postcode1) ?>" placeholder="Your postcode" />
+                        <button type="submit" tabindex="3" id="battle_submit">Battle!</button>
+                        <input type="text" name="postcode2" tabindex="2" id="battle_postcode2" value="<?= htmlentities($postcode2) ?>" placeholder="Their postcode" />
                     </p>
                 </form>
             </div>
