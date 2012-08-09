@@ -83,7 +83,6 @@
             </ul>
 
 <?php
-<<<<<<< HEAD
     } ?>	<div class="btn-group dropup">
 			<button class="btn">Settings</button>
 			<button class="btn dropdown-toggle" data-toggle="dropdown">
@@ -93,12 +92,6 @@
     				SETTINGS COMING SOON!
   			</ul>
 		</div>
-
-
-=======
-    }	
-?>
->>>>>>> 3ca8fa02d8e85cff389cf47f3ed8bd2f06ffb3f5
   <ul class="dropdown-menu">
     <!-- dropdown menu links -->
   </ul>
