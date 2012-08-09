@@ -1,5 +1,5 @@
-	<?php
-	
+<?php
+	require_once "../lib/proximity.php";
     // Copy this file into lib/plugins/ and name it appropriately. Then follow the comments in this
     // file to fill in the gaps.
 
@@ -7,15 +7,15 @@
     // the categories there, but you can define your own if you need to.
     
     // Change this name
-    class SchoolPlugin {
+    class Arts {
         // The category identifier - should be lowercase and hyphen-separated e.g. "crime"
-        public $category = "schools";
+        public $category = "amenities";
         
         // The name identifier - should be lowercase and hyphen-separated e.g. "school-proximity"
-        public $name = "school-results";
+        public $name = "arts";
         
         // The human-readable name - this will be displayed in the results table e.g. "School proximity"
-        public $hrname = "School Ofsted Results";
+        public $hrname = "Art Gallerys/Museums near-by";
         
         // The units that the results are returned in.
         public $units = "";
@@ -24,7 +24,7 @@
         public $better = HIGHER_IS_BETTER;
         
         // Whether the results from this are allowed to be cached.
-        public $can_cache = TRUE;
+        public $can_cache = FALSE;
         
         // The get_result method should perform the searches and return the two results.
         // $db is a mysqli object connected to the database.
@@ -32,29 +32,16 @@
         //     "postcode" => the postcode
         //     "lat" => the latitude
         //     "lng" => the longitude
-        public function get_result($db, $location) {
+        public function get_result($db, $loc) {
             // Do something with $location
-			//TO DO : We need to confirm that the MySQL column names and table name is correct if not then change it!
-            $postcode_encoded = $db->real_escape_string($location["postcode"]);
-			$queryToSend = "SELECT testscore FROM schools WHERE postcode = \"$postcode_encoded\"";
-			$res = $db->query($queryToSend);
-            
-            if ($res->num_rows == 0) {
-                return 0.0;
-            }
-            
-            $score = 0.0;
-
-			for ($i = 0; $i < $res->num_rows; $i++) {
-				$row = $res->fetch_assoc();
-				$score += $row["testscore"];
-			}
-            
-			return $score / $res->num_rows;
+            $result=get_all_results($loc["postcode"],"","art_gallery|museum",$loc["lat"],$loc["lng"],5000);
+            // Should return a number - this is the result that is displayed.
+            $no_of_arts=count($result);
+            return $no_of_arts;
         }
     }
     
     // Update the name of the class here too.
     // This inserts the plugin into the plugin index.
-    $plugins["schools"] = new SchoolPlugin();
+    $plugins["arts"] = new Arts();
 ?>
