@@ -34,7 +34,7 @@
         //     "lng" => the longitude
         public function get_result($db, $loc) {
             // Do something with $location
-            $result=get_all_results($loc["postcode"],"","art gallery",$loc["lat"],$loc["lng"],5000);
+            $result=get_all_results($loc["postcode"],"","art_gallery",$loc["lat"],$loc["lng"],5000);
             // Should return a number - this is the result that is displayed.
             $no_of_artgalleries=count($result);
             return $no_of_artgalleries;
