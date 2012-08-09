@@ -34,7 +34,7 @@
     <body>
 		<div id="settingsPanel">
 			<h2>Settings</h2>
-			<p style="border-bottom:2px solid #444"><b>Here you can change what goes to war!</b></p>
+			<p><b>Here you can change what goes to war!</b></p>
 			<ul>
 				<li>Crime Score <input checked id="crime-visibility"" type="checkbox" /></li>
 				<li>School Score <input checked id="schools-visibility" type="checkbox" /></li>
