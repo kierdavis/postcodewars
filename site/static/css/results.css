@@ -287,6 +287,10 @@ header h1 {
 	box-sizing: border-box;
 }
 
+#results .section .stat li .units {
+	font-size: 18px;
+}
+
 #results .section .stat li:last-child {
 	border-right: none;
 }
