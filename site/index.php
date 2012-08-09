@@ -86,6 +86,14 @@
 <?php
                 foreach ($category as $itemID => $item) {
                     if ($itemID[0] != "_") {
+                        if (substr($itemID, -7) == "-nearby") {
+                            if ($item["result1"] >= 20) {
+                                $item["result1"] = "20+"
+                            }
+                            if ($item["result2"] >= 20) {
+                                $item["result2"] = "20+"
+                            }
+                        }
 ?>
 
                     <ul class="stat clearfix">
