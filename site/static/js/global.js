@@ -7,7 +7,7 @@ $(document).ready(function() {
 	$("#settingsPanel ul li input").each(function() {
 		var cookieName = $(this).attr("id").replace("-visibility", "");
 		var value = ($.cookie(cookieName) == "true");
-		$(this).val(value == true);
+		$(this)attr('checked', value);
 		if (value == true) {
 			$("#" + cookieName).show();
 		} else {
