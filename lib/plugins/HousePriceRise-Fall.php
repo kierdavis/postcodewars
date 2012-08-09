@@ -22,6 +22,9 @@
         // Should be either LOWER_IS_BETTER or HIGHER_IS_BETTER - determines which result wins.
         public $better = LOWER_IS_BETTER;
         
+        // Whether the results from this are allowed to be cached.
+        public $can_cache = TRUE;
+        
         // The get_result method should perform the searches and return the two results.
         // $db is a mysqli object connected to the database.
         // $location is an associative array which contain the following entries:
@@ -33,7 +36,7 @@
 			$townunrefined = (file_get_contents("http://openlylocal.com/areas/postcodes/" . $location["postcode"] . ".xml"));
 			//work out how to get the town name from the output an call it $townrefined
 			$xmlfile = new SimpleXMLElement($townunrefined);
-			$townrefined = ($xmlfile->xpath('result/administrative/electoral-district/title');
+			$townrefined = ($xmlfile->xpath('result/administrative/electoral-district/title'));
 			//
 			$housepriceunrefined = (file_get_contents("http://api.nestoria.co.uk/api?country=uk&pretty=1&action=metadata&place_name=" . $townrefined[0] . "&encoding=xml"));
 			
@@ -44,9 +47,9 @@
 			$newhp = ($xmlfile2->xpaath('opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2012_m2"]/@avg_price'));
 			//
 			if $oldhp[0] >= $newhp[0]:
-				$result = ($oldhp[0] / $newhp[0]) * 100
+				$result = ($oldhp[0] / $newhp[0]) * 100;
 			else:
-				$result = ($newhp[0] / $oldhp[0]) * 100
+				$result = ($newhp[0] / $oldhp[0]) * 100;
             
             // Should return a number - this is the result that is displayed.
             return $result;
