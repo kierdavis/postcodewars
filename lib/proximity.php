@@ -38,9 +38,6 @@
         curl_close($c);
         $d = json_decode($data);
         
-        logmsg("proximity", $data);
-        logmsg("proximity", $argstr);
-        
         if ($d->status != "OK") {
             throw new Exception("API call to Google Maps Directions returned: " . $d->status);
         }
