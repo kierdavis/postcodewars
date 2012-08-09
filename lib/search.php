@@ -68,28 +68,38 @@
         }
     }
     
+    function calc_result($db, $plugin, $location) {
+        try {
+            $res = $plugin->get_result($db, $location);
+            
+            if ($plugin->can_cache) {
+                store_to_cache($db, $plugin, $location, $res);
+            }
+            
+            return $res;
+        }
+        
+        catch (Exception $e) {
+            fwrite($plugin_log, "Error from plugin '" . $plugin->name . "': " . $e->getMessage() . "\n" . $e->getTraceAsString() . "\n");
+            return FALSE;
+        }
+    }
+    
     function get_result($db, $plugin, $location) {
         global $plugin_log;
         
-        $res = load_from_cache($db, $plugin, $location);
-        if ($res === FALSE) {
-            return FALSE;
-        }
-        
-        if ($res === "NORESULT") {
-            try {
-                $res = $plugin->get_result($db, $location);
-                store_to_cache($db, $plugin, $location, $res);
-                return $res;
-            }
-            
-            catch (Exception $e) {
-                fwrite($plugin_log, "Error from plugin '" . $plugin->name . "': " . $e->getMessage() . "\n" . $e->getTraceAsString() . "\n");
+        if ($plugin->can_cache) {
+            $res = load_from_cache($db, $plugin, $location);
+            if ($res === FALSE) {
                 return FALSE;
             }
+            
+            if ($res !== "NORESULT") {
+                return $res;
+            }
         }
         
-        return $res;
+        return calc_result($db, $plugin, $location);
     }
     
     function search($postcode1, $postcode2) {
