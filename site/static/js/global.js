@@ -6,11 +6,13 @@ $(document).ready(function() {
 	});
 	
 	$("#settingsPanel input").change(function() {
-		var cookieName = $(this).attr("id");
+		var cookieName = $(this).attr("id").replace("-visibility", "");
 		var newValue = $(this).is(':checked');
 		$.cookie(cookieName, newValue, { expires: 7, path: '/' });
 		if (newValue) {
-		
+			$("#" + cookieName).show();
+		}else{
+			$("#" + cookieName).hide();
 		}
 	});
 	
