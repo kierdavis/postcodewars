@@ -2,7 +2,7 @@ $(document).ready(function() {
 	$("#settingsPanel").hide();
     
 	$("#settingsPanel ul li").each(function() {
-	var cookieName = $(this).attr("id").replace("-visibility", "");
+	var cookieName = $($(this).children()).attr("id").replace("-visibility", "");
 		var value = $.cookie(cookieName); 
 		if (value == true) {
 				$("#" + cookieName).show();
@@ -17,7 +17,7 @@ $(document).ready(function() {
 	});
 	
 	$("#settingsPanel input").change(function() {
-		var cookieName = $(this).attr("id").replace("-visibility", "");
+		var cookieName = $($(this).children()).attr("id").replace("-visibility", "");
 		var newValue = $(this).is(':checked');
 		$.cookie(cookieName, newValue, { expires: 7, path: '/' });
 		if (newValue) {
