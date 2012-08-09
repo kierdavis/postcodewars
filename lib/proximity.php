@@ -39,6 +39,10 @@
         $d = json_decode($data);
         
         if ($d->status != "OK") {
+            if ($d->status == "ZERO_RESULTS") {
+                return FALSE;
+            }
+            
             throw new Exception("API call to Google Maps Directions returned: " . $d->status);
         }
         
