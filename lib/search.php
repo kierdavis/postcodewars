@@ -111,7 +111,7 @@
         $postcode2 = str_replace(" ", "", $postcode2);
        
         // Connect to the DB
-        $db = new mysqli("localhost", "yrs2012app-user", "vOdQ04wDTtIS3GeylBER1nNrAo76ZLFJU9hzuxsKmCPi8WcHqbYfVpjXkMag", "yrs2012app");
+        $db = new mysqli("localhost", "yrs2012app-user", "vOdQ04wDTtIS3GeylBER1nNrAo76ZLFJ", "yrs2012app");
         
         // Calculate latitude & longitude
         $location1 = postcode2location($db, $postcode1);
