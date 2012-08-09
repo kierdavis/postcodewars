@@ -36,7 +36,7 @@
 			<ul>
 				<li>Crime Score <input checked id="crimebox" type="checkbox" /></li>
 				<li>School Score <input checked id="schoolbox" type="checkbox" /></li>
-				<li>Proximity to A&amp;E Score <input checked id="aebox" type="checkbox" /></li>
+				<li>Amenities Score <input checked id="aebox" type="checkbox" /></li>
 				<li>House Price Score <input checked id="hpbox" type="checkbox" /></li>
 			</ul>
 		</div>
@@ -78,7 +78,7 @@
             if ($categoryID[0] != "_") {
 ?>
 
-                <li class="section">
+				<li class="section" id="<?= $categoryID ?>">
 					<h3><?= htmlentities($category["_name"]) ?></h3>
                     <p class="score-left"><?= htmlentities($category["_score1"]) ?></p>
                     <p class="score-right"><?= htmlentities($category["_score2"]) ?></p>       
@@ -86,6 +86,14 @@
 <?php
                 foreach ($category as $itemID => $item) {
                     if ($itemID[0] != "_") {
+                        if (substr($itemID, -7) == "-nearby") {
+                            if ($item["result1"] >= 20) {
+                                $item["result1"] = "20+";
+                            }
+                            if ($item["result2"] >= 20) {
+                                $item["result2"] = "20+";
+                            }
+                        }
 ?>
 
                     <ul class="stat clearfix">
