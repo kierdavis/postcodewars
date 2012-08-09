@@ -39,6 +39,7 @@
         	$nearest_school=get_nearest_result($loc["postcode"],"","school",$loc["lat"],$loc["lng"]);
 			$addr_of_school=$nearest_school->formatted_address;
 			$matches=array();
+			logmsg("school-results", $addr_of_school);
 			preg_match("[a-zA-Z]{2}[1-9]{1,2}[a-zA-Z]?\s?[1-9]{1}[a-zA-Z]{2}", $addr_of_school, $matches);
 			logmsg("school-results", json_encode($matches));
 			if(!array_key_exists(0, $matches)){
