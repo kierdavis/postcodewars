@@ -9,4 +9,9 @@
     
     // Whether a point should be awarded to both sies in the event of a draw
     define("GET_POINT_ON_DRAW", 1);
+    
+    define("MYSQL_HOST", "localhost");
+    define("MYSQL_USER", "yrs2012app-user");
+    define("MYSQL_PASSWD", "vOdQ04wDTtIS3GeylBER1nNrAo76ZLFJ");
+    define("MYSQL_DB", "yrs2012app");
 ?>

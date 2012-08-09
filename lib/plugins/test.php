@@ -35,5 +35,5 @@
     
     // Update the name of the class here too.
     // This inserts the plugin into the plugin index.
-    $plugins[] = new TestPlugin();
+    //$plugins[] = new TestPlugin();
 ?>
