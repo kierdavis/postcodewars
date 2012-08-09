@@ -8,7 +8,7 @@
     define("HIGHER_IS_BETTER", 1);
     
     // Whether a point should be awarded to both sies in the event of a draw
-    define("GET_POINT_ON_DRAW", 1);
+    define("GET_POINT_ON_DRAW", 0);
     
     define("MYSQL_HOST", "localhost");
     define("MYSQL_USER", "yrs2012app-user");
