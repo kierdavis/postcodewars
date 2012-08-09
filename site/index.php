@@ -25,7 +25,7 @@
         <title>PostCode Wars</title>
 
         <!--<link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />-->
-        <link href="/static/css/results.css" rel="stylesheet" type="text/css" />
+        <link href="/static/css/results.css" rel="stylesheet" type="text/css" />    
         <script src="/static/js/jquery-1.7.2.min.js" type="text/javascript"></script>
         <script src="/static/js/results.js" type="text/javascript"></script>
     </head>
@@ -45,9 +45,6 @@
                     </p>
                 </form>
             </div>
-			<div class="progress progress-stripedactive">
-			<div class="bar" id="progBar" style="width: 100%;visibility: hidden;"></div>
-		    </div>
 			
 
 <?php
@@ -73,7 +70,7 @@
                     <ul class="stat clearfix">
                         <li class="<?= $item["winner1"] ? "win" : "lose" ?>"><span><?= htmlentities($item["result1"] . " " . $item["units"]) ?></span></li>
                         <li><?= htmlentities($item["name"]) ?></li>
-                        <li class="<?= $item["winner1"] ? "lose" : "win" ?>"><span><?= htmlentities($item["result2"] . " " . $item["units"]) ?></span></li>
+                        <li class="<?= $item["winner2"] ? "win" : "lose" ?>"><span><?= htmlentities($item["result2"] . " " . $item["units"]) ?></span></li>
                     </ul>
 <?php
                 }
@@ -86,6 +83,7 @@
             </ul>
 
 <?php
+<<<<<<< HEAD
     } ?>	<div class="btn-group dropup">
 			<button class="btn">Settings</button>
 			<button class="btn dropdown-toggle" data-toggle="dropdown">
@@ -97,6 +95,10 @@
 		</div>
 
 
+=======
+    }	
+?>
+>>>>>>> 3ca8fa02d8e85cff389cf47f3ed8bd2f06ffb3f5
   <ul class="dropdown-menu">
     <!-- dropdown menu links -->
   </ul>
