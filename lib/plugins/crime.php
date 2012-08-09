@@ -253,6 +253,38 @@ class crime_violent {
 		
     }
 
+// Violent crime
+class crime_weapons {
+	// The category identifier
+	public $category = "crime";
+	
+	// The name identifier
+	public $name = "public-disorder-weapons";
+	
+	// The human-readable name
+	public $hrname = "Armed public disorder rate";
+	
+	// Determines which result wins.
+	public $better = LOWER_IS_BETTER;
+	
+	public function get_result($db, $location) {
+		// Put latitude and longitude into nice, easy variables.
+		$lat = $location['lat'];
+		$lng = $location['lng'];
+		
+		// Get the API-format force and neighbourhood IDs.
+		$forceAndNhoodObj = getForceAndNhood($lat, $lng);
+		$force = $forceAndNhoodObj->force;
+		$neighbourhood = $forceAndNhoodObj->neighbourhood;
+		
+		// And the rate itself.
+		$rate = getCrimeRate($force, $neighbourhood, "public-disorder-weapons");
+		
+		return $rate;
+		}
+		
+    }
+
 	// Add the plugins
 	$plugins[] = new crime_all();
 	$plugins[] = new crime_asb();
