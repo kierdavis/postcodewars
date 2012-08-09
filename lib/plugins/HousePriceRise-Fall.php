@@ -33,7 +33,8 @@
         //     "lng" => the longitude
         public function get_result($db, $location) {
             // Do something with $location
-			$townunrefined = (file_get_contents("http://openlylocal.com/areas/postcodes/" . $location["postcode"] . ".xml"));
+			$townunrefined = (file_get_contents("http://www.uk-postcodes.com/postcode/" . $location["postcode"] . ".xml"));
+            logmsg("houseprices", $townunrefined);
 			//work out how to get the town name from the output an call it $townrefined
 			$xmlfile = new SimpleXMLElement($townunrefined);
 			$townrefined = ($xmlfile->xpath('result/administrative/electoral-district/title'));

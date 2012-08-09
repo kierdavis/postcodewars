@@ -25,7 +25,8 @@
         "schools" => "Schools",
         "transport" => "Transport",
         "crime" => "Crime (per 1000 people)",
-        "house-price" => "House Price"
+		"house-price" => "House Prices"
+
     );
     
     function load_from_cache($db, $plugin, $location) {
@@ -112,7 +113,7 @@
         $postcode2 = strtoupper(str_replace(" ", "", $postcode2));
        
         // Connect to the DB
-        $db = new mysqli("localhost", "yrs2012app-user", "vOdQ04wDTtIS3GeylBER1nNrAo76ZLFJ", "yrs2012app");
+        $db = new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWD, MYSQL_DB);
         
         // Calculate latitude & longitude
         $location1 = postcode2location($db, $postcode1);
