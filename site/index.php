@@ -36,7 +36,7 @@
 			<ul>
 				<li>Crime Score <input checked id="crimebox" type="checkbox" /></li>
 				<li>School Score <input checked id="schoolbox" type="checkbox" /></li>
-				<li>Proximity to A&amp;E Score <input checked id="aebox" type="checkbox" /></li>
+				<li>Amenities Score <input checked id="aebox" type="checkbox" /></li>
 				<li>House Price Score <input checked id="hpbox" type="checkbox" /></li>
 			</ul>
 		</div>
