@@ -106,9 +106,9 @@
     function search($postcode1, $postcode2) {
         global $plugins, $category_names, $plugin_log;
         
-        // Remove spaces
-        $postcode1 = str_replace(" ", "", $postcode1);
-        $postcode2 = str_replace(" ", "", $postcode2);
+        // Sanitise
+        $postcode1 = strtoupper(str_replace(" ", "", $postcode1));
+        $postcode2 = strtoupper(str_replace(" ", "", $postcode2));
        
         // Connect to the DB
         $db = new mysqli("localhost", "yrs2012app-user", "vOdQ04wDTtIS3GeylBER1nNrAo76ZLFJ", "yrs2012app");
