@@ -11,13 +11,19 @@
         public $category = "schools";
         
         // The name identifier - should be lowercase and hyphen-separated e.g. "school-proximity"
-        public $name = "schools-results";
+        public $name = "school-results";
         
         // The human-readable name - this will be displayed in the results table e.g. "School proximity"
         public $hrname = "School Ofsted Results";
         
+        // The units that the results are returned in.
+        public $units = "";
+        
         // Should be either LOWER_IS_BETTER or HIGHER_IS_BETTER - determines which result wins.
         public $better = HIGHER_IS_BETTER;
+        
+        // Whether the results from this are allowed to be cached.
+        public $can_cache = TRUE;
         
         // The get_result method should perform the searches and return the two results.
         // $db is a mysqli object connected to the database.
