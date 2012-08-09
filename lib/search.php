@@ -51,7 +51,6 @@
             fwrite($plugin_log, "MySQL error: " . $db->error . "\n");
             return FALSE;
         }
-        
         return $v;
     }
     
