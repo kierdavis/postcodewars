@@ -4,7 +4,7 @@
 	function get_all_results($postcode,$criteria,$type,$lat,$lng,$radius){
 	    $c = curl_init();
 		$url="https://maps.googleapis.com/maps/api/place/search/json";
-		$argstr="?types=".$type."&sensor=false&key=".GOOGLE_API_KEY;
+		$argstr="?types=".$type."&sensor=false&key=".GOOGLE_API_KEY."rankby=distance";
 		$argstr.="&location=".$lat.",".$lng."&radius=".$radius;
 		logmsg("proximity-lib",$url.$argstr);
         curl_setopt($c, CURLOPT_URL, $url . $argstr);
