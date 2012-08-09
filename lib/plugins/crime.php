@@ -114,7 +114,7 @@ class crime_asb {
 	public $better = LOWER_IS_BETTER;
 	
 	// The units that the results are returned in.
-	public $units = "/1000 people";
+	public $units = "";
 		
 	// Whether the results from this are allowed to be cached.
 	public $can_cache = TRUE;
@@ -152,7 +152,7 @@ class crime_drugs {
 	public $better = LOWER_IS_BETTER;
 	
 	// The units that the results are returned in.
-	public $units = "/1000 people";
+	public $units = "";
 		
 	// Whether the results from this are allowed to be cached.
 	public $can_cache = TRUE;
@@ -190,7 +190,7 @@ class crime_cda {
 	public $better = LOWER_IS_BETTER;
 	
 	// The units that the results are returned in.
-	public $units = "/1000 people";
+	public $units = "";
 		
 	// Whether the results from this are allowed to be cached.
 	public $can_cache = TRUE;
@@ -228,7 +228,7 @@ class crime_burglary {
 	public $better = LOWER_IS_BETTER;
 	
 	// The units that the results are returned in.
-	public $units = "/1000 people";
+	public $units = "";
 		
 	// Whether the results from this are allowed to be cached.
 	public $can_cache = TRUE;
@@ -266,7 +266,7 @@ class crime_violent {
 	public $better = LOWER_IS_BETTER;
 	
 	// The units that the results are returned in.
-	public $units = "/1000 people";
+	public $units = "";
 		
 	// Whether the results from this are allowed to be cached.
 	public $can_cache = TRUE;
@@ -304,7 +304,7 @@ class crime_weapons {
 	public $better = LOWER_IS_BETTER;
 	
 	// The units that the results are returned in.
-	public $units = "/1000 people";
+	public $units = "";
 		
 	// Whether the results from this are allowed to be cached.
 	public $can_cache = TRUE;
