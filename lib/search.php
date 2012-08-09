@@ -184,6 +184,9 @@
             );
         }
         
+        $breakdown["_score1"] = $score1;
+        $breakdown["_score2"] = $score2;
+        
         return $breakdown;
     }
 ?>
