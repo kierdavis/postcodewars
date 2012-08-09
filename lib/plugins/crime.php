@@ -76,7 +76,7 @@ class crime_all {
 	public $better = LOWER_IS_BETTER;
 	
 	// The units that the results are returned in.
-	public $units = "/1000 people";
+	public $units = "";
 		
 	// Whether the results from this are allowed to be cached.
 	public $can_cache = TRUE;
