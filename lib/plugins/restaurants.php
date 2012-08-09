@@ -37,9 +37,6 @@
             $result=get_all_results($loc["postcode"],"restaurant","restaurant",$loc["lat"],$loc["lng"],500);
             // Should return a number - this is the result that is displayed.
             $no_of_restaurants=count($result);
-            if($no_of_restaurants=20){
-            	$no_of_restaurants=20;
-            }
             return $no_of_restaurants;
         }
     }
