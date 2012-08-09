@@ -6,7 +6,12 @@ $(document).ready(function() {
 	});
 	
 	$("#settingsPanel input").change(function() {
-		alert("Settings Changed!");
+		var cookieName = $(this).attr("id");
+		var newValue = $(this).is(':checked');
+		$.cookie(cookieName, newValue, { expires: 7, path: '/' });
+		if (newValue) {
+		
+		}
 	});
 	
 	$("#battle_submit").click(function(event) {
