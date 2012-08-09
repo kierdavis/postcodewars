@@ -11,7 +11,7 @@
         public $category = "house-price";
         
         // The name identifier - should be lowercase and hyphen-separated e.g. "school-proximity"
-        public $name = "price-rise/fall-percentage";
+        public $name = "price-rise-fall-percentage";
         
         // The human-readable name - this will be displayed in the results table e.g. "School proximity"
         public $hrname = "Average House Price Change Over 12 Months";
@@ -46,10 +46,12 @@
 			$oldhp = ($xmlfile2->xpaath('opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2011_m2"]/@avg_price'));
 			$newhp = ($xmlfile2->xpaath('opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2012_m2"]/@avg_price'));
 			//
-			if $oldhp[0] >= $newhp[0]:
+			if ($oldhp[0] >= $newhp[0]) {
 				$result = ($oldhp[0] / $newhp[0]) * 100;
-			else:
+            }
+			else {
 				$result = ($newhp[0] / $oldhp[0]) * 100;
+            }
             
             // Should return a number - this is the result that is displayed.
             return $result;
