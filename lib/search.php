@@ -46,8 +46,7 @@
         $id = $row[0];
         $v = $row[1];
         
-        $last_accessed = $db->real_escape_string(time());
-        $res = $db->query("UPDATE cache SET last_accessed = $last_accessed WHERE id = $id");
+        $res = $db->query("UPDATE cache SET last_accessed = UNIX_TIMESTAMP() WHERE id = $id");
         if ($res === FALSE) {
             fwrite($plugin_log, "MySQL error: " . $db->error . "\n");
             return FALSE;
@@ -62,8 +61,7 @@
         $postcode_encoded = $db->real_escape_string($location["postcode"]);
         $plugin_encoded = $db->real_escape_string($plugin->name);
         $result_encoded = $db->real_escape_string($result);
-        $last_accessed_encoded = $db->real_escape_string(time());
-        $res = $db->query("INSERT INTO cache VALUES ('$plugin_encoded', '$postcode_encoded', $result_encoded, $last_accessed_encoded, NULL)");
+        $res = $db->query("INSERT INTO cache VALUES ('$plugin_encoded', '$postcode_encoded', $result_encoded, UNIX_TIMESTAMP(), NULL)");
         if ($res === FALSE) {
             fwrite($plugin_log, "MySQL error: " . $db->error . "\n");
             return FALSE;
