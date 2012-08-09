@@ -1,6 +1,17 @@
 $(document).ready(function() {
 	$("#settingsPanel").hide();
     
+	$("#settingsPanel ul li").each(function() {
+	var cookieName = $(this).attr("id").replace("-visibility", "");
+		var value = $.cookie(cookieName); 
+		if (value == true) {
+				$("#" + cookieName).show();
+		}else{
+			$("#" + cookieName).hide();
+		};
+		
+	});
+	
 	$(".flip").click(function() {
 		$("#settingsPanel").slideToggle();
 	});
