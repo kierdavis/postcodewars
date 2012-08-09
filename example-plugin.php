@@ -22,6 +22,9 @@
         // Should be either LOWER_IS_BETTER or HIGHER_IS_BETTER - determines which result wins.
         public $better = LOWER_IS_BETTER;
         
+        // Whether the results from this are allowed to be cached.
+        public $can_cache = TRUE;
+        
         // The get_result method should perform the searches and return the two results.
         // $db is a mysqli object connected to the database.
         // $location is an associative array which contain the following entries:

@@ -4,21 +4,24 @@
     // file to fill in the gaps.
     
     // Change this name
-    class AeProximity{
+    class TrainsDist{
         // The category identifier - should be lowercase and hyphen-separated e.g. "crime"
-        public $category = "care";
+        public $category = "amenities";
         
         // The name identifier - should be lowercase and hyphen-separated e.g. "school-proximity"
-        public $name = "hospital-proximity";
+        public $name = "train-station-proximity";
         
         // The human-readable name - this will be displayed in the results table e.g. "School proximity"
-        public $hrname = "Hospital Proximity";
+        public $hrname = "Train Station Proximity";
         
         // The units that the results are returned in.
         public $units = "km";
         
         // Should be either LOWER_IS_BETTER or HIGHER_IS_BETTER - determines which result wins.
         public $better = LOWER_IS_BETTER;
+        
+        // Whether the results from this are allowed to be cached.
+        public $can_cache = FALSE;
         
         // The get_result method should perform the searches and return the two results.
         // $db is a mysqli object connected to the database.
@@ -27,12 +30,12 @@
         //     "lat" => the latitude
         //     "lng" => the longitude
         public function get_result($db, $loc) {
-            $criteria="a&e";
-            return dist_to_result($loc["postcode"],$criteria,"hospital",$loc["lat"],$loc["lng"]) / 1000;
+            $criteria="Train station";
+            return dist_to_result($loc["postcode"],$criteria,"",$loc["lat"],$loc["lng"]) / 1000;
         }
     }
     
     // Update the name of the class here too.
     // This inserts the plugin into the plugin index.
-    $plugins["aeproximity"] = new AeProximity();
+    $plugins["trainsdist"] = new TrainsDist();
 ?>
