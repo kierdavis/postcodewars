@@ -50,17 +50,23 @@ header h1 {
 	margin: 0;
 }
 
-#search form input[type="search"] {
+#search form input[type="text"] {
 	background: #fff;
 	border: 1px solid #bbb;
 	border-radius: 6px;
+	display: block;
 	float: left;
 	font-family: "Helvetica Neue", Arial, sans-serif;
 	font-size: 36px;
 	line-height: 48px;
+	margin: 0;
 	outline: none;
 	padding: 10px;
-	width: 38.5%;
+	width: 38%;
+
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;
 
 	-webkit-appearance: none;
 
@@ -79,6 +85,7 @@ header h1 {
 	border-radius: 6px;
 	color: #fff;
 	cursor: pointer;
+	display: block;
 	float: left;
 	font-family: "Helvetica Neue", Arial, sans-serif;
 	font-size: 36px;
@@ -86,6 +93,7 @@ header h1 {
 	margin: 0 2%;
 	padding: 10px 20px;
 	text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+	width: 20%;
 
 	background-image: linear-gradient(bottom, rgb(0,118,187) 0%, rgb(0,155,221) 100%);
 	background-image: -o-linear-gradient(bottom, rgb(0,118,187) 0%, rgb(0,155,221) 100%);
@@ -221,13 +229,20 @@ header h1 {
 #results .section .stat {
 	border-bottom: 1px solid #ccc;
 	color: #444;
-	line-height: 28px;
+	line-height: 30px;
 	margin: 0;
 	padding: 0;
 	text-align: center;
 }
 
-#results .section .stat:nth-child(even) {
+#results .section .stat.draw li:first-child,
+#results .section .stat.draw li:last-child {
+	color: #999;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+#results .section .stat:nth-child(odd) {
 	background: #f5f5f5;
 }
 
@@ -243,21 +258,30 @@ header h1 {
 }
 
 #results .section .stat .win:after {
-	background: #585;
+	background: #5b5;
+	border: 1px solid #383;
 	border-radius: 40px;
-	color: #d3ffd3;
+	color: #fff;
 	content: ".";
 	display: block;
 	font-size: 16px;
 	font-family: "WebSymbolsRegular";
 	left: -15px;
-	line-height: 28px;
-	height: 28px;
-	padding-top: 2px;
+	line-height: 27px;
+	height: 27px;
+	padding-top: 3px;
 	position: absolute;
 	top: 9px;
 	text-align: center;
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
 	width: 30px;
+
+	-webkit-box-shadow: 0 0 4px rgba(0,0,0,0.3),
+						0 1px 0 rgba(255,255,255,0.3) inset;
+	-moz-box-shadow: 	0 0 4px rgba(0,0,0,0.3),
+						0 1px 0 rgba(255,255,255,0.3) inset;
+	box-shadow: 		0 0 4px rgba(0,0,0,0.3),
+						0 1px 0 rgba(255,255,255,0.3) inset;
 }
 
 #results .section .stat .win:last-child:after {
@@ -266,11 +290,11 @@ header h1 {
 }
 
 #results .section .stat .win {
-	color: #6a6;
+	color: #5b5;
 }
 
 #results .section .stat .lose {
-	color: #a66;
+	color: #c66;
 }
 
 #results .section .stat:last-child {
@@ -282,9 +306,16 @@ header h1 {
 	display: block;
 	float: left;
 	padding: 10px;
-	width: 33.33333%;
+	width: 40%;
 
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;
+}
+
+#results .section .stat li:first-child,
+#results .section .stat li:last-child {
+	width: 30%;
 }
 
 #results .section .stat li .units {

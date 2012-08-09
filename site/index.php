@@ -51,9 +51,9 @@
             <div id="search" class="clearfix">
                 <form action="/" id="battle" method="get">
                     <p>
-                        <input type="search" name="postcode1" id="battle_postcode1" value="<?= htmlentities($postcode1) ?>" placeholder="Your postcode" />
-                        <button type="submit" id="battle_submit">Battle!</button>
-                        <input type="search" name="postcode2" id="battle_postcode2" value="<?= htmlentities($postcode2) ?>" placeholder="Their postcode" />
+                        <input type="text" name="postcode1" id="battle_postcode1" tabindex="1" value="<?= htmlentities($postcode1) ?>" placeholder="Your postcode" />
+                        <button type="submit" tabindex="3" id="battle_submit">Battle!</button>
+                        <input type="text" name="postcode2" tabindex="2" id="battle_postcode2" value="<?= htmlentities($postcode2) ?>" placeholder="Their postcode" />
                     </p>
                 </form>
             </div>
@@ -70,7 +70,7 @@
 <?php } else { ?>
                 <p class="congrats">It's a draw!</p>
 <?php } ?>
-				<p><span><?= htmlentities($postcode1) ?></span> - <span><?= htmlentities($result["_score1"]) ?></span> --- <span><?= htmlentities($result["_score2"]) ?></span> - <span><?= htmlentities($postcode2) ?></span></p>
+				<p><span><?= htmlentities($postcode1) ?></span> scored <span><?= htmlentities($result["_score1"]) ?></span> points and <span><?= htmlentities($postcode2) ?></span> scored <span><?= htmlentities($result["_score2"]) ?></span> points.</p>
 			</div>
 
             <ul id="results">
