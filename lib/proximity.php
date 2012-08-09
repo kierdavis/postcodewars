@@ -47,6 +47,6 @@
         
         $no_of_legs = count($d->routes[0]->legs);
 		//the distance to the nearest place in miles
-        return $d->routes[0]->legs[$no_of_legs-1]->distance->value;
+        return round($d->routes[0]->legs[$no_of_legs-1]->distance->value, 1);
 	}
 ?>
