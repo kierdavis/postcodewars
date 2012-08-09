@@ -60,7 +60,7 @@
         $postcode_encoded = $db->real_escape_string($location["postcode"]);
         $plugin_encoded = $db->real_escape_string($plugin->name);
         $result_encoded = $db->real_escape_string($result);
-        $res = $db->query("INSERT INTO cache VALUES ('$plugin_encoded', '$postcode_encoded', $result_encoded, UNIX_TIMESTAMP(), NULL)");
+        $res = $db->query("INSERT INTO cache VALUES ('$plugin_encoded', '$postcode_encoded', '$result_encoded', UNIX_TIMESTAMP(), NULL)");
         if ($res === FALSE) {
             fwrite($plugin_log, "MySQL error: " . $db->error . "\n");
             return FALSE;
