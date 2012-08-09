@@ -75,6 +75,12 @@ class crime_all {
 	// Determines which result wins.
 	public $better = LOWER_IS_BETTER;
 	
+	// The units that the results are returned in.
+	public $units = "";
+		
+	// Whether the results from this are allowed to be cached.
+	public $can_cache = TRUE;
+	
 	public function get_result($db, $location) {
 		// Put latitude and longitude into nice, easy variables.
 		$lat = $location['lat'];
@@ -91,7 +97,7 @@ class crime_all {
 		return $rate;
 		}
 		
-    }
+	}
 	
 // ASB
 class crime_asb {
@@ -106,6 +112,12 @@ class crime_asb {
 	
 	// Determines which result wins.
 	public $better = LOWER_IS_BETTER;
+	
+	// The units that the results are returned in.
+	public $units = "";
+		
+	// Whether the results from this are allowed to be cached.
+	public $can_cache = TRUE;
 	
 	public function get_result($db, $location) {
 		// Put latitude and longitude into nice, easy variables.
@@ -123,7 +135,7 @@ class crime_asb {
 		return $rate;
 		}
 		
-    }
+	}
 	
 // Drugs
 class crime_drugs {
@@ -138,6 +150,12 @@ class crime_drugs {
 	
 	// Determines which result wins.
 	public $better = LOWER_IS_BETTER;
+	
+	// The units that the results are returned in.
+	public $units = "";
+		
+	// Whether the results from this are allowed to be cached.
+	public $can_cache = TRUE;
 	
 	public function get_result($db, $location) {
 		// Put latitude and longitude into nice, easy variables.
@@ -155,7 +173,7 @@ class crime_drugs {
 		return $rate;
 		}
 		
-    }
+	}
 	
 // Criminal damage and arson
 class crime_cda {
@@ -170,6 +188,12 @@ class crime_cda {
 	
 	// Determines which result wins.
 	public $better = LOWER_IS_BETTER;
+	
+	// The units that the results are returned in.
+	public $units = "";
+		
+	// Whether the results from this are allowed to be cached.
+	public $can_cache = TRUE;
 	
 	public function get_result($db, $location) {
 		// Put latitude and longitude into nice, easy variables.
@@ -187,7 +211,7 @@ class crime_cda {
 		return $rate;
 		}
 		
-    }
+	}
 	
 // Burglary
 class crime_burglary {
@@ -202,6 +226,12 @@ class crime_burglary {
 	
 	// Determines which result wins.
 	public $better = LOWER_IS_BETTER;
+	
+	// The units that the results are returned in.
+	public $units = "";
+		
+	// Whether the results from this are allowed to be cached.
+	public $can_cache = TRUE;
 	
 	public function get_result($db, $location) {
 		// Put latitude and longitude into nice, easy variables.
@@ -219,7 +249,7 @@ class crime_burglary {
 		return $rate;
 		}
 		
-    }
+	}
 
 // Violent crime
 class crime_violent {
@@ -234,6 +264,12 @@ class crime_violent {
 	
 	// Determines which result wins.
 	public $better = LOWER_IS_BETTER;
+	
+	// The units that the results are returned in.
+	public $units = "";
+		
+	// Whether the results from this are allowed to be cached.
+	public $can_cache = TRUE;
 	
 	public function get_result($db, $location) {
 		// Put latitude and longitude into nice, easy variables.
@@ -251,7 +287,7 @@ class crime_violent {
 		return $rate;
 		}
 		
-    }
+	}
 
 // Violent crime
 class crime_weapons {
