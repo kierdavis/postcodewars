@@ -3,7 +3,7 @@
 	
 	class ArtGalleries {
 		public $category = "amenities";						// Category identifier - lowercase and hyphen-separated
-		public $name = "art-galleries";						// Name identifier - ""
+		public $name = "art-galleries-nearby";						// Name identifier - ""
 		public $hrname = "Art galleries nearby";	// Displayed in results table
 		public $units = "";												// Units of the results
 		public $better = HIGHER_IS_BETTER;				// LOWER_IS_BETTER or HIGHER_IS_BETTER - determines winner
@@ -23,7 +23,7 @@
 	
 	class Bars {
 		public $category = "amenities";
-		public $name = "bars";
+		public $name = "bars-nearby";
 		public $hrname = "Bars nearby";
 		public $units = "";
 		public $better = HIGHER_IS_BETTER;
@@ -40,7 +40,7 @@
 	
 	class Museums {
 		public $category = "amenities";
-		public $name = "museums";
+		public $name = "museums-nearby";
 		public $hrname = "Museums nearby";
 		public $units = "";
 		public $better = HIGHER_IS_BETTER;
@@ -57,7 +57,7 @@
 	
 	class Restaurants {
 		public $category = "amenities";
-		public $name = "restaurants";
+		public $name = "restaurants-nearby";
 		public $hrname = "Restaurants nearby";
 		public $units = "";
 		public $better = HIGHER_IS_BETTER;
