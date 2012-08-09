@@ -50,9 +50,9 @@
 ?>
 
 			<div id="score">
-<?php if ($result["_score1"] < $result["_score2"]) { ?>
+<?php if ($result["_score1"] > $result["_score2"]) { ?>
                 <p class="congrats">The left postcode wins!</p>
-<?php } else if ($result["_score1"] > $result["_score2"]) { ?>
+<?php } else if ($result["_score1"] < $result["_score2"]) { ?>
                 <p class="congrats">The right postcode wins!</p>
 <?php } else { ?>
                 <p class="congrats">It's a draw!</p>
