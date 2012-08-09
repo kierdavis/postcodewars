@@ -69,6 +69,8 @@
     }
     
     function calc_result($db, $plugin, $location) {
+        global $plugin_log;
+        
         try {
             $res = $plugin->get_result($db, $location);
             
