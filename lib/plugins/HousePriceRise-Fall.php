@@ -1,5 +1,4 @@
-	<?php
-	
+<?php
     // Copy this file into lib/plugins/ and name it appropriately. Then follow the comments in this
     // file to fill in the gaps.
 
@@ -7,21 +6,21 @@
     // the categories there, but you can define your own if you need to.
     
     // Change this name
-    class SchoolPlugin {
+    class HousePrice {
         // The category identifier - should be lowercase and hyphen-separated e.g. "crime"
-        public $category = "schools";
+        public $category = "house-price";
         
         // The name identifier - should be lowercase and hyphen-separated e.g. "school-proximity"
-        public $name = "school-results";
+        public $name = "price-rise-fall-percentage";
         
         // The human-readable name - this will be displayed in the results table e.g. "School proximity"
-        public $hrname = "School Ofsted Results";
+        public $hrname = "Average House Price Change Over 12 Months";
         
         // The units that the results are returned in.
-        public $units = "";
+        public $units = "%";
         
         // Should be either LOWER_IS_BETTER or HIGHER_IS_BETTER - determines which result wins.
-        public $better = HIGHER_IS_BETTER;
+        public $better = LOWER_IS_BETTER;
         
         // Whether the results from this are allowed to be cached.
         public $can_cache = TRUE;
@@ -34,27 +33,32 @@
         //     "lng" => the longitude
         public function get_result($db, $location) {
             // Do something with $location
-			//TO DO : We need to confirm that the MySQL column names and table name is correct if not then change it!
-            $postcode_encoded = $db->real_escape_string($location["postcode"]);
-			$queryToSend = "SELECT testscore FROM schools WHERE postcode = \"$postcode_encoded\"";
-			$res = $db->query($queryToSend);
-            
-            if ($res->num_rows == 0) {
-                return 0.0;
+			$townunrefined = (file_get_contents("http://openlylocal.com/areas/postcodes/" . $location["postcode"] . ".xml"));
+			//work out how to get the town name from the output an call it $townrefined
+			$xmlfile = new SimpleXMLElement($townunrefined);
+			$townrefined = ($xmlfile->xpath('result/administrative/electoral-district/title'));
+			//
+			$housepriceunrefined = (file_get_contents("http://api.nestoria.co.uk/api?country=uk&pretty=1&action=metadata&place_name=" . $townrefined[0] . "&encoding=xml"));
+			
+			//work out how to get oldest and newest house data, and call them $oldhd and $newhd
+			//
+			$xmlfile2 = new SimpleXMLElement($housepriceunrefined);
+			$oldhp = ($xmlfile2->xpath('opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2011_m2"]/@avg_price'));
+			$newhp = ($xmlfile2->xpath('opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2012_m2"]/@avg_price'));
+			//
+			if ($oldhp[0] >= $newhp[0]) {
+				$result = ($oldhp[0] / $newhp[0]) * 100;
+            }
+			else {
+				$result = ($newhp[0] / $oldhp[0]) * 100;
             }
             
-            $score = 0.0;
-
-			for ($i = 0; $i < $res->num_rows; $i++) {
-				$row = $res->fetch_assoc();
-				$score += $row["testscore"];
-			}
-            
-			return $score / $res->num_rows;
+            // Should return a number - this is the result that is displayed.
+            return $result;
         }
     }
     
     // Update the name of the class here too.
     // This inserts the plugin into the plugin index.
-    $plugins["schools"] = new SchoolPlugin();
+    $plugins[] = new HousePrice();
 ?>
