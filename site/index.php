@@ -24,10 +24,9 @@
     <head>
         <title>PostCode Wars</title>
 
-        <!--<link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />-->
         <link href="/static/css/results.css" rel="stylesheet" type="text/css" />    
         <script src="/static/js/jquery-1.7.2.min.js" type="text/javascript"></script>
-        <script src="/static/js/results.js" type="text/javascript"></script>
+        <script src="/static/js/global.js" type="text/javascript"></script>
     </head>
 
     <body>
@@ -40,16 +39,20 @@
                 <form action="/" id="battle" method="get">
                     <p>
                         <input type="search" name="postcode1" id="battle_postcode1" value="<?= htmlentities($postcode1) ?>" placeholder="Your postcode" />
-                        <button type="submit" onclick="document.getElementById('progBar').style.visibility.visible;">Battle!</button>
+                        <button type="submit" id="battle_submit">Battle!</button>
                         <input type="search" name="postcode2" id="battle_postcode2" value="<?= htmlentities($postcode2) ?>" placeholder="Their postcode" />
                     </p>
                 </form>
             </div>
-			
 
 <?php
     if ($result !== null) {
 ?>
+
+			<div id="score">
+				<p class="congrats">Congratulations! You won.</p>
+				<p>You scored <span><?= htmlentities($result["_score1"]) ?></span> points and they scored <span><?= htmlentities($result["_score2"]) ?></span> points.</p>
+			</div>
 
             <ul id="results">
         
