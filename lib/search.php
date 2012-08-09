@@ -43,7 +43,6 @@
         
         $row = $res->fetch_row();
         $v = $row[0];
-        echo "loaded $plugin_encoded $postcode_encoded -> $v\n";
         return $v;
     }
     
