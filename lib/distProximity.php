@@ -5,7 +5,7 @@
 	    $c = curl_init();
 		$url="https://maps.googleapis.com/maps/api/place/search/json";
 		$argstr="?types=".$type."&sensor=false&key=".GOOGLE_API_KEY;
-		$argstr.="&location=".$lat.",".$lng."&radius=".$radius;
+		$argstr.="&location=".$lat.",".$lng."&rankby=distance";
 		logmsg("proximity-lib",$url.$argstr);
         curl_setopt($c, CURLOPT_URL, $url . $argstr);
         curl_setopt($c, CURLOPT_RETURNTRANSFER, TRUE);
