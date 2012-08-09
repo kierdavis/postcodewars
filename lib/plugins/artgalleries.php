@@ -1,4 +1,5 @@
 <?php
+	require_once "../lib/proximity.php";
     // Copy this file into lib/plugins/ and name it appropriately. Then follow the comments in this
     // file to fill in the gaps.
 
@@ -6,24 +7,24 @@
     // the categories there, but you can define your own if you need to.
     
     // Change this name
-    class HousePrice {
+    class ArtGalleries {
         // The category identifier - should be lowercase and hyphen-separated e.g. "crime"
-        public $category = "house-price";
+        public $category = "amenities";
         
         // The name identifier - should be lowercase and hyphen-separated e.g. "school-proximity"
-        public $name = "price-rise-fall-percentage";
+        public $name = "art-galleries";
         
         // The human-readable name - this will be displayed in the results table e.g. "School proximity"
-        public $hrname = "Average House Price Change Over 12 Months";
+        public $hrname = "Art galleries near-by";
         
         // The units that the results are returned in.
-        public $units = "%";
+        public $units = "";
         
         // Should be either LOWER_IS_BETTER or HIGHER_IS_BETTER - determines which result wins.
-        public $better = LOWER_IS_BETTER;
+        public $better = HIGHER_IS_BETTER;
         
         // Whether the results from this are allowed to be cached.
-        public $can_cache = TRUE;
+        public $can_cache = FALSE;
         
         // The get_result method should perform the searches and return the two results.
         // $db is a mysqli object connected to the database.
@@ -31,30 +32,16 @@
         //     "postcode" => the postcode
         //     "lat" => the latitude
         //     "lng" => the longitude
-        //     "town" => the county-electoral area
-        public function get_result($db, $location) {
-			$townrefined = $location["town"];
-			$housepriceunrefined = (file_get_contents("http://api.nestoria.co.uk/api?country=uk&pretty=1&action=metadata&place_name=" . $townrefined[0] . "&encoding=xml"));
-			
-			//work out how to get oldest and newest house data, and call them $oldhd and $newhd
-			//
-			$xmlfile2 = new SimpleXMLElement($housepriceunrefined);
-			$oldhp = ($xmlfile2->xpath('opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2011_m2"]/@avg_price'));
-			$newhp = ($xmlfile2->xpath('opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2012_m2"]/@avg_price'));
-			//
-			if ($oldhp[0] >= $newhp[0]) {
-				$result = ($oldhp[0] / $newhp[0]) * 100;
-            }
-			else {
-				$result = ($newhp[0] / $oldhp[0]) * 100;
-            }
-            
+        public function get_result($db, $loc) {
+            // Do something with $location
+            $result=get_all_results($loc["postcode"],"","art_gallery",$loc["lat"],$loc["lng"],5000);
             // Should return a number - this is the result that is displayed.
-            return $result;
+            $no_of_artgalleries=count($result);
+            return $no_of_artgalleries;
         }
     }
     
     // Update the name of the class here too.
     // This inserts the plugin into the plugin index.
-    $plugins[] = new HousePrice();
+    $plugins["art-galleries"] = new ArtGalleries();
 ?>
