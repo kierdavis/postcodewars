@@ -51,50 +51,62 @@
 
 			<div id="score">
 				<p class="congrats">Congratulations! You won.</p>
-				<p>You scored <span>47</span> points and they scored <span>39</span> points.</p>
+				<p>You scored <span><?= htmlentities($result["_score1"]) ?></span> points and they scored <span><?= htmlentities($result["_score2"]) ?></span> points.</p>
 			</div>
 
             <ul id="results">
         
 <?php
         foreach ($result as $categoryID => $category) {
+            if ($categoryID[0] != "_") {
 ?>
 
                 <li class="section">
-                    <h3><?= htmlentities($category["_name"]) ?></h3>
+					<h3><?= htmlentities($category["_name"]) ?></h3>
                     <p class="score-left"><?= htmlentities($category["_score1"]) ?></p>
                     <p class="score-right"><?= htmlentities($category["_score2"]) ?></p>       
 
 <?php
-            foreach ($category as $itemID => $item) {
-                if ($itemID[0] != "_") {
+                foreach ($category as $itemID => $item) {
+                    if ($itemID[0] != "_") {
 ?>
 
                     <ul class="stat clearfix">
-                        <li class="<?= $item["winner1"] ? "win" : "lose" ?>"><span><?= htmlentities($item["result1"] . " " . $item["units"]) ?></span></li>
+                        <li class="<?= $item["winner1"] ? "win" : "lose" ?>">
+                            <span><?= htmlentities($item["result1"]) ?></span>
+                            <span class="units"><?= htmlentities($item["units"]) ?></span>
+                        </li>
+                        
                         <li><?= htmlentities($item["name"]) ?></li>
-                        <li class="<?= $item["winner2"] ? "win" : "lose" ?>"><span><?= htmlentities($item["result2"] . " " . $item["units"]) ?></span></li>
+                        
+                        <li class="<?= $item["winner2"] ? "win" : "lose" ?>">
+                            <span><?= htmlentities($item["result2"]) ?></span>
+                            <span class="units"><?= htmlentities($item["units"]) ?></span>
+                        </li>
                     </ul>
 <?php
+                    }
                 }
-            }
 ?>
                 </li>
 <?php
+            }
         }
 ?>
             </ul>
 
 <?php
-    } ?>	<div class="btn-group dropup">
-			<button class="btn">Settings</button>
-			<button class="btn dropdown-toggle" data-toggle="dropdown">
-			<span class="caret"></span>
-			</button>
-  			<ul class="dropdown-menu">
-    				SETTINGS COMING SOON!
-  			</ul>
-		</div>
+    } ?>	<input class="flip" id="settings_button" type="button" value="Settings" />
+    <div id="settingsPanel">
+    <h1><font face="Arial">Settings</h1>
+<h3>Here you can change what goes to war!</h3>
+        <hr />
+    <div>Crime Score : <input checked id="crimebox" type="checkbox" /></div>
+    <div>School Score : <input checked id="schoolbox" type="checkbox" /></div>
+    <div>Proximity to A&E Score : <input checked id="aebox" type="checkbox" /></div>
+    <div>House Price Score : <input checked id="hpbox" type="checkbox" /></div>
+        <hr />
+        </div>
   <ul class="dropdown-menu">
     <!-- dropdown menu links -->
   </ul>
