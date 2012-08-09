@@ -78,7 +78,7 @@
             if ($categoryID[0] != "_") {
 ?>
 
-                <li class="section">
+				<li class="section" id="<?= $categoryID ?>">
 					<h3><?= htmlentities($category["_name"]) ?></h3>
                     <p class="score-left"><?= htmlentities($category["_score1"]) ?></p>
                     <p class="score-right"><?= htmlentities($category["_score2"]) ?></p>       
