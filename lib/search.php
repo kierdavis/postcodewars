@@ -24,8 +24,8 @@
         "amenities" => "Amenities",
         "schools" => "Schools",
         "transport" => "Transport",
-        "crime" => "Crime (per 1000 people)",
-        "house-price" => "House Price"
+        "crime" => "Crime",
+        "house-price" => "House Prices"
     );
     
     function load_from_cache($db, $plugin, $location) {
