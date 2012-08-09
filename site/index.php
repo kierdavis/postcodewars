@@ -94,7 +94,25 @@
                                 $item["result2"] = "20+";
                             }
                         }
+                        
+                        if ($item["winner1"] == $item["winner2"]) {
 ?>
+
+                    <ul class="stat draw clearfix">
+                        <li>
+                            <span><?= htmlentities($item["result1"]) ?></span>
+                            <span class="units"><?= htmlentities($item["units"]) ?></span>
+                        </li>
+                        
+                        <li><?= htmlentities($item["name"]) ?></li>
+                        
+                        <li>
+                            <span><?= htmlentities($item["result2"]) ?></span>
+                            <span class="units"><?= htmlentities($item["units"]) ?></span>
+                        </li>
+                    </ul>
+
+<?php } else { ?>
 
                     <ul class="stat clearfix">
                         <li class="<?= $item["winner1"] ? "win" : "lose" ?>">
@@ -110,6 +128,7 @@
                         </li>
                     </ul>
 <?php
+                        }
                     }
                 }
 ?>
