@@ -50,8 +50,14 @@
 ?>
 
 			<div id="score">
-				<p class="congrats">Congratulations! You won.</p>
-				<p>You scored <span><?= htmlentities($result["_score1"]) ?></span> points and they scored <span><?= htmlentities($result["_score2"]) ?></span> points.</p>
+<?php if ($result["_score1"] > $result["_score2"]) { ?>
+                <p class="congrats">The left postcode wins!</p>
+<?php } else if ($result["_score1"] < $result["_score2"]) { ?>
+                <p class="congrats">The right postcode wins!</p>
+<?php } else { ?>
+                <p class="congrats">It's a draw!</p>
+<?php } ?>
+				<p><span><?= htmlentities($result["_score1"]) ?></span> -- <span><?= htmlentities($result["_score2"]) ?></span></p>
 			</div>
 
             <ul id="results">
