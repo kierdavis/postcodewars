@@ -27,5 +27,8 @@ $(document).ready(function() {
             }
           })
         });
+        $(".flip").click(function() {
+    $("#settingsPanel").slideToggle()
+})​
     }
 });
