@@ -17,6 +17,10 @@
 	}
 	function get_nearest_result($postcode,$criteria,$type,$lat,$lng){
         $d=get_all_results($postcode,$criteria,$type,$lat,$lng,"30000");
+        if (count($d) < 1) {
+            return FALSE;
+        }
+        
 		//gets the lat and long of the first result
 		$endloclat=$d[0]->geometry->location->lat;
 		$endloclng=$d[0]->geometry->location->lng;
@@ -24,6 +28,10 @@
 	}
 	function dist_to_result($postcode,$criteria,$type,$lat,$lng){
 		$nearest_of_type=get_nearest_result($postcode,$criteria,$type,$lat,$lng);
+        if ($nearest_of_type === FALSE) {
+            return FALSE;
+        }
+        
 		$nearest_lat_lng=$nearest_of_type["geo"];
 		//do google dist calc using API, like below but changed arguments
 		
