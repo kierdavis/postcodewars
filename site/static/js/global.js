@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	$("#settingsPanel").hide();
     
-	//$("#settingsPanel ul li").each(function() {
+	$("#settingsPanel ul li").each(function() {
 	var cookieName = $($(this).children()).attr("id").replace("-visibility", "");
 		var value = $.cookie(cookieName); 
 		if (value == true) {
@@ -16,10 +16,10 @@ $(document).ready(function() {
 		$("#settingsPanel").slideToggle();
 	});
 	
-	//$("#settingsPanel input").change(function() {
+	$("#settingsPanel input").change(function() {
 		var cookieName = $($(this).children()).attr("id").replace("-visibility", "");
 		var newValue = $(this).is(':checked');
-		$.cookie(cookieName, newVa lue, { expires: 7, path: '/' });
+		$.cookie(cookieName, newValue, { expires: 7, path: '/' });
 		if (newValue) {
 			$("#" + cookieName).show();
 		}else{
