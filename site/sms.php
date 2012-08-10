@@ -1,9 +1,9 @@
 <?php
 	// For debugging - remove this when you're done
-	error_reporting(E_ALL);
+	//error_reporting(E_ALL);
 	
 	// Just to check this is working
-	echo $_REQUEST['Body'];
+	//echo $_REQUEST['Body'];
 	
 	// Requiring search's requires
     require_once "../lib/include.php";
@@ -19,14 +19,14 @@
 	$myInputRegex = "/^((([a-zA-Z]{1,2})(([0-9]{1,2})|(([0-9])([a-zA-Z])))([0-9]{1})([a-zA-Z]{2})) +(([a-zA-Z]{1,2})(([0-9]{1,2})|(([0-9])([a-zA-Z])))([0-9]{1})([a-zA-Z]{2})))$/";
 	if (!preg_match($myInputRegex, $incoming)) {
 		// Debugging
-		echo "Preg match failed";
-		goto eof;
+		//echo "Preg match failed";
+		//goto eof;
 		
 		$message = "Input not valid. It should look like this: 'NG11AA LE11AA'";
 	}
 	else {
 		// Debugging
-		echo "Preg match succeeded!";
+		//echo "Preg match succeeded!";
 		
 		// Split the two postcodes up
 		$postcodes = explode(" ", $incoming);
@@ -34,7 +34,7 @@
 		$pc2 = $postcodes[1];
 		
 		// Debugging
-		echo " ... " . $pc1 . ", " . $pc2;
+		//echo " ... " . $pc1 . ", " . $pc2;
 		
 		// Search the postcodes and return scores!
 		$result = search($pc1, $pc2);
@@ -42,7 +42,7 @@
 		$score2 = $result['_score2'];
 		
 		// Debugging
-		echo " ... " . $score1 . ", " . $score2;
+		//echo " ... " . $score1 . ", " . $score2;
 		
 		// Compare the scores and write an appropriate message
 		if ($score1 > $score2) { $message = $pc1 . " wins, " . $score1 . "-" . $score2 . "!"; }
@@ -50,7 +50,7 @@
 		else { $message = "It was a draw!"; }
 		
 		// Debugging
-		var_dump($message);
+		#var_dump($message);
 	}
 	
 	// Send the XML header
