@@ -6,8 +6,8 @@
 		$url="https://maps.googleapis.com/maps/api/directions/json";
 		$destlat=$geo2[0];
 		$destlng=$geo2[1];
-		$lat=$geo[0];
-		$lng=$geo[1];
+		$lat=$geo1[0];
+		$lng=$geo1[1];
 		$argstr="?sensor=false&origin=".$lat.",".$lng."&destination=".$destlat.",".$destlng;
         curl_setopt($c, CURLOPT_URL, $url . $argstr);
         curl_setopt($c, CURLOPT_RETURNTRANSFER, TRUE);
