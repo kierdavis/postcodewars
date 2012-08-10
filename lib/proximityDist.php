@@ -1,7 +1,7 @@
 <?php
 	//gets the proximity to the nearest A&E department using Google places API
 	require_once "include.php";
-	function get_all_results_dist($postcode,$criteria,$type,$lat,$lng){
+	function get_all_results_dist($postcode,$type,$lat,$lng){
 	    $c = curl_init();
 		$url="https://maps.googleapis.com/maps/api/place/search/json";
 		$argstr="?types=".$type."&sensor=false&key=".GOOGLE_API_KEY;
@@ -16,8 +16,8 @@
         //var_dump($d);
         return $d->results;
 	}
-	function get_nearest_result($postcode,$criteria,$type,$lat,$lng){
-        $d=get_all_results_dist($postcode,$criteria,$type,$lat,$lng);
+	function get_nearest_result($postcode,$type,$lat,$lng){
+        $d=get_all_results_dist($postcode,$type,$lat,$lng);
         if (count($d) < 1) {
             return FALSE;
         }
@@ -27,8 +27,8 @@
 		$endloclng=$d[0]->geometry->location->lng;
 		return array("geo"=>array($endloclat,$endloclng),"name"=>$d[0]->name,"data"=>json_encode($d));
 	}
-	function dist_to_result($postcode,$criteria,$type,$lat,$lng){
-		$nearest_of_type=get_nearest_result($postcode,$criteria,$type,$lat,$lng);
+	function dist_to_result($postcode,$type,$lat,$lng){
+		$nearest_of_type=get_nearest_result($postcode,$type,$lat,$lng);
         if ($nearest_of_type === FALSE) {
             return FALSE;
         }
