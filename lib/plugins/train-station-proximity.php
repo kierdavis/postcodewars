@@ -31,11 +31,11 @@
         //     "lng" => the longitude
         public function get_result($db, $loc) {
             $criteria="Train station";
-            return dist_to_result($loc["postcode"],$criteria,"",$loc["lat"],$loc["lng"]) / 1000;
+            return dist_to_result($loc["postcode"],$criteria,"train_station",$loc["lat"],$loc["lng"],true) / 1000;
         }
     }
     
     // Update the name of the class here too.
     // This inserts the plugin into the plugin index.
-    $plugins["trainsdist"] = new TrainsDist();
+    // $plugins["trainsdist"] = new TrainsDist();
 ?>
