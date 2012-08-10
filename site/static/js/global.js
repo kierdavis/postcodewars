@@ -33,10 +33,33 @@ $(document).ready(function() {
 			path : '/'
 		});
 
+		var leftScoreDiff 		= parseInt($("#" + cookieName).children('.score-left').text());
+		var rightScoreDiff 		= parseInt($("#" + cookieName).children('.score-right').text());
+		var leftScoreCurrent  	= parseInt($("#leftScore").text());
+		var rightScoreCurrent  	= parseInt($("#rightScore").text());
+
 		if (newValue == "") {
 			$("#" + cookieName).show();
+			leftScoreCurrent = leftScoreCurrent + leftScoreDiff;
+			rightScoreCurrent = rightScoreCurrent + rightScoreDiff;
 		} else {
 			$("#" + cookieName).hide();
+			leftScoreCurrent = leftScoreCurrent - leftScoreDiff;
+			rightScoreCurrent = rightScoreCurrent - rightScoreDiff;
+		}
+
+		$("#leftScore").text(leftScoreCurrent);
+		$("#rightScore").text(rightScoreCurrent);
+
+		var leftPostcode 		= $('#battle_postcode1').val();
+		var rightPostcode 		= $('#battle_postcode2').val();
+
+		if (leftScoreCurrent > rightScoreCurrent) {
+			$('.congrats').html('<span>' + leftPostcode + '</span> wins!');
+		} else if (leftScoreCurrent < rightScoreCurrent) {
+			$('.congrats').html('<span>' + rightPostcode + '</span> wins!');
+		} else {
+			$('.congrats').text('Its a draw!');
 		}
 	});
 	//When battle button is pressed it reads the two entered postcodes and loads up the categories and data
