@@ -14,7 +14,7 @@
         $data = curl_exec($c);
         curl_close($c);
         $d = json_decode($data);
-        
+        echo $d->status;
         if ($d->status != "OK") {
             if ($d->status == "ZERO_RESULTS") {
                 return FALSE;
