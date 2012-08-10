@@ -23,6 +23,9 @@
 		$message = "Input not valid. It should look like this: 'NG11AA LE11AA'";
 	}
 	else {
+		echo "Preg match succeeded!";
+		goto eof;
+		
 		// Split the two postcodes up
 		$postcodes = explode(" ", $incoming);
 		$postcode1 = $postcodes[0];
