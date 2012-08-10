@@ -29,13 +29,19 @@
 		
 		public function get_result($db, $loc) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			return get_first_by_text_search($loc["postcode"],"train+station") / 1000;
 =======
+=======
+>>>>>>> f6c759631f65d7acfb0b4448c78becfbbcfe0e85
 			$closest=get_first_by_text_search($loc["postcode"],"train+station") / 1000;
 			//echo $loc["lat"].",".$loc["lng"];
 			echo json_encode(array($loc["lat"],$loc["lng"]));
 			return dist_between_geo(array($loc["lat"],$loc["lng"]),$closest["geo"]);
+<<<<<<< HEAD
 >>>>>>> c474b309234935037f4fdd80913b3ceeb9c77e87
+=======
+>>>>>>> f6c759631f65d7acfb0b4448c78becfbbcfe0e85
 		}
 	}
 	

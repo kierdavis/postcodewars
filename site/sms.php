@@ -1,10 +1,22 @@
 <?php
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+//Debugging
+error_reporting(-1);
+
+=======
+<<<<<<< HEAD
+>>>>>>> f6c759631f65d7acfb0b4448c78becfbbcfe0e85
 =======
 //Debugging
 error_reporting(-1);
 
 >>>>>>> c474b309234935037f4fdd80913b3ceeb9c77e87
+<<<<<<< HEAD
+=======
+>>>>>>> f754d8779ea9b2d6ca8db9fe3ef08beccdcf551f
+>>>>>>> f6c759631f65d7acfb0b4448c78becfbbcfe0e85
 // Slightly hacky reshuffle to fix the preceding tab
 // Send the XML header
 header("content-type: text/xml");
@@ -27,6 +39,11 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 	
 	// Yay, I wrote a regex. I probably ought to test this.
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+>>>>>>> f6c759631f65d7acfb0b4448c78becfbbcfe0e85
 	$myInputRegex = "/^((([a-zA-Z]{1,2})(([0-9]{1,2})|(([0-9])([a-zA-Z])))([0-9]{1})([a-zA-Z]{2})) +(([a-zA-Z]{1,2})(([0-9]{1,2})|(([0-9])([a-zA-Z])))([0-9]{1})([a-zA-Z]{2})))$/";
 	if (!preg_match($myInputRegex, $incoming)) {
 		$message = "Input not valid. It should look like this: 'NG11AA LE11AA'";
@@ -35,6 +52,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 		// Split the two postcodes up
 		$postcodes = explode(" ", $incoming);
 =======
+>>>>>>> f754d8779ea9b2d6ca8db9fe3ef08beccdcf551f
 	// This first one only matches AA11AA and AA111AA
 	// $myInputRegex = "/^((([a-zA-Z]{1,2})(([0-9]{1,2})|(([0-9])([a-zA-Z])))([0-9]{1})([a-zA-Z]{2})) +(([a-zA-Z]{1,2})(([0-9]{1,2})|(([0-9])([a-zA-Z])))([0-9]{1})([a-zA-Z]{2})))$/";
 	// This next one should match the following:
@@ -48,7 +66,14 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 	}
 	else {
 		// Split the two postcodes up
+<<<<<<< HEAD
 >>>>>>> c474b309234935037f4fdd80913b3ceeb9c77e87
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> c474b309234935037f4fdd80913b3ceeb9c77e87
+>>>>>>> f754d8779ea9b2d6ca8db9fe3ef08beccdcf551f
+>>>>>>> f6c759631f65d7acfb0b4448c78becfbbcfe0e85
 		$pc1 = $postcodes[0];
 		$pc2 = $postcodes[1];
 		
