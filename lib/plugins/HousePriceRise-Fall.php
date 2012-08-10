@@ -14,7 +14,7 @@
         public $name = "price-rise-fall-percentage";
         
         // The human-readable name - this will be displayed in the results table e.g. "School proximity"
-        public $hrname = "Average House Price Change Over 12 Months";
+        public $hrname = "Average house price change over 12 months";
         
         // The units that the results are returned in.
         public $units = "%";
