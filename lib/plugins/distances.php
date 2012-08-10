@@ -28,7 +28,7 @@
 		public $can_cache = FALSE;
 		
 		public function get_result($db, $loc) {
-			return dist_to_result($loc["postcode"],"airport",$loc["lat"],$loc["lng"]) / 1000;
+			return dist_to_result($loc["postcode"],"train_station",$loc["lat"],$loc["lng"]) / 1000;
 		}
 	}
 	
