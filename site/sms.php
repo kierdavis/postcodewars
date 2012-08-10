@@ -1,4 +1,7 @@
 <?php
+//Debugging
+error_reporting(-1);
+
 // Slightly hacky reshuffle to fix the preceding tab
 // Send the XML header
 header("content-type: text/xml");
@@ -19,6 +22,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 	// This is the text message sent to us
 	$incoming = $_REQUEST['Body'];
 
+	// Checking the postcodes are postcodes...
 	// This first one only matches AA11AA and AA111AA
 	// $myInputRegex = "/^((([a-zA-Z]{1,2})(([0-9]{1,2})|(([0-9])([a-zA-Z])))([0-9]{1})([a-zA-Z]{2})) +(([a-zA-Z]{1,2})(([0-9]{1,2})|(([0-9])([a-zA-Z])))([0-9]{1})([a-zA-Z]{2})))$/";
 	// This next one should match the following:
@@ -27,6 +31,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 	//	-AA1A1AA
 	//	-and correctly spaced postcodes. And a mix. Much better!
 	$myInputRegex = "/^((([a-zA-Z]{2})([0-9]{1,2})([a-zA-Z]?)(\s?))([0-9]{1})([a-zA-Z]{2}))$/";
+	
 	if (!preg_match($myInputRegex, $incoming, $postcodes)) {
 		$message = "Oops! They don't look like postcodes to me.";
 	}
