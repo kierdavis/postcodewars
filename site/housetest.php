@@ -1,4 +1,4 @@
-<form action="/" method="get">
+<form action="site/housetest.php" method="get">
 <input type="text" name="location" value="Input your location" />
 <input type="submit">
 </form>
@@ -6,7 +6,7 @@
 
 $townrefined = $_GET["location"];
 			$housepriceunrefined = (file_get_contents("http://api.nestoria.co.uk/api?country=uk&pretty=1&action=metadata&place_name=" . $townrefined . "&encoding=xml"));
-			echo $townrefined
+
 			
 			//work out how to get oldest and newest house data, and call them $oldhd and $newhd
 			//
@@ -25,3 +25,6 @@ $townrefined = $_GET["location"];
             
             // Should return a number - this is the result that is displayed.
             echo $result;
+
+?>
+

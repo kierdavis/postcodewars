@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 	/*require_once "../lib/proximityDist.php";
+=======
+	require_once "../lib/proximity.php";
+>>>>>>> baf4f727ee4aaec22cb2fd4883ec50429ddf1168
     // Copy this file into lib/plugins/ and name it appropriately. Then follow the comments in this
     // file to fill in the gaps.
     
