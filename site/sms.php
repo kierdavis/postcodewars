@@ -1,10 +1,7 @@
 <?php
-	// For debugging - remove this when you're done
-	//error_reporting(E_ALL);
-	
 //Slightly hacky reshuffle to fix the preceding tab
 // Send the XML header
-   header("content-type: text/xml");
+header("content-type: text/xml");
 	
 // Output the XML content-type tag (this has to be echoed, otherwise PHP thinks it's PHP)
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
@@ -54,8 +51,8 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 		}
 		
 		// Now do the actual splitting
-		$pc1_split = pc_split($pc1);
-		$pc2_split = pc_split($pc2);
+		$pc1_split = strtoupper(pc_split($pc1));
+		$pc2_split = strtoupper(pc_split($pc2));
 		
 		// Compare the scores and write an appropriate message
 		if ($score1 > $score2) { $message = $pc1_split . " wins, " . $score1 . "-" . $score2 . "!"; }
@@ -68,6 +65,3 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 	<Response>
 	    <Sms><?php echo $message; ?></Sms>
 	</Response>
-<?php
-	eof:
-?>
