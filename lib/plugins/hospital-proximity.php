@@ -4,12 +4,12 @@
     // file to fill in the gaps.
     
     // Change this name
-    class AeDist{
+    class Hospital{
         // The category identifier - should be lowercase and hyphen-separated e.g. "crime"
         public $category = "amenities";
         
         // The name identifier - should be lowercase and hyphen-separated e.g. "school-proximity"
-        public $name = "hospital-proximity";
+        public $name = "hospital-distance";
         
         // The human-readable name - this will be displayed in the results table e.g. "School proximity"
         public $hrname = "Nearest Hospital";
@@ -36,5 +36,5 @@
     
     // Update the name of the class here too.
     // This inserts the plugin into the plugin index.
-    $plugins["aeproximity"] = new AeDist();
+    $plugins["hospital"] = new Hospital();
 ?>
