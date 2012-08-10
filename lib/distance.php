@@ -1,5 +1,32 @@
 <?php
 	require_once "include.php";
+	//returns the shortest road route betwee the two latitudes
+	function dist_between_geo($geo1,$geo2){
+		$c = curl_init();
+		$url="https://maps.googleapis.com/maps/api/directions/json";
+		$destlat=$geo2[0];
+		$destlng=$geo2[1];
+		$lat=$geo[0];
+		$lng=$geo[1];
+		$argstr="?sensor=false&origin=".$lat.",".$lng."&destination=".$destlat.",".$destlng;
+        curl_setopt($c, CURLOPT_URL, $url . $argstr);
+        curl_setopt($c, CURLOPT_RETURNTRANSFER, TRUE);
+        $data = curl_exec($c);
+        curl_close($c);
+        $d = json_decode($data);
+        
+        if ($d->status != "OK") {
+            if ($d->status == "ZERO_RESULTS") {
+                return FALSE;
+            }
+            
+            throw new Exception("API call to Google Maps Directions returned: " . $d->status);
+        }
+        
+        $no_of_legs = count($d->routes[0]->legs);
+		//the distance to the nearest place in km
+        return round($d->routes[0]->legs[0]->distance->value, 1);
+	}
 	function get_first_by_text_search($postcode,$placetype){
 	    $c = curl_init();
 		$url="https://maps.googleapis.com/maps/api/place/textsearch/json";
@@ -53,29 +80,7 @@
         }
         
 		$nearest_lat_lng=$nearest_of_type["geo"];
-		//do google dist calc using API, like below but changed arguments
-		
-	    $c = curl_init();
-		$url="https://maps.googleapis.com/maps/api/directions/json";
-		$destlat=$nearest_lat_lng[0];
-		$destlng=$nearest_lat_lng[1];
-		$argstr="?sensor=false&origin=".$lat.",".$lng."&destination=".$destlat.",".$destlng;
-        curl_setopt($c, CURLOPT_URL, $url . $argstr);
-        curl_setopt($c, CURLOPT_RETURNTRANSFER, TRUE);
-        $data = curl_exec($c);
-        curl_close($c);
-        $d = json_decode($data);
-        
-        if ($d->status != "OK") {
-            if ($d->status == "ZERO_RESULTS") {
-                return FALSE;
-            }
-            
-            throw new Exception("API call to Google Maps Directions returned: " . $d->status);
-        }
-        
-        $no_of_legs = count($d->routes[0]->legs);
-		//the distance to the nearest place in miles
-        return round($d->routes[0]->legs[0]->distance->value, 1);
+		//do google dist calc using API
+        return dist_between_geo(array($lat,$lng), $nearest_lat_lng);
 	}
 ?>
