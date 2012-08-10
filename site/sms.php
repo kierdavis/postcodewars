@@ -30,7 +30,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 	//	-AA111AA
 	//	-AA1A1AA
 	//	-and correctly spaced postcodes. And a mix. Much better!
-	$myInputRegex = "/^((([a-zA-Z]{2})([0-9]{1,2})([a-zA-Z]?)(\s?))([0-9]{1})([a-zA-Z]{2}))$/";
+	$myInputRegex = "/^((([a-zA-Z]{2})([0-9]{1,2})([a-zA-Z]?)(\s?))([0-9]{1})([a-zA-Z]{2}))$/g";
 	if (!preg_match($myInputRegex, $incoming, $postcodes)) {
 		$message = "Oops! They don't look like postcodes to me.";
 	}
