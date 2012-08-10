@@ -1,6 +1,6 @@
 <?php
 	require_once "include.php";
-	function get_all_results($postcode,$criteria,$type,$lat,$lng,$radius){
+	function get_all_results($postcode,$type,$lat,$lng,$radius){
 	    $c = curl_init();
 		$url="https://maps.googleapis.com/maps/api/place/search/json";
 		$argstr="?types=".$type."&sensor=false&key=".GOOGLE_API_KEY;
