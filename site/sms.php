@@ -2,7 +2,7 @@
 	// For debugging - remove this when you're done
 	//error_reporting(E_ALL);
 	
-//Really hacky reshuffle to fix the preceding tab
+//Slightly hacky reshuffle to fix the preceding tab
 // Send the XML header
    header("content-type: text/xml");
 	
