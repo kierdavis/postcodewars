@@ -18,18 +18,23 @@
 	// Yay, I wrote a regex. I probably ought to test this.
 	$myInputRegex = "/^((([a-zA-Z]{1,2})(([0-9]{1,2})|(([0-9])([a-zA-Z])))([0-9]{1})([a-zA-Z]{2})) +(([a-zA-Z]{1,2})(([0-9]{1,2})|(([0-9])([a-zA-Z])))([0-9]{1})([a-zA-Z]{2})))$/";
 	if (!preg_match($myInputRegex, $incoming)) {
+		// Debugging
 		echo "Preg match failed";
 		goto eof;
+		
 		$message = "Input not valid. It should look like this: 'NG11AA LE11AA'";
 	}
 	else {
+		// Debugging
 		echo "Preg match succeeded!";
-		goto eof;
 		
 		// Split the two postcodes up
 		$postcodes = explode(" ", $incoming);
 		$postcode1 = $postcodes[0];
 		$postcode2 = $postcodes[1];
+		
+		// Debugging
+		echo " ... " . $postcode1 . ", " . $postcode2;
 		
 		// Search the postcodes and return scores!
 		$result = search($postcode1, $postcode2);
