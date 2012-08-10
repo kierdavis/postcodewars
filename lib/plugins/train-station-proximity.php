@@ -9,10 +9,10 @@
         public $category = "amenities";
         
         // The name identifier - should be lowercase and hyphen-separated e.g. "school-proximity"
-        public $name = "train-station-proximity";
+        public $name = "train-station-proximity"; // internal use - identifies plugin
         
         // The human-readable name - this will be displayed in the results table e.g. "School proximity"
-        public $hrname = "Train Station Proximity";
+        public $hrname = "Nearest Train Station";
         
         // The units that the results are returned in.
         public $units = "km";
@@ -30,8 +30,7 @@
         //     "lat" => the latitude
         //     "lng" => the longitude
         public function get_result($db, $loc) {
-            $criteria="Train station";
-            return dist_to_result($loc["postcode"],$criteria,"train_station",$loc["lat"],$loc["lng"],true) / 1000;
+            return dist_to_result($loc["postcode"],"train_station",$loc["lat"],$loc["lng"],true) / 1000;
         }
     }
     
