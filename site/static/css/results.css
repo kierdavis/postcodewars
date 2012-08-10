@@ -474,7 +474,7 @@ footer p {
 
 #settingsPanel input[type="checkbox"]:checked {
     background-position: 0 0, 21px 0;
-    padding-left: 10px;
+    padding-left: 18px;
     padding-right: 0;
 }
 
