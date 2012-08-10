@@ -1,19 +1,18 @@
 $(document).ready(function() {
 	//By default the settings tab should be hidden
 	$("#settingsPanel").hide();
-	//FIXME
 	//Cookie does not remember hide/show settings on load
 	//Cookie somehow overides the setting code and shows it on load (by default the settings are meant to be hidden).
-	$("#settingsPanel ul li input").each(function() {
+	$("#settingsPanel input").each(function() {
 		var cookieName = $(this).attr("id").replace("-visibility", "");
-		var value = ($.cookie(cookieName) == "true");
-		$(this).attr('checked', value);
-		if (value == true) {
-			$("#" + cookieName).show();
-		} else {
-			$("#" + cookieName).hide();
-		};
 
+		if ($.cookie(cookieName) == "hidden") {
+			$("#" + cookieName).hide();
+			$(this).attr('checked', false);
+		} else {
+			$("#" + cookieName).show();
+			$(this).attr('checked', true);
+		}
 	});
 	//When settings button is pressed : Slide transition (hide/show)
 	$(".flip").click(function() {
@@ -22,7 +21,12 @@ $(document).ready(function() {
 	//When a setting is changed this function saves that change in cookies
 	$("#settingsPanel input").change(function() {
 		var cookieName = $(this).attr("id").replace("-visibility", "");
-		var newValue = $(this).is(':checked');
+		if ($(this).is(':checked')) {
+			var newValue = "hidden";
+		} else {
+			var newValue = "";
+		}
+		
 		$.cookie(cookieName, newValue, {
 			expires : 7,
 			path : '/'
