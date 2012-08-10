@@ -4,7 +4,6 @@
 	
 	// Just to check this is working
 	echo $_REQUEST['Body'];
-	goto eof;
 	
 	// Requiring search's requires
     require_once "../lib/include.php";
@@ -19,6 +18,8 @@
 	// Yay, I wrote a regex. I probably ought to test this.
 	$myInputRegex = "/^((([a-zA-Z]{1,2})(([0-9]{1,2})|(([0-9])([a-zA-Z])))([0-9]{1})([a-zA-Z]{2})) +(([a-zA-Z]{1,2})(([0-9]{1,2})|(([0-9])([a-zA-Z])))([0-9]{1})([a-zA-Z]{2})))$/";
 	if (!preg_match($myInputRegex, $incoming)) {
+		echo "Preg match failed";
+		goto eof;
 		$message = "Input not valid. It should look like this: 'NG11AA LE11AA'";
 	}
 	else {
