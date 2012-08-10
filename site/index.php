@@ -1,9 +1,10 @@
 <?php
+    error_reporting(-1);
     require_once "../lib/include.php";
     require_once "../lib/util.php";
     
     require_once "../lib/search.php";
-    
+    error_reporting(-1);
     $postcode1 = "";
     $postcode2 = "";
     $result = null;
