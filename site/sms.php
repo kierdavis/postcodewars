@@ -1,8 +1,3 @@
 <?php
-	// This will be the SMS interface!
-    header("content-type: text/xml");
-    echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+	mail("jacob.walke94@gmail.com", "Twilio tester", print_r($_REQUEST), "From: twilio-test@androidbanana.co.uk");
 ?>
-	<Response>
-	    <Sms>IT'S WORKING! YEAH!</Sms>
-	</Response>
