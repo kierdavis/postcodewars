@@ -8,10 +8,10 @@ $(document).ready(function() {
 
 		if ($.cookie(cookieName) == "hidden") {
 			$("#" + cookieName).hide();
-			$(this).attr('checked', false);
+			$(this).attr('checked', true);
 		} else {
 			$("#" + cookieName).show();
-			$(this).attr('checked', true);
+			$(this).attr('checked', false);
 		}
 	});
 	//When settings button is pressed : Slide transition (hide/show)
