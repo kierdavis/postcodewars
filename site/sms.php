@@ -46,7 +46,8 @@
 		
 		// Compare the scores and write an appropriate message
 		if ($score1 > $score2) { $message = $pc1 . " wins, " . $score1 . "-" . $score2 . "!"; }
-		elseif ($score1 < $score2) { $message = $pc2 . "wins, " . $score2 . "-" . $score1 . "!"; }
+		elseif ($score1 < $score2) { $message = $pc2 . " 
+		wins, " . $score2 . "-" . $score1 . "!"; }
 		else { $message = "It was a draw!"; }
 		
 		// Debugging
