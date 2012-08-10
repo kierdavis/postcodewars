@@ -52,7 +52,7 @@
             }
             
             // Should return a number - this is the result that is displayed.
-            round($result, 1)
+            round($result, 1);
             return $result;
         }
     }
