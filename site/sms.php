@@ -1,6 +1,6 @@
 <?php
 	// For debugging - remove this when you're done
-	error_reporting(-1);
+	error_reporting(E_ALL);
 	
 	// Just to check this is working
 	echo $_REQUEST['Body'];
