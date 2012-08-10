@@ -1,8 +1,8 @@
 <?php
 	// For debugging - remove this when you're done
-	error_reporting(E_ALL);
+	//error_reporting(E_ALL);
 	
-//Really hacky reshuffle to fix the preceding tab
+//Slightly hacky reshuffle to fix the preceding tab
 // Send the XML header
    header("content-type: text/xml");
 	
@@ -25,10 +25,6 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 	// Yay, I wrote a regex. I probably ought to test this.
 	$myInputRegex = "/^((([a-zA-Z]{1,2})(([0-9]{1,2})|(([0-9])([a-zA-Z])))([0-9]{1})([a-zA-Z]{2})) +(([a-zA-Z]{1,2})(([0-9]{1,2})|(([0-9])([a-zA-Z])))([0-9]{1})([a-zA-Z]{2})))$/";
 	if (!preg_match($myInputRegex, $incoming)) {
-		// Debugging
-		//echo "Preg match failed";
-		//goto eof;
-		
 		$message = "Input not valid. It should look like this: 'NG11AA LE11AA'";
 	}
 	else {
@@ -46,25 +42,24 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 		function pc_split($pcvar) {
 			if (strlen($pcvar) == 6) {
 				$pcvar_split = str_split($pcvar, 3);
-				$pcvar_imploded = implode("", $pcvar_split);
+				$pcvar_imploded = implode(" ", $pcvar_split);
 				return $pcvar_imploded;
 			}
 			elseif (strlen($pc1) == 7) {
 				$pcvar_split = str_split($pcvar, 4);
-				$pcvar_imploded = implode("", $pcvar_split);
+				$pcvar_imploded = implode(" ", $pcvar_split);
 				return $pcvar_imploded;
 			}
 			else return $pcvar;
 		}
 		
 		// Now do the actual splitting
-		$pc1 = pc_split($pc1);
-		$pc2 = pc_split($pc2);
+		$pc1_split = pc_split($pc1);
+		$pc2_split = pc_split($pc2);
 		
 		// Compare the scores and write an appropriate message
-		if ($score1 > $score2) { $message = $pc1 . " wins, " . $score1 . "-" . $score2 . "!"; }
-		elseif ($score1 < $score2) { $message = $pc2 . " 
-		wins, " . $score2 . "-" . $score1 . "!"; }
+		if ($score1 > $score2) { $message = $pc1_split . " wins, " . $score1 . "-" . $score2 . "!"; }
+		elseif ($score1 < $score2) { $message = $pc2_split . " wins, " . $score2 . "-" . $score1 . "!"; }
 		else { $message = "It was a draw!"; }
 	}
 	
