@@ -30,7 +30,7 @@
         //     "lat" => the latitude
         //     "lng" => the longitude
         public function get_result($db, $loc) {
-            return dist_to_result($loc["postcode"],"train_station",$loc["lat"],$loc["lng"],true) / 1000;
+            return dist_to_result($loc["postcode"],"train_station",$loc["lat"],$loc["lng"]) / 1000;
         }
     }
     
