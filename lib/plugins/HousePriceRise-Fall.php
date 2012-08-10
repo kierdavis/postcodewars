@@ -34,33 +34,31 @@
         //     "town" => the county-electoral area
         public function get_result($db, $location) {
 			$townrefined = $location["town"];
-			$housepriceunrefined = (file_get_contents("http://api.nestoria.co.uk/api?country=uk&pretty=1&action=metadata&place_name=" . $townrefined[0] . "&encoding=xml"));
+			$housepriceunrefined = (file_get_contents("http://api.nestoria.co.uk/api?country=uk&pretty=1&action=metadata&place_name=" . $townrefined . "&encoding=xml"));
 			
-			//work out how to get oldest and newest house data, and call them $oldhd and $newhd
-			//
+			
+			
 			$xmlfile2 = new SimpleXMLElement($housepriceunrefined);
-			$oldhp = ($xmlfile2->xpath('opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2011_m2"]/@avg_price'));
-			$newhp = ($xmlfile2->xpath('opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2012_m2"]/@avg_price'));
-			//
+			$oldhp = ($xmlfile2->xpath('/opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2011_m2"]/@avg_price'));
+			$newhp = ($xmlfile2->xpath('/opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2012_m2"]/@avg_price'));
 			
+			
+            
 			if ($oldhp[0] >= $newhp[0]) {
-				if ($newphp[0] == 0) {
-				$result = 0 ;
-				}
-				else {
-				$result = ($oldhp[0] / $newhp[0]) * 100;
-				}
-			}
+			
+				$result = (($newhp[0] - $oldhp[0]) / $newhp[0]) * 100;
+				//REFERENCE1) add code to instert a plus sign infront of $result here:
+				
+            }
 			else {
-			if ($oldphp[0] == 0) {
-				$result = 0 ;
-				}
-				else {
-				$result = ($newhp[0] / $oldhp[0]) * 100;
-				}
-			}
+				$result = (($oldhp[0] - $newhp[0]) / $newhp[0]) * 100;
+				$result = -$result;
+            }
+            
+            }
             
             // Should return a number - this is the result that is displayed.
+			//When echoed, $result will not display "+" sign when the the change in price is positive (see //REFERENCE1)
             return $result;
         }
     }
