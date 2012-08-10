@@ -1,5 +1,5 @@
 <?php
-	require_once "../lib/proximityDist.php"; // uses different file
+	require_once "../lib/distance.php"; // uses different file
 	
 	class Hospitals {
 		public $category = "amenities";			// Category identifier - lowercase and hyphen-separated
