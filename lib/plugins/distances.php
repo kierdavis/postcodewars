@@ -2,7 +2,7 @@
 	require_once "../lib/distance.php"; // uses different file
 	
 	class Hospitals {
-		public $category = "amenities";			// Category identifier - lowercase and hyphen-separated
+		public $category = "proximities";			// Category identifier - lowercase and hyphen-separated
 		public $name = "hospital-distance";		// Name identifier - ""
 		public $hrname = "Nearest hospital";	// Displayed in results table
 		public $units = "km";						// Units of the results
@@ -20,7 +20,7 @@
 	// Train stations
 	
 	class TrainStations {
-		public $category = "amenities";
+		public $category = "proximities";
 		public $name = "train-station-distance";
 		public $hrname = "Nearest train station";
 		public $units = "km";
