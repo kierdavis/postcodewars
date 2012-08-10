@@ -5,6 +5,7 @@
     $plugins = array();
     $plugin_log = fopen("plugin.log", "a");
     if ($plugin_log === FALSE) {
+    	fopen("plugin.log", "w");
         die("Could not open plugin.log for appending");
     }
     
