@@ -3,7 +3,8 @@
 	error_reporting(-1);
 	
 	// Just to check this is working
-	echo "Penis";
+	echo $_REQUEST['Body'];
+	goto eof;
 	
 	// Requiring search's requires
     require_once "../lib/include.php";
@@ -48,3 +49,6 @@
 	<Response>
 	    <Sms><?php echo $message; ?></Sms>
 	</Response>
+<?php
+	eof:
+?>
