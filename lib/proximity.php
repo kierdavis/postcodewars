@@ -1,17 +1,11 @@
 <?php
 	//gets the proximity to the nearest A&E department using Google places API
 	require_once "include.php";
-	function get_all_results($postcode,$criteria,$type,$lat,$lng,$radius,$rankbydist){
+	function get_all_results($postcode,$criteria,$type,$lat,$lng,$radius){
 	    $c = curl_init();
 		$url="https://maps.googleapis.com/maps/api/place/search/json";
 		$argstr="?types=".$type."&sensor=false&key=".GOOGLE_API_KEY;
-		$argstr.="&location=".$lat.",".$lng;
-		if($rankbydist){
-			$argstr.="&rankby=distance";
-		}
-		else{
-			$argstr.="&radius=".$radius;
-		}
+		$argstr.="&location=".$lat.",".$lng."&rankby=distance";
 		logmsg("proximity-lib",$url.$argstr);
         curl_setopt($c, CURLOPT_URL, $url . $argstr);
         curl_setopt($c, CURLOPT_RETURNTRANSFER, TRUE);
@@ -22,8 +16,8 @@
         //var_dump($d);
         return $d->results;
 	}
-	function get_nearest_result($postcode,$criteria,$type,$lat,$lng,$rankbydist){
-        $d=get_all_results($postcode,$criteria,$type,$lat,$lng,"30000",$rankbydist);
+	function get_nearest_result($postcode,$criteria,$type,$lat,$lng){
+        $d=get_all_results($postcode,$criteria,$type,$lat,$lng,"30000");
         if (count($d) < 1) {
             return FALSE;
         }
@@ -33,8 +27,8 @@
 		$endloclng=$d[0]->geometry->location->lng;
 		return array("geo"=>array($endloclat,$endloclng),"name"=>$d[0]->name,"data"=>json_encode($d));
 	}
-	function dist_to_result($postcode,$criteria,$type,$lat,$lng, $rankbydist=false){
-		$nearest_of_type=get_nearest_result($postcode,$criteria,$type,$lat,$lng,$rankbydist);
+	function dist_to_result($postcode,$criteria,$type,$lat,$lng,){
+		$nearest_of_type=get_nearest_result($postcode,$criteria,$type,$lat,$lng);
         if ($nearest_of_type === FALSE) {
             return FALSE;
         }
