@@ -5,7 +5,10 @@
     $plugins = array();
     $plugin_log = fopen("plugin.log", "a");
     if ($plugin_log === FALSE) {
-    	fopen("plugin.log", "w");
+    	$plugin_log_add=fopen("plugin.log", "w");
+		if($plugin_log_add == FALSE){
+			die("Couldn't create plugin.log");
+		}
         die("Could not open plugin.log for appending");
     }
     
