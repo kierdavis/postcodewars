@@ -327,7 +327,7 @@ class crime_weapons {
 		
     }
 
-	// Add the plugins
+	// Add the plugins - hey look, this is a comment
 	$plugins[] = new crime_all();
 	$plugins[] = new crime_asb();
 	$plugins[] = new crime_drugs();
