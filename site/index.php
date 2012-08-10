@@ -37,10 +37,10 @@
 			<h2>Settings</h2>
 			<p><b>Here you can change what goes to war!</b></p>
 			<ul>
-				<li>Crime Score <input checked id="crime-visibility"" type="checkbox" /></li>
-				<li>School Score <input checked id="schools-visibility" type="checkbox" /></li>
-				<li>Amenities Score <input checked id="amenities-visibility" type="checkbox" /></li>
-				<li>House Price Score <input checked id="house-price-visibility" type="checkbox" /></li>
+				<li>Crime Score <input checked="checked" id="crime-visibility" type="checkbox" /></li>
+				<li>School Score <input checked="checked"  id="schools-visibility" type="checkbox" /></li>
+				<li>Amenities Score <input checked="checked"  id="amenities-visibility" type="checkbox" /></li>
+				<li>House Price Score <input checked="checked"  id="house-price-visibility" type="checkbox" /></li>
 			</ul>
 		</div>
 
