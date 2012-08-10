@@ -41,10 +41,16 @@
 		$score1 = $result['_score1'];
 		$score2 = $result['_score2'];
 		
+		// Debugging
+		echo " ... " . $score1 . ", " . $score2;
+		
 		// Compare the scores and write an appropriate message
 		if ($score1 > $score2) { $message = $postcode1 . " wins, " . $score1 . "-" . $score2 . "!"; }
 		elseif ($score1 < $score2) { $message = $postcode2 . "wins, " . $score2 . "-" . $score1 . "!"; }
 		else { $message = "It was a draw!"; }
+		
+		// Debugging
+		var_dump($message);
 	}
 	
 	// Send the XML header
