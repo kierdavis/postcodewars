@@ -23,7 +23,7 @@
 
 <html>
     <head>
-        <title>PostCode Wars</title>
+        <title>Postcode Wars</title>
 
         <link href="/static/css/results.css" rel="stylesheet" type="text/css" />    
         <script src="/static/js/jquery-1.7.2.min.js" type="text/javascript"></script>
@@ -45,7 +45,7 @@
 		</div>
 
         <header>
-            <h1>PostCode Wars</h1>
+            <h1>Postcode Wars</h1>
         </header>
 
         <div id="content">
@@ -83,8 +83,8 @@
 
 				<li class="section" id="<?= $categoryID ?>">
 					<h3><?= htmlentities($category["_name"]) ?></h3>
-                    <p class="score-left"><?= htmlentities($category["_score1"]) ?></p>
-                    <p class="score-right"><?= htmlentities($category["_score2"]) ?></p>       
+					<p class="score-left <?= $category['_score1'] >= $category['_score2'] ? ($category['_score1'] == $category['_score2'] ? 'draw' : 'win' ) : 'lose' ?>"><?= htmlentities($category["_score1"]) ?></p>
+					<p class="score-right <?= $category['_score2'] >= $category['_score1'] ? ($category['_score1'] == $category['_score2'] ? 'draw' : 'win' ) : 'lose' ?>"><?= htmlentities($category["_score2"]) ?></p>
 
 <?php
                 foreach ($category as $itemID => $item) {
