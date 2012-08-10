@@ -21,17 +21,19 @@ $(document).ready(function() {
 	//When a setting is changed this function saves that change in cookies
 	$("#settingsPanel input").change(function() {
 		var cookieName = $(this).attr("id").replace("-visibility", "");
-		if ($(this).is(':checked')) {
-			var newValue = "hidden";
-		} else {
+
+		if ($(this).attr('checked') == "checked") {
 			var newValue = "";
+		} else {
+			var newValue = "hidden";
 		}
 		
 		$.cookie(cookieName, newValue, {
 			expires : 7,
 			path : '/'
 		});
-		if (newValue) {
+
+		if (newValue == "") {
 			$("#" + cookieName).show();
 		} else {
 			$("#" + cookieName).hide();
