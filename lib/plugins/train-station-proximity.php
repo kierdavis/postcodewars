@@ -1,5 +1,5 @@
 <?php
-	/*require_once "../lib/proximity.php";
+	require_once "../lib/proximityDist.php";
     // Copy this file into lib/plugins/ and name it appropriately. Then follow the comments in this
     // file to fill in the gaps.
     
@@ -33,7 +33,7 @@
             $criteria="Train station";
             return dist_to_result($loc["postcode"],$criteria,"train_station",$loc["lat"],$loc["lng"],true) / 1000;
         }
-    }*/
+    }
     
     // Update the name of the class here too.
     // This inserts the plugin into the plugin index.
