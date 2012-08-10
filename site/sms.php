@@ -1,4 +1,7 @@
 <?php
+//Debugging
+error_reporting(-1);
+
 // Slightly hacky reshuffle to fix the preceding tab
 // Send the XML header
 header("content-type: text/xml");
