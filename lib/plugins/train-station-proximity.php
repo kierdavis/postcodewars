@@ -9,10 +9,10 @@
         public $category = "amenities";
         
         // The name identifier - should be lowercase and hyphen-separated e.g. "school-proximity"
-        public $name = "train-station-distance"; // internal use - identifies plugin
+        public $name = "train-station-distance";
         
         // The human-readable name - this will be displayed in the results table e.g. "School proximity"
-        public $hrname = "Nearest Train Station";
+        public $hrname = "Nearest train station";
         
         // The units that the results are returned in.
         public $units = "km";
@@ -36,5 +36,5 @@
     
     // Update the name of the class here too.
     // This inserts the plugin into the plugin index.
-    $plugins["trainstation"] = new TrainStation();
+    $plugins["train-station"] = new TrainStation();
 ?>
