@@ -2,6 +2,9 @@
 	// For debugging - remove this when you're done
 	error_reporting(-1);
 	
+	// Just to check this is working
+	echo "Penis";
+	
 	// Requiring search's requires
     require_once "../lib/include.php";
     require_once "../lib/util.php";
