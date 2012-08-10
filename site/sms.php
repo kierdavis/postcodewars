@@ -1,13 +1,13 @@
 <?php
+	// For debugging - remove this when you're done
+	error_reporting(E_ALL);
+	
 //Really hacky reshuffle to fix the preceding tab
 // Send the XML header
    header("content-type: text/xml");
 	
 // Output the XML content-type tag (this has to be echoed, otherwise PHP thinks it's PHP)
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-
-	// For debugging - remove this when you're done
-	//error_reporting(E_ALL);
 	
 	// Just to check this is working
 	//echo $_REQUEST['Body'];
