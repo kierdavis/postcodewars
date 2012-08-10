@@ -57,7 +57,7 @@
     header("content-type: text/xml");
 	
 	// Output the XML content-type tag (this has to be echoed, otherwise PHP thinks it's PHP)
-	echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+	echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 	
 	// Now output the message as TwiML!
 ?>
