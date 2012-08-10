@@ -1,4 +1,4 @@
-<form action="/" method="get">
+<form action="site/housetest.php" method="get">
 <input type="text" name="location" value="Input your location" />
 <input type="submit">
 </form>
