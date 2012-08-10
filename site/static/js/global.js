@@ -35,7 +35,7 @@ $(document).ready(function() {
 	});
 	//When battle button is pressed it reads the two entered postcodes and loads up the categories and data
 	$("#battle_submit").click(function(event) {
-		event.preventDefault();
+		//event.preventDefault();
 		$("#search").after($('<div class="loader"></div>'));
 
 		var postcode1 = $("#battle_postcode1").val();
