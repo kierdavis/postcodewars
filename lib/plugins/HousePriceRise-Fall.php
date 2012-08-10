@@ -55,8 +55,6 @@
 				$result = -$result;
             }
             
-            }
-            
             // Should return a number - this is the result that is displayed.
 			//When echoed, $result will not display "+" sign when the the change in price is positive (see //REFERENCE1)
 			$result = round($result, 2);
