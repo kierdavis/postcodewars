@@ -30,14 +30,14 @@
 		
 		// Split the two postcodes up
 		$postcodes = explode(" ", $incoming);
-		$postcode1 = $postcodes[0];
-		$postcode2 = $postcodes[1];
+		$pc1 = $postcodes[0];
+		$pc2 = $postcodes[1];
 		
 		// Debugging
-		echo " ... " . $postcode1 . ", " . $postcode2;
+		echo " ... " . $pc1 . ", " . $pc2;
 		
 		// Search the postcodes and return scores!
-		$result = search($postcode1, $postcode2);
+		$result = search($pc1, $pc2);
 		$score1 = $result['_score1'];
 		$score2 = $result['_score2'];
 		
@@ -45,8 +45,8 @@
 		echo " ... " . $score1 . ", " . $score2;
 		
 		// Compare the scores and write an appropriate message
-		if ($score1 > $score2) { $message = $postcode1 . " wins, " . $score1 . "-" . $score2 . "!"; }
-		elseif ($score1 < $score2) { $message = $postcode2 . "wins, " . $score2 . "-" . $score1 . "!"; }
+		if ($score1 > $score2) { $message = $pc1 . " wins, " . $score1 . "-" . $score2 . "!"; }
+		elseif ($score1 < $score2) { $message = $pc2 . "wins, " . $score2 . "-" . $score1 . "!"; }
 		else { $message = "It was a draw!"; }
 		
 		// Debugging
