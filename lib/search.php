@@ -6,6 +6,7 @@
     $plugin_log = fopen("plugin.log", "a");
     if ($plugin_log === FALSE) {
     	$plugin_log_add=fopen("plugin.log", "w");
+		unlink("plugin.log");
 		if($plugin_log_add == FALSE){
 			die("Couldn't create plugin.log");
 		}
