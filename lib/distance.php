@@ -25,6 +25,7 @@
         
         $no_of_legs = count($d->routes[0]->legs);
 		//the distance to the nearest place in km
+		echo "DIST".$d->routes[0]->legs[0]->distance->value."DIST";
         return round($d->routes[0]->legs[0]->distance->value, 1);
 	}
 	function get_first_by_text_search($postcode,$placetype){
