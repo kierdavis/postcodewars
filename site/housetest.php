@@ -6,11 +6,7 @@
 
 $townrefined = $_GET["location"];
 			$housepriceunrefined = (file_get_contents("http://api.nestoria.co.uk/api?country=uk&pretty=1&action=metadata&place_name=" . $townrefined . "&encoding=xml"));
-<<<<<<< HEAD
-			echo $townrefined;
-=======
-			echo $townrefined
->>>>>>> 8ad2a0b38130b53c68f49ce00762e51bb151dbaa
+
 			
 			//work out how to get oldest and newest house data, and call them $oldhd and $newhd
 			//
@@ -29,7 +25,6 @@ $townrefined = $_GET["location"];
             
             // Should return a number - this is the result that is displayed.
             echo $result;
-<<<<<<< HEAD
+
 ?>
-=======
->>>>>>> 8ad2a0b38130b53c68f49ce00762e51bb151dbaa
+
