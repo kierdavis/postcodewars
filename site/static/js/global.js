@@ -7,11 +7,11 @@ $(document).ready(function() {
 		var cookieName = $(this).attr("id").replace("-visibility", "");
 
 		if ($.cookie(cookieName) == "hidden") {
-			$("#" + cookieName).hide();
-			$(this).attr('checked', true);
-		} else {
 			$("#" + cookieName).show();
 			$(this).attr('checked', false);
+		} else {
+			$("#" + cookieName).hide();
+			$(this).attr('checked', true);
 		}
 	});
 	//When settings button is pressed : Slide transition (hide/show)
