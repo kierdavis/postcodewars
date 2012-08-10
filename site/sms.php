@@ -42,12 +42,12 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 		function pc_split($pcvar) {
 			if (strlen($pcvar) == 6) {
 				$pcvar_split = str_split($pcvar, 3);
-				$pcvar_imploded = implode("", $pcvar_split);
+				$pcvar_imploded = implode(" ", $pcvar_split);
 				return $pcvar_imploded;
 			}
 			elseif (strlen($pc1) == 7) {
 				$pcvar_split = str_split($pcvar, 4);
-				$pcvar_imploded = implode("", $pcvar_split);
+				$pcvar_imploded = implode(" ", $pcvar_split);
 				return $pcvar_imploded;
 			}
 			else return $pcvar;
