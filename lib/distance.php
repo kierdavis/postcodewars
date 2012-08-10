@@ -14,7 +14,7 @@
         $data = curl_exec($c);
         curl_close($c);
         $d = json_decode($data);
-        //echo $url.$argstr;
+        echo $url.$argstr;
         if ($d->status != "OK") {
             if ($d->status == "ZERO_RESULTS") {
                 return FALSE;
@@ -32,7 +32,7 @@
 	    $c = curl_init();
 		$url="https://maps.googleapis.com/maps/api/place/textsearch/json";
 		$argstr="?query=".$placetype." loc: ".$postcode."&sensor=false&key=".GOOGLE_API_KEY;
-		echo $url.$argstr;
+		//echo $url.$argstr;
         curl_setopt($c, CURLOPT_URL, $url . $argstr);
         curl_setopt($c, CURLOPT_RETURNTRANSFER, TRUE);
         $data = curl_exec($c);
@@ -84,4 +84,5 @@
 		//do google dist calc using API
         return dist_between_geo(array($lat,$lng), $nearest_lat_lng);
 	}
+
 ?>
