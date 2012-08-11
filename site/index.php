@@ -49,7 +49,7 @@
             <h1>Postcode Wars</h1>
         </header>
 
-		<p id="yrs-win">Awarded &quot;Best Example of Coding&quot; at <a href="http://hacks.youngrewiredstate.org/events/yrs2012/postcodewars">Young Rewired State</a></p>
+		<p id="yrs-win">Awarded &quot;Best Example of Coding&quot; at <a href="http://hacks.rewiredstate.org/events/yrs2012/postcode-wars">Young Rewired State</a></p>
 
         <div id="content">
             <div id="search" class="clearfix">
