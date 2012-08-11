@@ -42,12 +42,12 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 		$pc2 = str_replace(" ", "", $pc2);
 		
 		// Debugging
-		var_dump($pc1);
-		var_dump($pc2);
+		//var_dump($pc1);
+		//var_dump($pc2);
 		
 		// Search the postcodes and return scores!
 		$result = search($pc1, $pc2);
-		var_dump($result);
+		//var_dump($result);
 		$score1 = $result['_score1'];
 		$score2 = $result['_score2'];
 		//var_dump($result);
