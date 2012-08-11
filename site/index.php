@@ -48,6 +48,8 @@
             <h1>Postcode Wars</h1>
         </header>
 
+		<div class="congrats">Awarded "Best Example of Coding" at <a href="http://hacks.youngrewiredstate.org/events/yrs2012/postcodewars">Young Rewired State</a></div>
+
         <div id="content">
             <div id="search" class="clearfix">
                 <form action="/" id="battle" method="get">
