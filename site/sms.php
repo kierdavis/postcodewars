@@ -57,12 +57,12 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 		}
 		
 		// Now do the actual splitting
-		$pc1_split = strtoupper(pc_split($pc1));
-		$pc2_split = strtoupper(pc_split($pc2));
+		//$pc1_split = strtoupper(pc_split($pc1));
+		//$pc2_split = strtoupper(pc_split($pc2));
 		
 		// Compare the scores and write an appropriate message
-		if ($score1 > $score2) { $message = $pc1_split . " wins, " . $score1 . "-" . $score2 . "!"; }
-		elseif ($score1 < $score2) { $message = $pc2_split . " wins, " . $score2 . "-" . $score1 . "!"; }
+		if ($score1 > $score2) { $message = $pc1 . " wins, " . $score1 . "-" . $score2 . "!"; }
+		elseif ($score1 < $score2) { $message = $pc2 . " wins, " . $score2 . "-" . $score1 . "!"; }
 		else { $message = "It was a draw!"; }
 	}
 	
