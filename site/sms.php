@@ -48,6 +48,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 		$score2 = $result['_score2'];
 		//var_dump($result);
 		// A quick function to split postcodes (or return the unsplit one in some cases) to avoid repetition:
+		/*
 		function pc_split($pcvar) {
 			if (strlen($pcvar) == 6) {
 				$pcvar_split = str_split($pcvar, 3);
@@ -60,7 +61,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 				return $pcvar_imploded;
 			}
 			else return $pcvar;
-		}
+		} */
 		
 		// Now do the actual splitting
 		//$pc1_split = strtoupper(pc_split($pc1));
