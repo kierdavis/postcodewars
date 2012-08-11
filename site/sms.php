@@ -32,6 +32,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 		$message = "Oops! They don't look like postcodes to me.";
 	}
 	else {
+		var_dump($postcodes);
 		// Split the two postcodes up
 		$pc1 = $postcodes[0];
 		$pc2 = $postcodes[1];
