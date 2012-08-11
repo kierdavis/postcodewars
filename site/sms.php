@@ -45,7 +45,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 		$result = search($pc1, $pc2);
 		$score1 = $result['_score1'];
 		$score2 = $result['_score2'];
-		
+		var_dump($result);
 		// A quick function to split postcodes (or return the unsplit one in some cases) to avoid repetition:
 		function pc_split($pcvar) {
 			if (strlen($pcvar) == 6) {
@@ -66,9 +66,15 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 		//$pc2_split = strtoupper(pc_split($pc2));
 		
 		// Compare the scores and write an appropriate message
-		if ($score1 > $score2) { $message = $pc1 . " wins, " . $score1 . "-" . $score2 . "!"; }
-		elseif ($score1 < $score2) { $message = $pc2 . " wins, " . $score2 . "-" . $score1 . "!"; }
-		else { $message = "It was a draw!"; }
+		if ($score1 > $score2) {
+			$message = $pc1 . " wins, " . $score1 . "-" . $score2 . "!";
+		}
+		elseif ($score1 < $score2) {
+			$message = $pc2 . " wins, " . $score2 . "-" . $score1 . "!";
+		}
+		else {
+			$message = "It was a draw!";
+		}
 	}
 	
 	// Now output the message as TwiML!
