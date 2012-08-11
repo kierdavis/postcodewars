@@ -42,6 +42,7 @@
 		
         //var_dump($d);
         if($d->status!="OK"){
+        	echo $d->status;
         	return false;
         }
         $closest =  $d->results[0];
