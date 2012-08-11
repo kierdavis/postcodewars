@@ -39,6 +39,7 @@ header h1 {
 #content {
 	margin: 0 auto;
 	max-width: 780px;
+	padding: 30px;
 }
 
 #search {
@@ -62,6 +63,7 @@ header h1 {
 	margin: 0;
 	outline: none;
 	padding: 10px;
+	text-align: center;
 	width: 38%;
 
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -340,11 +342,12 @@ header h1 {
 }
 
 #results .section .stat li {
+	border-left: 1px solid #ddd;
 	border-right: 1px solid #ddd;
 	display: block;
 	float: left;
 	padding: 10px;
-	width: 40%;
+	width: 44%;
 
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
@@ -353,7 +356,8 @@ header h1 {
 
 #results .section .stat li:first-child,
 #results .section .stat li:last-child {
-	width: 30%;
+	border: none;
+	width: 28%;
 }
 
 #results .section .stat li .units {
@@ -583,4 +587,93 @@ footer p {
 	height: 48px;
 	margin: 60px auto;
 	width: 48px;
+}
+
+@media (max-width: 840px) {
+	#search form input[type="text"] {
+		font-size: 28px;
+		line-height: 40px;
+		padding: 8px;
+	}
+
+	#search form button {
+		font-size: 28px;
+		line-height: 40px;
+		padding: 8px 16px;
+	}
+
+	#results .section .stat {
+		line-height: 28px;
+	}
+
+	#results .section .stat .win::after {
+		top: 8px;
+	}
+}
+
+@media (max-width: 480px) {
+	#score {
+		font-size: 13px;
+		margin: 30px 0;
+	}
+
+	#score .congrats {
+		font-size: 36px;
+	}
+
+	#search form {
+		padding-bottom: 48px;
+		position: relative;
+	}
+
+	#search form input[type="text"] {
+		font-size: 20px;
+		line-height: 20px;
+		padding: 8px;
+		width: 48%;
+	}
+
+	#search form input[type="text"]:first-child {
+		margin-right: 4%;
+	}
+
+	#search form button {
+		bottom: 0;
+		font-size: 20px;
+		line-height: 20px;
+		margin: 0;
+		position: absolute;
+		width: 100%;
+	}
+
+	#results .section .stat {
+		border-bottom-color: #bbb;
+		padding-top: 40px;
+		position: relative;
+	}
+
+	#results .section .stat li:first-child,
+	#results .section .stat li:last-child {
+		width: 50%;
+	}
+
+	#results .section .stat li:first-child {
+		border-right: 1px solid #ddd;
+	}
+
+	#results .section .stat li {
+		padding: 6px;
+	}
+
+	#results .section .stat .description {
+		border: none;
+		border-bottom: 1px solid #ddd;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+
+	#results .section .stat .win::after {
+		top: 4px;
+	}
 }
