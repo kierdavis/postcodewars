@@ -34,8 +34,8 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 	else {
 		var_dump($postcodes);
 		// Split the two postcodes up
-		$pc1 = $postcodes[0];
-		$pc2 = $postcodes[1];
+		$pc1 = $postcodes[0][0];
+		$pc2 = $postcodes[0][1];
 		
 		// Remove spaces, woo!
 		$pc1 = str_replace(" ", "", $pc1);
