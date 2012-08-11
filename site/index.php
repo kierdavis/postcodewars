@@ -40,7 +40,7 @@
 				<li>House Price Score <input checked="checked"  id="house-price-visibility" type="checkbox" /></li>
 				<li>Amenities Score <input checked="checked"  id="amenities-visibility" type="checkbox" /></li>
 				<li>Crime Score <input checked="checked" id="crime-visibility" type="checkbox" /></li>
-				<li>Proximities Score <input checked="checked"  id="proximities-visibility" type="checkbox" /></li>
+				<!--<li>Proximities Score <input checked="checked"  id="proximities-visibility" type="checkbox" /></li>-->
 			</ul>
 		</div>
 
