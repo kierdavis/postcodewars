@@ -37,6 +37,10 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 		$pc1 = $postcodes[0];
 		$pc2 = $postcodes[1];
 		
+		// Remove spaces, woo!
+		$pc1 = str_replace(" ", "", $pc1);
+		$pc2 = str_replace(" ", "", $pc2);
+		
 		// Search the postcodes and return scores!
 		$result = search($pc1, $pc2);
 		$score1 = $result['_score1'];
