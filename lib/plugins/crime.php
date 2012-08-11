@@ -334,5 +334,5 @@ class crime_weapons {
 	$plugins[] = new crime_cda();
 	$plugins[] = new crime_burglary();
 	$plugins[] = new crime_violent();
-	$plugins[] = new crime_weapons();
+	//$plugins[] = new crime_weapons();
 ?>
