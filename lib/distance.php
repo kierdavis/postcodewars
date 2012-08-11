@@ -42,11 +42,11 @@
 		
         //var_dump($d);
         if($d->status!="OK"){
-        	echo $d->status;
+        	//echo $d->status;
         	return false;
         }
         $closest =  $d->results[0];
-		echo "NAME".$closest->name;
+		//echo "NAME".$closest->name;
 		$endloclat=$closest->geometry->location->lat;
 		$endloclng=$closest->geometry->location->lng;
 		return array("geo"=>array($endloclat,$endloclng),"name"=>$closest->name,"data"=>json_encode($closest));
