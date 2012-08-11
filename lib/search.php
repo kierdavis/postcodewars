@@ -122,7 +122,8 @@
         
         $breakdown = array();
         
-        $score1 = 0;
+		// Changed this to debug sms.php - I'll change it back!
+        $score1 = 1;
         $score2 = 0;
         
         foreach ($plugins as $plugin) {
