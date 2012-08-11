@@ -32,7 +32,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 		$message = "Oops! They don't look like postcodes to me.";
 	}
 	else {
-		//var_dump($postcodes);
+		var_dump($postcodes);
 		// Split the two postcodes up
 		$pc1 = $postcodes[0];
 		$pc2 = $postcodes[1];
@@ -45,7 +45,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 		$result = search($pc1, $pc2);
 		$score1 = $result['_score1'];
 		$score2 = $result['_score2'];
-		var_dump($result);
+		//var_dump($result);
 		// A quick function to split postcodes (or return the unsplit one in some cases) to avoid repetition:
 		function pc_split($pcvar) {
 			if (strlen($pcvar) == 6) {
