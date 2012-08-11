@@ -43,6 +43,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 		
 		// Search the postcodes and return scores!
 		$result = search($pc1, $pc2);
+		var_dump($result);
 		$score1 = $result['_score1'];
 		$score2 = $result['_score2'];
 		//var_dump($result);
