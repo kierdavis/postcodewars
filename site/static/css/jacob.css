@@ -1,10 +1,11 @@
 p#yrs-win	{
 	margin: -20px auto -20px auto;
 	width: 100%;
+	font-style: italic;
 	text-align: center;
 	font-size: 1.5em;
 	display: block;
 	color: #777;
 	font-family: "Helvetica Neue", Arial, sans-serif;
-	text-shadow: 1px 1px 1px #f3f3f3;	
+	text-shadow: 2px 2px 4px #f3f3f3;	
 }
