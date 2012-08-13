@@ -30,6 +30,9 @@
         <script src="/static/js/jquery-1.7.2.min.js" type="text/javascript"></script>
 		<script src="/static/js/jquery.cookie.js" type="text/javascript"></script>
         <script src="/static/js/global.js" type="text/javascript"></script>
+        <script type="text/javascript">var switchTo5x=true;</script>
+		<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+		<script type="text/javascript">stLight.options({publisher: "2cbd62f7-4800-406b-98c8-c75990ad0e44"});</script>
 		
     </head>
 
@@ -77,6 +80,15 @@
                 <p class="congrats">It's a draw!</p>
 <?php } ?>
 				<p><span><?= htmlentities($postcode1) ?></span> scored <span id="leftScore"><?= htmlentities($result["_score1"]) ?></span> points and <span><?= htmlentities($postcode2) ?></span> scored <span id="rightScore"><?= htmlentities($result["_score2"]) ?></span> points.</p>
+			</div>
+			
+			<div id="sharebuttons">
+				<span class='st_facebook_large' displayText='Facebook'></span>
+				<span class='st_twitter_large' displayText='Tweet'></span>
+				<span class='st_reddit_large' displayText='Reddit'></span>
+				<span class='st_googleplus_large' displayText='Google +'></span>
+				<span class='st_linkedin_large' displayText='LinkedIn'></span>
+				<span class='st_email_large' displayText='Email'></span>
 			</div>
 
             <ul id="results">
