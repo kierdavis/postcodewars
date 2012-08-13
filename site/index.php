@@ -61,6 +61,8 @@
                     </p>
                 </form>
             </div>
+            
+		<p id="textnumber">You can also text two postcodes to +44 (0)203 322 4545!</p>
 
 <?php
     if ($result !== null) {
