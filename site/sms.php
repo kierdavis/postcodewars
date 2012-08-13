@@ -78,7 +78,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 			}
 		}
 		else {
-			$message = "You need two postcodes";
+			$message = "You need two postcodes!";
 		}		
 	}
 	
