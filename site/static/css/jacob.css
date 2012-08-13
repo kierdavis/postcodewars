@@ -23,3 +23,8 @@ p#textnumber {
 a {
 	color: #09d;
 }
+div#sharebuttons {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
