@@ -68,10 +68,10 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 			
 			// Compare the scores and write an appropriate message
 			if ($score1 > $score2) {
-				$message = strtoupper($pc1_split) . " wins, " . $score1 . "-" . $score2 . "!";
+				$message = $pc1_split . " wins, " . $score1 . "-" . $score2 . "!";
 			}
 			elseif ($score1 < $score2) {
-				$message = strtoupper($pc2_split) . " wins, " . $score2 . "-" . $score1 . "!";
+				$message = $pc2_split . " wins, " . $score2 . "-" . $score1 . "!";
 			}
 			else {
 				$message = "It was a draw!";
