@@ -45,7 +45,7 @@
 			</ul>
 		</div>
         
-        <p id="suggstions">Comments? Suggestions? Just want to get in touch?<br><a href="mailto:jacob.walker.94+pcw@gmail.com">Send us an email!</a></p>
+        <p id="suggstions">Comments? Suggestions? Just want to get in touch?<a href="mailto:jacob.walker.94+pcw@gmail.com">Send us an email!</a></p>
 
         <header>
             <h1>Postcode Wars</h1>
