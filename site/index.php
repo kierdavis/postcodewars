@@ -48,6 +48,8 @@
         <header>
             <h1>Postcode Wars</h1>
         </header>
+        
+        <p id="suggstions">Comments? Suggestions? Just want to get in touch?<br><a href="mailto:jacob.walker.94+pcw@gmail.com">Send us an email!</a></p>
 
 		<p id="yrs-win">Awarded &quot;Best Example of Coding&quot; at <a href="http://hacks.rewiredstate.org/events/yrs2012/postcode-wars">Young Rewired State</a></p>
 
