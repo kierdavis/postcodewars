@@ -63,10 +63,11 @@
                     </p>
                 </form>
             </div>
-            
-		<p id="textnumber">You can also text two postcodes to +44 (0)203 322 4545!</p>
-		
-		<p id="crimeapology">Sadly, our Crime category can not cover Scotland yet. For this, we apologise.</p>
+        
+        <div class="notices>"
+	        <p id="textnumber">You can also text two postcodes to +44 (0)203 322 4545!</p>
+			<p id="crimeapology">Sadly, our Crime category can not cover Scotland yet. For this, we apologise.</p>
+		</div>
 
 <?php
     if ($result !== null) {
