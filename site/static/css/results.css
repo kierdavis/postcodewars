@@ -36,6 +36,10 @@ header h1 {
 	text-shadow: 0 1px 0 #fff;
 }
 
+header {
+	margin: 20px;
+}
+
 #content {
 	margin: 0 auto;
 	max-width: 780px;
