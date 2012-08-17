@@ -28,7 +28,7 @@ p#suggestions {
 	top: 5px;
 	left: 5px;
 	font-size: 1.1em;
-	display: block;
+	display: inline-block;
 	width: 200px;
 	color: #777;
 	font-family: "Helvetica Neue", Arial, sans-serif;
