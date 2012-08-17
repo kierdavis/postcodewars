@@ -27,7 +27,8 @@ body {
 	margin: 0;
 }
 
-header h1 {
+header {
+	margin: -20px 0 60px 0;
 	color: #09d;
 	font-size: 48px;
 	line-height: 40px;
@@ -35,12 +36,13 @@ header h1 {
 	text-shadow: 0 1px 0 #fff;
 }
 
-header {
-	margin: 20px 0 60px 0;
-}
-
 h1 {
 	margin: 60px 0;
+	color: #09d;
+	font-size: 48px;
+	line-height: 40px;
+	text-align: center;
+	text-shadow: 0 1px 0 #fff;
 }
 
 #content {
