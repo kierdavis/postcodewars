@@ -64,7 +64,7 @@
                 </form>
             </div>
             
-		<p id="textnumber">You can also text two postcodes to +44 (0)203 322 4545!</p>
+		<p id="textnumber">You can also text two postcodes to +44 (0)203 322 4545!<br>Sadly, our Crime category can not cover Scotland yet. For this, we apologise.</p>
 
 <?php
     if ($result !== null) {
