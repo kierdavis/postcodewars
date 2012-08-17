@@ -9,8 +9,7 @@ p#yrs-win {
 	font-family: "Helvetica Neue", Arial, sans-serif;
 	text-shadow: 0 1px 0 #fff;	
 }
-p#textnumber {
-	margin: -40px auto -19px auto;
+div.notices {
 	width: 100%;
 	font-style: italic;
 	text-align: center;
@@ -20,16 +19,11 @@ p#textnumber {
 	font-family: "Helvetica Neue", Arial, sans-serif;
 	text-shadow: 0 1px 0 #fff;	
 }
+p#textnumber {
+	margin: -40px auto -19px auto;
+}
 p#crimeapology {
 	margin: 23px auto;
-	width: 100%;
-	font-style: italic;
-	text-align: center;
-	font-size: 1.1em;
-	display: block;
-	color: #777;
-	font-family: "Helvetica Neue", Arial, sans-serif;
-	text-shadow: 0 1px 0 #fff;	
 }
 a {
 	color: #09d;
