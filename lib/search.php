@@ -3,14 +3,14 @@
     require_once "util.php";
     
     $plugins = array();
-    $plugin_log = fopen("plugin.log", "a");
-    if ($plugin_log === FALSE) {
+//    $plugin_log = fopen("plugin.log", "a");
+//    if ($plugin_log === FALSE) {
         //die("Could not open plugin.log for appending");
-    }
+//    }
     
     function logmsg($plugin_name, $msg) {
-        global $plugin_log;
-        
+//        global $plugin_log;
+
         //fwrite($plugin_log, "Message from plugin '" . $plugin_name . "': " . $msg . "\n");
     }
     
@@ -31,13 +31,13 @@
     );
     
     function load_from_cache($db, $plugin, $location) {
-        global $plugin_log;
+//        global $plugin_log;
         
         $postcode_encoded = $db->real_escape_string($location["postcode"]);
         $plugin_encoded = $db->real_escape_string($plugin->name);
         $res = $db->query("SELECT id, value FROM cache WHERE postcode = '$postcode_encoded' AND plugin = '$plugin_encoded'");
         if ($res === FALSE) {
-            fwrite($plugin_log, "MySQL error: " . $db->error . "\n");
+//            fwrite($plugin_log, "MySQL error: " . $db->error . "\n");
             return FALSE;
         }
         
@@ -51,27 +51,27 @@
         
         $res = $db->query("UPDATE cache SET last_accessed = UNIX_TIMESTAMP() WHERE id = $id");
         if ($res === FALSE) {
-            fwrite($plugin_log, "MySQL error: " . $db->error . "\n");
+//            fwrite($plugin_log, "MySQL error: " . $db->error . "\n");
             return FALSE;
         }
         return $v;
     }
     
     function store_to_cache($db, $plugin, $location, $result) {
-        global $plugin_log;
+//        global $plugin_log;
         
         $postcode_encoded = $db->real_escape_string($location["postcode"]);
         $plugin_encoded = $db->real_escape_string($plugin->name);
         $result_encoded = $db->real_escape_string($result);
         $res = $db->query("INSERT INTO cache VALUES ('$plugin_encoded', '$postcode_encoded', '$result_encoded', UNIX_TIMESTAMP(), NULL)");
         if ($res === FALSE) {
-            fwrite($plugin_log, "MySQL error: " . $db->error . "\n");
+//            fwrite($plugin_log, "MySQL error: " . $db->error . "\n");
             return FALSE;
         }
     }
     
     function calc_result($db, $plugin, $location) {
-        global $plugin_log;
+//        global $plugin_log;
         
         try {
             $res = $plugin->get_result($db, $location);
@@ -84,13 +84,13 @@
         }
         
         catch (Exception $e) {
-            fwrite($plugin_log, "Error from plugin '" . $plugin->name . "': " . $e->getMessage() . "\n" . $e->getTraceAsString() . "\n");
+//            fwrite($plugin_log, "Error from plugin '" . $plugin->name . "': " . $e->getMessage() . "\n" . $e->getTraceAsString() . "\n");
             return FALSE;
         }
     }
     
     function get_result($db, $plugin, $location) {
-        global $plugin_log;
+//        global $plugin_log;
         
         if ($plugin->can_cache) {
             $res = load_from_cache($db, $plugin, $location);
@@ -107,7 +107,7 @@
     }
     
     function search($postcode1, $postcode2) {
-        global $plugins, $category_names, $plugin_log;
+        global $plugins, $category_names;
         
         // Sanitise
         $postcode1 = strtoupper(str_replace(" ", "", $postcode1));
