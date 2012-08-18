@@ -1,8 +1,10 @@
 <?php
+require_once "../lib/include.php";
+
 // Function to get force id and neighbourhood code from lat and long
 function getForceAndNhood($lat, $lng) {
 	// My unique username and password, woo! The API requires this on every query.
-	$userpass = "wejoc29:fc5eeb9a6565be057ee334f7e1665dfb";
+	$userpass = POLICE_API_KEY;
 	$url = "http://policeapi2.rkh.co.uk/api/locate-neighbourhood?q=$lat,$lng";
 
 	$curl = curl_init();
@@ -26,7 +28,7 @@ function getForceAndNhood($lat, $lng) {
 	
 function getCrimeRate($force, $nhood, $crimeType) {
 	// My unique username and password, woo! The API requires this on every query.
-	$userpass = "wejoc29:fc5eeb9a6565be057ee334f7e1665dfb";
+	$userpass = POLICE_API_KEY;
 	$url = "http://policeapi2.rkh.co.uk/api/$force/$nhood/crime";
 
 	$curl = curl_init();
