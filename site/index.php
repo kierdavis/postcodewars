@@ -64,7 +64,7 @@
         
         <div class="notices">
 	        <p id="textnumber">You can also text two postcodes to +44 (0)203 322 4545!</p>
-			<p id="crimeapology">Sadly, our Crime category can not cover Scotland yet. For this, we apologise.</p>
+			<p id="crimeapology">The police API is currently returning some odd values. While this is being fixed, the crime category may show some strange results.</p>
 		</div>
 
 <?php
