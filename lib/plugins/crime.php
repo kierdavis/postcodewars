@@ -50,7 +50,7 @@ function getCrimeRate($force, $nhood, $crimeType) {
 	// Getting YYYY-MM of this time two months ago (that's the latest police data).
 	$date = new DateTime();
 	
-	$date->sub(new DateInterval("P2M"));
+	$date->sub(new DateInterval("P1M"));
 	
 	$dateFormatted = $date->format("Y-m");
 	
