@@ -24,7 +24,7 @@
 <html>
     <head>
         <title>Postcode Wars</title>
-
+		<meta name="viewport" content="width=device-width, initial-scale: 1" />
         <link href="/static/css/results.css" rel="stylesheet" type="text/css" />    
         <link href="/static/css/jacob.css" rel="stylesheet" type="text/css" />
         <script src="/static/js/jquery-1.7.2.min.js" type="text/javascript"></script>
@@ -64,7 +64,7 @@
         
         <div class="notices">
 	        <p id="textnumber">You can also text two postcodes to +44 (0)203 322 4545!</p>
-			<p id="crimeapology">Sadly, our Crime category can not cover Scotland yet. For this, we apologise.</p>
+			<p id="crimeapology">The crime category cannot show Scottish crime data yet. For this, we apologise.</p>
 		</div>
 
 <?php

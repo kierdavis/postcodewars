@@ -46,7 +46,7 @@
             
 			if ($oldhp[0] >= $newhp[0]) {
 			
-				$result = (($newhp[0] - $oldhp[0]) / $newhp[0]) * 100;
+				$result = (($newhp[0] - $oldhp[0]) / $oldhp[0]) * 100;
 				//REFERENCE1) add code to instert a plus sign infront of $result here:
 				
             }
