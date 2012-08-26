@@ -5,6 +5,6 @@
 DELETE FROM postcodes WHERE lat = 0 AND lng = 0;
 SELECT CONCAT("Deleted ", ROW_COUNT(), " invalid postcodes") AS "";
 
-# Clean cache entries not accessed for at least a day
-DELETE FROM cache WHERE last_accessed < (UNIX_TIMESTAMP() - 86400);
+# Clean cache entries not accessed for at least 7 days
+DELETE FROM cache WHERE last_accessed < (UNIX_TIMESTAMP() - (60 * 60 * 24 * 7));
 SELECT CONCAT("Deleted ", ROW_COUNT(), " expired cache entries") AS "";
