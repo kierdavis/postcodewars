@@ -17,7 +17,7 @@
             $result = search($postcode1, $postcode2);
         }
     }
-	$share_url="?postcode1=".urlencode($postcode1)."&postcode2=".urlencode($postcode2);
+	$share_url="http://postcodewars.co.uk/?postcode1=".urlencode($postcode1)."&postcode2=".urlencode($postcode2);
 ?>
 
 <!DOCTYPE html>
