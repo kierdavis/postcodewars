@@ -2,3 +2,5 @@
 *.sublime-project
 *.sublime-workspace
 site/plugin.log
+phpinfo.php
+include.php

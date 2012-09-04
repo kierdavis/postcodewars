@@ -12,7 +12,7 @@
     define("GET_POINT_ON_DRAW", 0);
     
     define("MYSQL_HOST", "localhost");
-    define("MYSQL_USER", "yrs2012app-user");
-    define("MYSQL_PASSWD", "vOdQ04wDTtIS3GeylBER1nNrAo76ZLFJ");
-    define("MYSQL_DB", "yrs2012app");
+    define("MYSQL_USER", "root");
+    define("MYSQL_PASSWD", "root");
+    define("MYSQL_DB", "postcodewars");
 ?>
