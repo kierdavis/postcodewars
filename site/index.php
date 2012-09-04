@@ -30,7 +30,7 @@
         <script src="/static/js/jquery-1.7.2.min.js" type="text/javascript"></script>
 		<script src="/static/js/jquery.cookie.js" type="text/javascript"></script>
         <script src="/static/js/global.js" type="text/javascript"></script>
-		
+		<script src="static/js/results.js" type="text/javascript"></script>
     </head>
 
     <body>
@@ -72,6 +72,23 @@
 ?>
 
 			<div id="score">
+				<div class="sharing"><?
+					$share_url="http://postcodewars.co.uk/?postcode1=".urlencode($postcode1)."&postcode2=".$postcode2;
+					$enc_url=urlencode($share_url);
+					$fb_link="http://www.facebook.com/share.php?u=".urlencode($share_url);
+					$twitter_link="http://twitter.com/home?status=Just battled ".$postcode1." vs ".$postcode2." on ".$enc_url;
+					$gplus_link="https://plus.google.com/share?url=".$enc_url;
+					?>
+					<a href="<?=$fb_link?>" onclick="return share(this);" title="Share on Facebook" target="_blank">
+						<img src="static/images/facebook.png" alt="Share on Facebook" />
+					</a>
+					<a href="<?=$twitter_link?>" onclick="return share(this);" title="Share on Twitter" target="_blank">
+						<img src="static/images/twitter.png" alt="Share on Twitter">
+					</a>
+					<a href="<?=$gplus_link?>" onclick="return share(this);" title="Share on Google+" target="_blank">
+						<img src="static/images/google_plus.png" alt="Share on Google+"/>
+					</a>
+				</div>
 <?php if ($result["_score1"] > $result["_score2"]) { ?>
                 <p class="congrats"><span><?= htmlentities($postcode1) ?></span> wins!</p>
 <?php } else if ($result["_score1"] < $result["_score2"]) { ?>
