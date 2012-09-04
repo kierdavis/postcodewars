@@ -34,7 +34,7 @@
 		<meta property="og:title" content="Postcode Wars" />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="<?
-		if($result=null){
+		if($result==null){
 			echo "http://postcodewars.co.uk/";
 		}
 		else{
