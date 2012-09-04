@@ -17,11 +17,12 @@
             $result = search($postcode1, $postcode2);
         }
     }
+	$share_url="http://postcodewars.co.uk/?postcode1=".urlencode($postcode1)."&postcode2=".$postcode2;
 ?>
 
 <!DOCTYPE html>
 
-<html>
+<html prefix="og: http://ogp.me/ns#">
     <head>
         <title>Postcode Wars</title>
 		<meta name="viewport" content="width=device-width, initial-scale: 1" />
@@ -30,6 +31,10 @@
 		<script src="/static/js/jquery.cookie.js" type="text/javascript"></script>
         <script src="/static/js/global.js" type="text/javascript"></script>
 		<script src="static/js/results.js" type="text/javascript"></script>
+		<meta property="og:title" content="Postcode Wars" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="<?=$share_url?>" />
+		<meta property="og:image" content="http://postcodewars.co.uk/static/images/facebook_prev_icon.png" />
     </head>
 
     <body>
@@ -72,7 +77,6 @@
 
 			<div id="score">
 				<div class="sharing"><?
-					$share_url="http://postcodewars.co.uk/?postcode1=".urlencode($postcode1)."&postcode2=".$postcode2;
 					$enc_url=urlencode($share_url);
 					$fb_link="http://www.facebook.com/share.php?u=".urlencode($share_url);
 					$twitter_link="http://twitter.com/home?status=Just battled ".$postcode1." vs ".$postcode2." on ".$enc_url;
