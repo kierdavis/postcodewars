@@ -25,8 +25,7 @@
     <head>
         <title>Postcode Wars</title>
 		<meta name="viewport" content="width=device-width, initial-scale: 1" />
-        <link href="/static/css/results.css" rel="stylesheet" type="text/css" />    
-        <link href="/static/css/jacob.css" rel="stylesheet" type="text/css" />
+        <link href="/static/css/results.css" rel="stylesheet" type="text/css" />
         <script src="/static/js/jquery-1.7.2.min.js" type="text/javascript"></script>
 		<script src="/static/js/jquery.cookie.js" type="text/javascript"></script>
         <script src="/static/js/global.js" type="text/javascript"></script>
