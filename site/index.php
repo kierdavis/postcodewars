@@ -42,6 +42,20 @@
 		}
 		?>" />
 		<meta property="og:image" content="http://postcodewars.co.uk/static/images/facebook_prev_icon.png" />
+		<?
+		if($result==null){
+			$og_description="Compare and \"Battle\" Postcodes using Open Source Data!";
+		}
+		else if ($result["_score1"] > $result["_score2"]) {
+			$og_description=$postcode1 . " beat " . $postcode2 . " in my round of Postcode Wars";
+		}
+		else if ($result["_score1"] < $result["_score2"]) {
+			$og_description=$postcode2 . " beat " . $postcode1 . " in my round of Postcode Wars";
+		}
+		else {
+			$og_description=$postcode1 . " and " . $postcode2 . " drew in my round of Postcode Wars";
+		}
+		?><meta property="og:description" content="<?=htmlentities($og_description)?>" />
     </head>
 
     <body>
