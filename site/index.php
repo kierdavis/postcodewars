@@ -17,7 +17,7 @@
             $result = search($postcode1, $postcode2);
         }
     }
-	$share_url="http://postcodewars.co.uk/?postcode1=".urlencode($postcode1)."&postcode2=".urlencode($postcode2);
+	$share_url="?postcode1=".urlencode($postcode1)."&postcode2=".urlencode($postcode2);
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +33,14 @@
 		<script src="static/js/results.js" type="text/javascript"></script>
 		<meta property="og:title" content="Postcode Wars" />
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content="<?=$share_url?>" />
+		<meta property="og:url" content="<?
+		if($result=null){
+			echo "http://postcodewars.co.uk/";
+		}
+		else{
+			echo $share_url;
+		}
+		?>" />
 		<meta property="og:image" content="http://postcodewars.co.uk/static/images/facebook_prev_icon.png" />
     </head>
 
