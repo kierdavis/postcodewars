@@ -7,7 +7,7 @@
 		public $hrname = "Nearest hospital";	// Displayed in results table
 		public $units = "km";						// Units of the results
 		public $better = LOWER_IS_BETTER;		// LOWER_IS_BETTER or HIGHER_IS_BETTER - determines winner
-		public $can_cache = FALSE;					// If results are cached or not
+		public $can_cache = TRUE;					// If results are cached or not
 		
 		// The get_result method should perform the searches and return the two results.
 		// $db is a mysqli object connected to the database.
@@ -25,7 +25,7 @@
 		public $hrname = "Nearest train station";
 		public $units = "km";
 		public $better = LOWER_IS_BETTER;
-		public $can_cache = FALSE;
+		public $can_cache = TRUE;
 		
 		public function get_result($db, $loc) {
 			$closest=get_first_by_text_search($loc["postcode"],"train+station") / 1000;
