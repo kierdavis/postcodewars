@@ -8,14 +8,28 @@
     $postcode1 = "";
     $postcode2 = "";
     $result = null;
-    
+    //variable to contain "$postcode is not a valid postcode." etc.
+	$invalid_text="";
     if (array_key_exists("postcode1", $_GET) && array_key_exists("postcode2", $_GET)) {
         $postcode1 = $_GET["postcode1"];
         $postcode2 = $_GET["postcode2"];
-        
-        if ($postcode1 !== "" && $postcode2 !== "") {
-            $result = search($postcode1, $postcode2);
-        }
+		$postcode_regex = "/[a-zA-Z]{1,2}[0-9]{1,2}[a-zA-Z]?\s?[0-9]{1}[a-zA-Z]{2}/";
+		//are both postcodes valid?
+        if(preg_match($postcode_regex, $postcode1)&&preg_match($postcode_regex, $postcode2)){
+	    	$result = search($postcode1, $postcode2);
+		}
+		//are they both wrong?
+		else if(!preg_match($postcode_regex, $postcode1)&&!preg_match($postcode_regex, $postcode2)){
+	    	$invalid_text="\"".$postcode1."\" and \"".$postcode2."\" are both invalid postcodes.";
+		}
+		//is postcode 1 wrong
+		else if(!preg_match($postcode_regex, $postcode1)){
+			$invalid_text="\"".$postcode1."\" is not a valid postcode.";
+		}
+		//must be postcode 2 then
+		else{
+			$invalid_text="\"".$postcode2."\" is not a valid postcode.";
+		}
     }
 	function format_postcode($postcode){
 		$postcode=strtoupper(str_replace(" ", "", $postcode));
@@ -28,9 +42,11 @@
 		$assembled=$first_part . " " . $last_part;
 		return $assembled;
 	}
-    // Format nicely ie. Caps and with 1 space
-    $postcode1 = format_postcode($postcode1);
-    $postcode2 = format_postcode($postcode2);
+    // Format nicely ie. Caps and with 1 space but only if they're valid
+    if($invalid_text==""){
+	    $postcode1 = format_postcode($postcode1);
+	    $postcode2 = format_postcode($postcode2);
+	}
 	$share_url="http://postcodewars.co.uk/?postcode1=".urlencode($postcode1)."&postcode2=".urlencode($postcode2);
 ?>
 
@@ -99,6 +115,9 @@
                         <input type="text" name="postcode2" tabindex="2" id="battle_postcode2" value="<?= htmlentities($postcode2) ?>" placeholder="Postcode" />
                     </p>
                 </form>
+                <div class="notices invalid" style="color: #A33;">
+					<p><?=htmlentities($invalid_text)?></p>
+				</div>
             </div>
         
         <div class="notices">
