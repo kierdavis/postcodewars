@@ -13,7 +13,7 @@
     if (array_key_exists("postcode1", $_GET) && array_key_exists("postcode2", $_GET)) {
         $postcode1 = $_GET["postcode1"];
         $postcode2 = $_GET["postcode2"];
-		$postcode_regex = "/[a-zA-Z]{1,2}[0-9]{1,2}[a-zA-Z]?\s?[0-9]{1}[a-zA-Z]{2}/";
+		$postcode_regex = "/^[a-zA-Z]{1,2}[0-9]{1,2}[a-zA-Z]?\s?[0-9]{1}[a-zA-Z]{2}$c/";
 		//are both postcodes valid?
         if(preg_match($postcode_regex, $postcode1)&&preg_match($postcode_regex, $postcode2)){
 	    	$result = search($postcode1, $postcode2);
