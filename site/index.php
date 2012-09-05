@@ -17,6 +17,20 @@
             $result = search($postcode1, $postcode2);
         }
     }
+	function format_postcode($postcode){
+		$postcode=strtoupper(str_replace(" ", "", $postcode));
+		//http://www.php.net/manual/en/function.substr.php
+		//start at begining (0) but ommit las 3 chars (-3)
+		$first_part=substr($postcode, 0, -3);
+		//start at 3 from the end (-3)
+		$last_part=substr($postcode, -3);
+		//reassemble with space
+		$assembled=$first_part . " " . $last_part;
+		return $assembled;
+	}
+    // Format nicely ie. Caps and with 1 space
+    $postcode1 = format_postcode($postcode1);
+    $postcode2 = format_postcode($postcode2);
 	$share_url="http://postcodewars.co.uk/?postcode1=".urlencode($postcode1)."&postcode2=".urlencode($postcode2);
 ?>
 
