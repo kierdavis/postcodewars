@@ -22,14 +22,6 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 	// Remove all spaces
 	$incoming = preg_replace("/\s/", "", $incoming);
 	
-	// Regexes!
-	// This first one only matches AA11AA and AA111AA
-	// $myInputRegex = "/^((([a-zA-Z]{1,2})(([0-9]{1,2})|(([0-9])([a-zA-Z])))([0-9]{1})([a-zA-Z]{2})) +(([a-zA-Z]{1,2})(([0-9]{1,2})|(([0-9])([a-zA-Z])))([0-9]{1})([a-zA-Z]{2})))$/";
-	// This next one should match the following:
-	//	-AA11AA
-	//	-AA111AA
-	//	-AA1A1AA
-	//	-and correctly spaced postcodes. And a mix. Much better!
 	$myInputRegex = "/[a-zA-Z]{1,2}[0-9]{1,2}[a-zA-Z]?\s?[0-9]{1}[a-zA-Z]{2}/";
 	
 	if (!preg_match_all($myInputRegex, $incoming, $postcodes)) {
@@ -47,7 +39,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 			$score1 = $result['_score1'];
 			$score2 = $result['_score2'];
 	
-			// A quick function to split postcodes (or return the unsplit one in some cases) to avoid repetition:
+			// A quick function to split postcodes (or return the unsplit one in some cases) to make it tidier for the end user:
 			function pc_split($pcvar) {
 				if (strlen($pcvar) == 6) {
 					$pcvar_split = str_split($pcvar, 3);
