@@ -10,20 +10,41 @@
     $result = null;
     //variable to contain "$postcode is not a valid postcode." etc.
 	$invalid_text="";
+	function verify_postcode($postcode){
+		echo "verification:".$postcode;
+        $c = curl_init();
+        curl_setopt($c, CURLOPT_URL, "http://www.uk-postcodes.com/postcode/".$postcode.".json");
+        curl_setopt($c, CURLOPT_RETURNTRANSFER, TRUE);
+        $data = curl_exec($c);
+        curl_close($c);
+        $d = json_decode($data, true);
+		if($d==array()){
+			return false;
+		}
+		return true;
+	}
+	function test_postcode($postcode){
+		$postcode=format_postcode($postcode);
+		$postcode_regex = "/^[a-zA-Z]{1,2}[0-9]{1,2}[a-zA-Z]?\s?[0-9]{1}[a-zA-Z]{2}$/";
+		//if the first fails, the second doesn't get run saving speed! Interesting!
+		if(preg_match($postcode_regex, $postcode)&&verify_postcode($postcode)){
+			return true;
+		}
+		return false;
+	}
     if (array_key_exists("postcode1", $_GET) && array_key_exists("postcode2", $_GET)) {
         $postcode1 = $_GET["postcode1"];
         $postcode2 = $_GET["postcode2"];
-		$postcode_regex = "/^[a-zA-Z]{1,2}[0-9]{1,2}[a-zA-Z]?\s?[0-9]{1}[a-zA-Z]{2}$/";
 		//are both postcodes valid?
-        if(preg_match($postcode_regex, $postcode1)&&preg_match($postcode_regex, $postcode2)){
+        if(test_postcode($postcode1)&&test_postcode($postcode2)){
 	    	$result = search($postcode1, $postcode2);
 		}
 		//are they both wrong?
-		else if(!preg_match($postcode_regex, $postcode1)&&!preg_match($postcode_regex, $postcode2)){
+		else if(!test_postcode($postcode1)&&!test_postcode($postcode2)){
 	    	$invalid_text="\"".$postcode1."\" and \"".$postcode2."\" are both invalid postcodes.";
 		}
 		//is postcode 1 wrong
-		else if(!preg_match($postcode_regex, $postcode1)){
+		else if(!test_postcode($postcode1)){
 			$invalid_text="\"".$postcode1."\" is not a valid postcode.";
 		}
 		//must be postcode 2 then
