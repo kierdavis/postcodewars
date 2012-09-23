@@ -27,7 +27,7 @@
 		$postcode=format_postcode($postcode);
 		$postcode_regex = "/^[a-zA-Z]{1,2}[0-9]{1,2}[a-zA-Z]?\s?[0-9]{1}[a-zA-Z]{2}$/";
 		//if the first fails, the second doesn't get run saving speed! Interesting!
-		if(preg_match($postcode_regex, $postcode)&&verify_postcode($postcode)){
+		if(preg_match($postcode_regex, $postcode)/*&&verify_postcode($postcode)*/){
 			return true;
 		}
 		return false;
