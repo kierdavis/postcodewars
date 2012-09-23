@@ -4,5 +4,5 @@
     echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 ?>
 	<Response>
-	    <Sms>Oops! Something's gone a bit wobbly.</Sms>
+	    <Sms>Oops! Something's gone a bit wobbly. Try again in a minute or so.</Sms>
 	</Response>
