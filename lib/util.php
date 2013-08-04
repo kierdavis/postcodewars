@@ -27,7 +27,7 @@
         $lng_encoded = $db->real_escape_string($lng);
         $town_encoded = $db->real_escape_string($town);
         
-        $result = $db->query("INSERT INTO postcodes VALUES (\"$postcode_encoded\", \"$lat_encoded\", \"$lng_encoded\", \"$town_encoded\")");
+        $result = $db->query("INSERT INTO postcodes (postcode, lat, lng, town) VALUES (\"$postcode_encoded\", \"$lat_encoded\", \"$lng_encoded\", \"$town_encoded\")");
         if ($result === FALSE) {
             die("MySQL Error: " . $db->error);
         }
