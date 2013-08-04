@@ -8,29 +8,105 @@
     $postcode1 = "";
     $postcode2 = "";
     $result = null;
-    
+    //variable to contain "$postcode is not a valid postcode." etc.
+	$invalid_text="";
+	function verify_postcode($postcode){
+		echo "verification:".$postcode;
+        $c = curl_init();
+        curl_setopt($c, CURLOPT_URL, "http://www.uk-postcodes.com/postcode/".$postcode.".json");
+        curl_setopt($c, CURLOPT_RETURNTRANSFER, TRUE);
+        $data = curl_exec($c);
+        curl_close($c);
+        $d = json_decode($data, true);
+		if($d==array()){
+			return false;
+		}
+		return true;
+	}
+	function test_postcode($postcode){
+		$postcode=format_postcode($postcode);
+		$postcode_regex = "/^[a-zA-Z]{1,2}[0-9]{1,2}[a-zA-Z]?\s?[0-9]{1}[a-zA-Z]{2}$/";
+		//if the first fails, the second doesn't get run saving speed! Interesting!
+		if(preg_match($postcode_regex, $postcode)/*&&verify_postcode($postcode)*/){
+			return true;
+		}
+		return false;
+	}
     if (array_key_exists("postcode1", $_GET) && array_key_exists("postcode2", $_GET)) {
         $postcode1 = $_GET["postcode1"];
         $postcode2 = $_GET["postcode2"];
-        
-        if ($postcode1 !== "" && $postcode2 !== "") {
-            $result = search($postcode1, $postcode2);
-        }
+		//are both postcodes valid?
+        if(test_postcode($postcode1)&&test_postcode($postcode2)){
+	    	$result = search($postcode1, $postcode2);
+		}
+		//are they both wrong?
+		else if(!test_postcode($postcode1)&&!test_postcode($postcode2)){
+	    	$invalid_text="\"".$postcode1."\" and \"".$postcode2."\" are both invalid postcodes.";
+		}
+		//is postcode 1 wrong
+		else if(!test_postcode($postcode1)){
+			$invalid_text="\"".$postcode1."\" is not a valid postcode.";
+		}
+		//must be postcode 2 then
+		else{
+			$invalid_text="\"".$postcode2."\" is not a valid postcode.";
+		}
     }
+	function format_postcode($postcode){
+		$postcode=strtoupper(str_replace(" ", "", $postcode));
+		//http://www.php.net/manual/en/function.substr.php
+		//start at begining (0) but ommit las 3 chars (-3)
+		$first_part=substr($postcode, 0, -3);
+		//start at 3 from the end (-3)
+		$last_part=substr($postcode, -3);
+		//reassemble with space
+		$assembled=$first_part . " " . $last_part;
+		return $assembled;
+	}
+    // Format nicely ie. Caps and with 1 space but only if they're valid
+    if($invalid_text==""){
+	    $postcode1 = format_postcode($postcode1);
+	    $postcode2 = format_postcode($postcode2);
+	}
+	$share_url="http://postcodewars.co.uk/?postcode1=".urlencode($postcode1)."&postcode2=".urlencode($postcode2);
 ?>
 
 <!DOCTYPE html>
 
-<html>
+<html prefix="og: http://ogp.me/ns#">
     <head>
         <title>Postcode Wars</title>
 		<meta name="viewport" content="width=device-width, initial-scale: 1" />
-        <link href="/static/css/results.css" rel="stylesheet" type="text/css" />    
-        <link href="/static/css/jacob.css" rel="stylesheet" type="text/css" />
+        <link href="/static/css/results.css" rel="stylesheet" type="text/css" />
         <script src="/static/js/jquery-1.7.2.min.js" type="text/javascript"></script>
 		<script src="/static/js/jquery.cookie.js" type="text/javascript"></script>
         <script src="/static/js/global.js" type="text/javascript"></script>
-		
+		<script src="static/js/results.js" type="text/javascript"></script>
+		<meta property="og:title" content="Postcode Wars" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="<?
+		if($result==null){
+			echo "http://postcodewars.co.uk/";
+		}
+		else{
+			echo $share_url;
+		}
+		?>" />
+		<meta property="og:image" content="http://postcodewars.co.uk/static/images/facebook_prev_icon.png" />
+		<?
+		if($result==null){
+			$og_description="Compare and \"Battle\" Postcodes using Open Source Data!";
+		}
+		else if ($result["_score1"] > $result["_score2"]) {
+			$og_description=$postcode1 . " beat " . $postcode2 . " in my round of Postcode Wars";
+		}
+		else if ($result["_score1"] < $result["_score2"]) {
+			$og_description=$postcode2 . " beat " . $postcode1 . " in my round of Postcode Wars";
+		}
+		else {
+			$og_description=$postcode1 . " and " . $postcode2 . " drew in my round of Postcode Wars";
+		}
+		?><meta property="og:description" content="<?=htmlentities($og_description)?>" />
     </head>
 
     <body>
@@ -60,6 +136,9 @@
                         <input type="text" name="postcode2" tabindex="2" id="battle_postcode2" value="<?= htmlentities($postcode2) ?>" placeholder="Postcode" />
                     </p>
                 </form>
+                <div class="notices invalid" style="color: #A33;">
+					<p><?=htmlentities($invalid_text)?></p>
+				</div>
             </div>
         
         <div class="notices">
@@ -72,6 +151,22 @@
 ?>
 
 			<div id="score">
+				<div class="sharing"><?
+					$enc_url=urlencode($share_url);
+					$fb_link="http://www.facebook.com/share.php?u=".urlencode($share_url);
+					$twitter_link="http://twitter.com/home?status=Just battled ".$postcode1." vs ".$postcode2." on ".$enc_url;
+					$gplus_link="https://plus.google.com/share?url=".$enc_url;
+					?>
+					<a href="<?=$fb_link?>" onclick="return share(this);" title="Share on Facebook" target="_blank">
+						<img src="static/images/facebook.png" alt="Share on Facebook" />
+					</a>
+					<a href="<?=$twitter_link?>" onclick="return share(this);" title="Share on Twitter" target="_blank">
+						<img src="static/images/twitter.png" alt="Share on Twitter">
+					</a>
+					<a href="<?=$gplus_link?>" onclick="return share(this);" title="Share on Google+" target="_blank">
+						<img src="static/images/google_plus.png" alt="Share on Google+"/>
+					</a>
+				</div>
 <?php if ($result["_score1"] > $result["_score2"]) { ?>
                 <p class="congrats"><span><?= htmlentities($postcode1) ?></span> wins!</p>
 <?php } else if ($result["_score1"] < $result["_score2"]) { ?>

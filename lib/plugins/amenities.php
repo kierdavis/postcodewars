@@ -7,7 +7,7 @@
 		public $hrname = "Art galleries";		// Displayed in results table
 		public $units = "w/in 2km";				// Units of the results
 		public $better = HIGHER_IS_BETTER;		// LOWER_IS_BETTER or HIGHER_IS_BETTER - determines winner
-		public $can_cache = FALSE;				// If results are cached or not
+		public $can_cache = TRUE;				// If results are cached or not
 		
 		// The get_result method should perform the searches and return the two results.
 		// $db is a mysqli object connected to the database.
@@ -27,7 +27,7 @@
 		public $hrname = "Bars";
 		public $units = "w/in 500m";
 		public $better = HIGHER_IS_BETTER;
-		public $can_cache = FALSE;
+		public $can_cache = TRUE;
 		
 		public function get_result($db, $loc) {
 			$result = get_all_results($loc["postcode"], "bar", $loc["lat"], $loc["lng"], 500);
@@ -44,7 +44,7 @@
 		public $hrname = "Museums";
 		public $units = "w/in 2km";
 		public $better = HIGHER_IS_BETTER;
-		public $can_cache = FALSE;
+		public $can_cache = TRUE;
 		
 		public function get_result($db, $loc) {
 			$result = get_all_results($loc["postcode"], "museum", $loc["lat"], $loc["lng"], 2000);
@@ -61,7 +61,7 @@
 		public $hrname = "Restaurants";
 		public $units = "w/in 500m";
 		public $better = HIGHER_IS_BETTER;
-		public $can_cache = FALSE;
+		public $can_cache = TRUE;
 		
 		public function get_result($db, $loc) {
 			$result = get_all_results($loc["postcode"], "restaurant", $loc["lat"], $loc["lng"], 500);
