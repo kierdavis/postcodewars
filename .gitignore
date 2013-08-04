@@ -3,3 +3,5 @@
 *.sublime-workspace
 site/plugin.log
 lib/include.php
+phpinfo.php
+include.php
