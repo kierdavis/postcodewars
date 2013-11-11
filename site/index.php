@@ -77,10 +77,10 @@
     <head>
         <title>Postcode Wars</title>
 		<meta name="viewport" content="width=device-width, initial-scale: 1" />
-        <link href="/static/css/results.css" rel="stylesheet" type="text/css" />
-        <script src="/static/js/jquery-1.7.2.min.js" type="text/javascript"></script>
-		<script src="/static/js/jquery.cookie.js" type="text/javascript"></script>
-        <script src="/static/js/global.js" type="text/javascript"></script>
+        <link href="static/css/results.css" rel="stylesheet" type="text/css" />
+        <script src="static/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+		<script src="static/js/jquery.cookie.js" type="text/javascript"></script>
+        <script src="static/js/global.js" type="text/javascript"></script>
 		<script src="static/js/results.js" type="text/javascript"></script>
 		<meta property="og:title" content="Postcode Wars" />
 		<meta property="og:type" content="website" />
@@ -129,11 +129,11 @@
 
         <div id="content">
             <div id="search" class="clearfix">
-                <form action="/" id="battle" method="get">
+                <form action="./index.php" id="battle" method="get">
 					<p class="clearfix">
-                        <input type="text" name="postcode1" id="battle_postcode1" tabindex="1" value="<?= htmlentities($postcode1) ?>" placeholder="Postcode" />
+                        <input type="text" name="postcode1" id="battle_postcode1" tabindex="1" value="<? htmlentities($postcode1) ?>" placeholder="Postcode" />
                         <button type="submit" tabindex="3" id="battle_submit">Battle!</button>
-                        <input type="text" name="postcode2" tabindex="2" id="battle_postcode2" value="<?= htmlentities($postcode2) ?>" placeholder="Postcode" />
+                        <input type="text" name="postcode2" tabindex="2" id="battle_postcode2" value="<? htmlentities($postcode2) ?>" placeholder="Postcode" />
                     </p>
                 </form>
                 <div class="notices invalid" style="color: #A33;">
