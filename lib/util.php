@@ -21,7 +21,7 @@
         $d = json_decode($data, true);
         $lat = (float) $d["geo"]["lat"];
         $lng = (float) $d["geo"]["lng"];
-        $town = $d["administrative"]["countyelectoral"]["title"];
+        $town = $d["administrative"]["county"]["title"];
         
         $lat_encoded = $db->real_escape_string($lat);
         $lng_encoded = $db->real_escape_string($lng);
