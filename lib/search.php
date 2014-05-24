@@ -3,15 +3,15 @@
     require_once "util.php";
     
     $plugins = array();
-//    $plugin_log = fopen("plugin.log", "a");
-//    if ($plugin_log === FALSE) {
-        //die("Could not open plugin.log for appending");
-//    }
+    $plugin_log = fopen("plugin.log", "a");
+    if ($plugin_log === FALSE) {
+        die("Could not open plugin.log for appending");
+    }
     
     function logmsg($plugin_name, $msg) {
-//        global $plugin_log;
+        global $plugin_log;
 
-        //fwrite($plugin_log, "Message from plugin '" . $plugin_name . "': " . $msg . "\n");
+        fwrite($plugin_log, "Message from plugin '" . $plugin_name . "': " . $msg . "\n");
     }
     
     // Load all plugins
