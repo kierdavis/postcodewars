@@ -1,7 +1,7 @@
 <?php
 require_once "../lib/include.php";
 
-// Function to get force id and neighbourhood code from lat and long
+// Function to get force id and neighbourhood code from lat and long 
 function getForceAndNhood($lat, $lng) {
 	// My unique username and password, woo! The API requires this on every query.
 	$userpass = POLICE_API_KEY;
@@ -22,14 +22,14 @@ function getForceAndNhood($lat, $lng) {
 
 	// The API returns JSON, and json_decode produces an interesting mix of objects and arrays.
 	$dataObj = json_decode($data);
-	
 	return $dataObj;
-	}
+}
+
+// Function to retrieve the bounding area of a neighbourhood
+function getNhoodPoly($force, $nhood) {
 	
-function getCrimeRate($force, $nhood, $crimeType) {
-	// My unique username and password, woo! The API requires this on every query.
 	$userpass = POLICE_API_KEY;
-	$url = "http://policeapi2.rkh.co.uk/api/$force/$nhood/crime";
+	$url = "http://policeapi2.rkh.co.uk/api/$force/$nhood/boundary";
 
 	$curl = curl_init();
 
@@ -43,24 +43,59 @@ function getCrimeRate($force, $nhood, $crimeType) {
 	$data = curl_exec($curl);
 
 	curl_close($curl);
-
-	// The API returns JSON, and json_decode produces an interesting mix of objects and arrays.
-	$dataObj = json_decode($data);
 	
-	// Getting YYYY-MM of this time two months ago (that's the latest police data).
-	$date = new DateTime();
+	$boundaryPoints=json_decode($data);
 	
-	$date->sub(new DateInterval("P2M"));
-	
-	$dateFormatted = $date->format("Y-m");
-	
-	$rate = $dataObj->crimes->$dateFormatted->$crimeType->crime_rate;
-	
-	if (!is_null($rate)) {
-		return $rate;
-		}
-	else return NULL;
+	return $boundaryPoints;
 	}
+global $crimeDataCache;
+$crimeDataCache=[];
+function getCrimeRate($lat, $lng, $crimeType) {
+	global $crimeDataCache;
+	if(array_key_exists($lat.$lng,$crimeDataCache)==FALSE){
+		// My unique username and password, woo! The API requires this on every query.
+		$userpass = POLICE_API_KEY;
+		
+		// Getting YYYY-MM of the last year
+		$date = new DateTime();
+		
+		$date->sub(new DateInterval("P12M"));
+		
+		$dateFormatted = $date->format("Y-m");
+		$sendData=[
+			"lat"=>$lat,
+			"lng"=>$lng,
+			"date"=>$dateFormatted
+		];
+		
+		$postFields=http_build_query($sendData);
+		$url = "http://policeapi2.rkh.co.uk/api/crimes-street/all-crime?$postFields";
+		
+		$curl = curl_init();
+	
+		// Gotta put dat password in.
+		curl_setopt($curl, CURLOPT_USERPWD, $userpass);
+		curl_setopt($curl, CURLOPT_URL, $url);
+		
+		// Without this, we just get "1" or similar.
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+	
+		$data = curl_exec($curl);
+	
+		curl_close($curl);
+		// The API returns JSON, and json_decode produces an interesting mix of objects and arrays.
+		$crimeDataCache[$lat.$lng] = json_decode($data);
+	}
+	
+	$rate = 0;
+	if($crimeType=="all-crime")return count($crimeDataCache[$lat.$lng]);
+	$crimeSet=$crimeDataCache[$lat.$lng];
+	foreach ($crimeSet as $crime){
+		if($crime->category==$crimeType)$rate++;
+	}
+	
+	return $rate;
+}
 
 // Here are the plugins themselves
 // All-encompassing crime rate
@@ -94,7 +129,7 @@ class crime_all {
 		$neighbourhood = $forceAndNhoodObj->neighbourhood;
 		
 		// And the rate itself.
-		$rate = getCrimeRate($force, $neighbourhood, "all-crime");
+		$rate = getCrimeRate($lat, $lng, "all-crime");
 		
 		return $rate;
 		}
@@ -132,7 +167,7 @@ class crime_asb {
 		$neighbourhood = $forceAndNhoodObj->neighbourhood;
 		
 		// And the rate itself.
-		$rate = getCrimeRate($force, $neighbourhood, "anti-social-behaviour");
+		$rate = getCrimeRate($lat, $lng, "anti-social-behaviour");
 		
 		return $rate;
 		}
@@ -170,7 +205,7 @@ class crime_drugs {
 		$neighbourhood = $forceAndNhoodObj->neighbourhood;
 		
 		// And the rate itself.
-		$rate = getCrimeRate($force, $neighbourhood, "drugs");
+		$rate = getCrimeRate($lat, $lng, "drugs");
 		
 		return $rate;
 		}
@@ -208,7 +243,7 @@ class crime_cda {
 		$neighbourhood = $forceAndNhoodObj->neighbourhood;
 		
 		// And the rate itself.
-		$rate = getCrimeRate($force, $neighbourhood, "criminal-damage-arson");
+		$rate = getCrimeRate($lat, $lng, "criminal-damage-arson");
 		
 		return $rate;
 		}
@@ -246,7 +281,7 @@ class crime_burglary {
 		$neighbourhood = $forceAndNhoodObj->neighbourhood;
 		
 		// And the rate itself.
-		$rate = getCrimeRate($force, $neighbourhood, "burglary");
+		$rate = getCrimeRate($lat, $lng, "burglary");
 		
 		return $rate;
 		}
@@ -284,7 +319,7 @@ class crime_violent {
 		$neighbourhood = $forceAndNhoodObj->neighbourhood;
 		
 		// And the rate itself.
-		$rate = getCrimeRate($force, $neighbourhood, "violent-crime");
+		$rate = getCrimeRate($lat, $lng, "violent-crime");
 		
 		return $rate;
 		}
@@ -322,7 +357,7 @@ class crime_weapons {
 		$neighbourhood = $forceAndNhoodObj->neighbourhood;
 		
 		// And the rate itself.
-		$rate = getCrimeRate($force, $neighbourhood, "public-disorder-weapons");
+		$rate = getCrimeRate($lat, $lng, "public-disorder-weapons");
 		
 		return $rate;
 		}
