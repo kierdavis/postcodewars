@@ -77,14 +77,14 @@
     <head>
         <title>Postcode Wars</title>
 		<meta name="viewport" content="width=device-width, initial-scale: 1" />
-        <link href="/static/css/results.css" rel="stylesheet" type="text/css" />
-        <script src="/static/js/jquery-1.7.2.min.js" type="text/javascript"></script>
-		<script src="/static/js/jquery.cookie.js" type="text/javascript"></script>
-        <script src="/static/js/global.js" type="text/javascript"></script>
+        <link href="static/css/results.css" rel="stylesheet" type="text/css" />
+        <script src="static/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+		<script src="static/js/jquery.cookie.js" type="text/javascript"></script>
+        <script src="static/js/global.js" type="text/javascript"></script>
 		<script src="static/js/results.js" type="text/javascript"></script>
 		<meta property="og:title" content="Postcode Wars" />
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content="<?
+		<meta property="og:url" content="<?php
 		if($result==null){
 			echo "http://postcodewars.co.uk/";
 		}
@@ -93,7 +93,7 @@
 		}
 		?>" />
 		<meta property="og:image" content="http://postcodewars.co.uk/static/images/facebook_prev_icon.png" />
-		<?
+		<?php
 		if($result==null){
 			$og_description="Compare and \"Battle\" Postcodes using Open Source Data!";
 		}
@@ -129,7 +129,7 @@
 
         <div id="content">
             <div id="search" class="clearfix">
-                <form action="/" id="battle" method="get">
+                <form action="" id="battle" method="get">
 					<p class="clearfix">
                         <input type="text" name="postcode1" id="battle_postcode1" tabindex="1" value="<?= htmlentities($postcode1) ?>" placeholder="Postcode" />
                         <button type="submit" tabindex="3" id="battle_submit">Battle!</button>
@@ -151,7 +151,7 @@
 ?>
 
 			<div id="score">
-				<div class="sharing"><?
+				<div class="sharing"><?php
 					$enc_url=urlencode($share_url);
 					$fb_link="http://www.facebook.com/share.php?u=".urlencode($share_url);
 					$twitter_link="http://twitter.com/home?status=Just battled ".$postcode1." vs ".$postcode2." on ".$enc_url;
