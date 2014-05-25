@@ -34,7 +34,9 @@
         //     "town" => the county-electoral area
         public function get_result($db, $location) {
 			$townrefined = $location["town"];
-			$housepriceunrefined = (file_get_contents("http://api.nestoria.co.uk/api?country=uk&pretty=1&action=metadata&place_name=" . $townrefined . "&encoding=xml"));
+			$lat=$location["lat"];
+			$lng=$location["lng"];
+			$housepriceunrefined = (file_get_contents("http://api.nestoria.co.uk/api?country=uk&pretty=1&action=metadata&&centre_point=$lat,$lng,1.5km&encoding=xml"));
 			
 			
 			
