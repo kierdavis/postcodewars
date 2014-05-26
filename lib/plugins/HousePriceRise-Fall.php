@@ -23,7 +23,7 @@
         public $better = HIGHER_IS_BETTER;
         
         // Whether the results from this are allowed to be cached.
-        public $can_cache = TRUE;
+        public $can_cache = FALSE;
         
         // The get_result method should perform the searches and return the two results.
         // $db is a mysqli object connected to the database.
@@ -36,13 +36,22 @@
 			$townrefined = $location["town"];
 			$lat=$location["lat"];
 			$lng=$location["lng"];
-			$housepriceunrefined = (file_get_contents("http://api.nestoria.co.uk/api?country=uk&pretty=1&action=metadata&&centre_point=$lat,$lng,1.5km&encoding=xml"));
+			$postcode_part=substr($location["postcode"],0,-3);
+			$housepriceunrefined = (file_get_contents("http://api.nestoria.co.uk/api?country=uk&pretty=1&action=metadata&&place_name=$postcode_part&encoding=xml"));
 			
 			
 			
 			$xmlfile2 = new SimpleXMLElement($housepriceunrefined);
-			$oldhp = ($xmlfile2->xpath('/opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2011_m2"]/@avg_price'));
-			$newhp = ($xmlfile2->xpath('/opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="2012_m2"]/@avg_price'));
+			
+			$date = new DateTime();
+			$date->sub(new DateInterval("P2M"));
+			$date1Formatted = $date->format("Y_\mn");
+			$date->sub(new DateInterval("P1Y"));
+			$date2Formatted = $date->format("Y_\mn");
+			
+			$oldhp = ($xmlfile2->xpath('/opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="'.$date2Formatted.'"]/@avg_price'));
+			$newhp = ($xmlfile2->xpath('/opt/response/metadata[@metadata_name="avg_4bed_property_buy_monthly"]/data[@name="'.$date1Formatted.'"]/@avg_price'));
+			logmsg("House prices",$oldhp[0].":".$newhp[0]);
 			
 			
             
