@@ -253,7 +253,7 @@
         <footer>
             <p>PostCode Wars &copy; 2012 - <a href="mailto:jacob.walker.94+pcw@gmail.com">Get in touch</a></p>
         </footer>
-        
+        <img src="static/images/loader.gif" alt="" class="hidden" />
         <script type="text/javascript">
 		<!--
 			  var _gaq = _gaq || [];

@@ -20,7 +20,7 @@
 }
 
 body {
-	background: #eee url('/static/images/background.png');
+	background: #eee url('../images/background.png');
 	color: #333;
 	font-family: "Helvetica Neue", Arial, sans-serif;
 	font-size: 13px;
@@ -454,7 +454,7 @@ footer p {
 }
 
 #settingsPanel {
-	background: #ddd url('/static/images/texture.png');
+	background: #ddd url('../images/texture.png');
 	border-bottom: 1px solid #999;
 	color: #777;
 	padding: 20px;
@@ -593,7 +593,7 @@ footer p {
 }
 
 .loader {
-	background: url('/static/images/loader.gif');
+	background: url('../images/loader.gif');
 	display: block;
 	height: 48px;
 	margin: 60px auto;
@@ -753,6 +753,11 @@ p#suggestions {
 	font-family: "Helvetica Neue", Arial, sans-serif;
 	text-shadow: 0 1px 0 #fff;
 }
+
+.hidden{
+	display:none;
+}
+
 /*#score:hover .sharing{
 	opacity:1;
 }*/
