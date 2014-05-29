@@ -13,7 +13,7 @@
 		// $db is a mysqli object connected to the database.
 		// $location is an associative array which contains: "postcode", "lat", "lng"
 		public function get_result($db, $loc) {
-			return dist_to_result($loc["postcode"],"hospital",$loc["lat"],$loc["lng"]) / 1000;
+			return dist_to_result($loc["postcode"],"hospital","hospital|infirmary",$loc["lat"],$loc["lng"]);
 		}
 	}
 	
@@ -28,13 +28,10 @@
 		public $can_cache = TRUE;
 		
 		public function get_result($db, $loc) {
-			$closest=get_first_by_text_search($loc["postcode"],"train+station") / 1000;
-			//echo $loc["lat"].",".$loc["lng"];
-			//echo json_encode(array($loc["lat"],$loc["lng"]));
-			return dist_between_geo(array($loc["lat"],$loc["lng"]),$closest["geo"]);
+			return dist_to_result($loc["postcode"],"train_station","",$loc["lat"],$loc["lng"]);
 		}
 	}
 	
-	//$plugins["hospital-distance"] = new Hospitals(); // Inserts the plugin into the plugin index
-	//$plugins["train-station-distance"] = new TrainStations();
+	$plugins["hospital-distance"] = new Hospitals(); // Inserts the plugin into the plugin index
+	$plugins["train-station-distance"] = new TrainStations();
 ?>

@@ -22,7 +22,7 @@
     $category_names = array(
         "test-category" => "Test",
         "amenities" => "Amenities",
-        //"proximities" => "Proximities",
+        "proximities" => "Proximities",
         //"schools" => "Schools",
         "transport" => "Transport",
         "crime" => "Crime (offences per 1000 people)",
